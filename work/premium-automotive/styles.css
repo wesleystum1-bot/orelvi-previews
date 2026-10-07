@@ -651,3 +651,101 @@ body{
   --hairline:var(--hairline-raw);
   --hair-strong:var(--hair-strong-raw);
 }
+
+/* --- placed photography --------------------------------------------- */
+/* A single-cell grid, not absolute positioning. Some plates are themselves
+   absolutely positioned to fill their band, and forcing position:relative on
+   those collapsed them to zero height. Grid stretches the picture to whatever
+   box the family gave the plate without touching how that box is placed. */
+[data-has-photo]{overflow:hidden; padding:0; display:grid; grid-template:1fr/1fr}
+[data-has-photo] > img{
+  grid-area:1/1;
+  width:100%; height:100%; max-width:none; min-width:0; min-height:0;
+  object-fit:cover; object-position:center;
+  display:block; margin:0; border-radius:inherit;
+}
+
+/* --- tier finish: signature ------------------------------------------ */
+.fx-progress{position:fixed;inset:0 0 auto 0;height:2px;background:var(--accent);transform-origin:0 50%;transform:scaleX(0);z-index:60;pointer-events:none}
+.fx [data-fx="rise"]{transition:opacity .9s var(--ease-out),transform 1.05s var(--ease-out);transition-delay:var(--fxd,0s)}
+.fx [data-fx="rise"]:not(.fx-in){opacity:0;transform:perspective(900px) translate3d(0,34px,0) rotateX(9deg)}
+.fx [data-has-photo]{overflow:hidden}
+.fx [data-has-photo] > img{transform:scale(1.12) translate3d(0,calc(var(--fxp,0) * -4.5%),0);transition:transform .2s linear;will-change:transform}
+.fx [data-fx="tilt"]{transform:perspective(900px) rotateX(var(--fxrx,0deg)) rotateY(var(--fxry,0deg)) translate3d(0,var(--fxlift,0px),0);transition:transform .45s var(--ease-out),box-shadow .45s var(--ease-out);transform-style:preserve-3d}
+.fx [data-fx="tilt"].fx-hover{--fxlift:-4px;box-shadow:0 22px 40px -28px rgba(0,0,0,.45);transition-duration:.12s,.45s}
+.fx .hero[data-fx-depth] > *,.fx .sv-hero[data-fx-depth] > *{transform:translate3d(0,calc(var(--fxh,0) * 46px),0);will-change:transform}
+
+/* --- tier finish: custom --------------------------------------------- */
+.hero,.sv-hero{position:relative;isolation:isolate}
+.fx-stage{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.9;
+  /* the scene fades out where the words are, so it never sits under the reading */
+  -webkit-mask-image:linear-gradient(90deg,transparent 18%,#000 62%);mask-image:linear-gradient(90deg,transparent 18%,#000 62%)}
+@media (max-width:720px){.fx-stage{opacity:.4;-webkit-mask-image:linear-gradient(180deg,#000 10%,transparent 85%);mask-image:linear-gradient(180deg,#000 10%,transparent 85%)}}
+.fx .hero[data-fx-depth],.fx .sv-hero[data-fx-depth],.fx .sp-hero[data-fx-depth]{transform-origin:50% 100%;transform:perspective(1400px) rotateX(calc(var(--fxh,0) * 9deg)) scale(calc(1 - var(--fxh,0) * .06));opacity:calc(1 - var(--fxh,0) * .55)}
+.fx [data-fx="swing"]{transform-origin:50% 0;transform:perspective(1400px) translate3d(0,calc((1 - var(--fxs,1)) * 70px),0) rotateX(calc((1 - var(--fxs,1)) * 16deg)) scale(calc(.955 + var(--fxs,1) * .045));opacity:calc(.25 + var(--fxs,1) * .75);will-change:transform}
+
+/* --- showpiece: the photographic opening of a Signature or Custom site --- */
+/* the first screen, less whatever header the family keeps above it (measured by the script; 100px until then) */
+.sp-hero{position:relative;isolation:isolate;height:calc(100svh - var(--sp-top,100px));min-height:560px;max-height:980px;overflow:hidden;
+  background:var(--deep);color:var(--deep-ink);display:flex;align-items:flex-end}
+.sp-ph{position:absolute;inset:-6% 0 -6% 0;z-index:-2;will-change:transform}
+.sp-hero .sp-ph-img{width:100%;height:100%;max-width:none;object-fit:cover;object-position:50% 40%;display:block}
+.sp-shade{position:absolute;inset:0;z-index:-1;
+  /* a side shade under the words as well as the floor, so a bright sky or a white surgery still carries white type */
+  background:linear-gradient(90deg,color-mix(in srgb,var(--deep) 62%,transparent) 0%,color-mix(in srgb,var(--deep) 30%,transparent) 42%,transparent 68%),linear-gradient(180deg,color-mix(in srgb,var(--deep) 45%,transparent) 0%,transparent 26%,color-mix(in srgb,var(--deep) 30%,transparent) 50%,color-mix(in srgb,var(--deep) 92%,transparent) 84%,var(--deep) 100%)}
+.sp-motes{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.sp-copy{width:min(100%,var(--page,1200px));margin:0 auto;padding:0 var(--gutter) clamp(54px,9vh,96px)}
+.sp-kick{font-family:var(--ff-accent);font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:color-mix(in srgb,var(--deep-ink) 78%,transparent);margin:0 0 18px}
+.sp-h{font-family:var(--ff-display);font-weight:var(--fw-display,500);font-size:clamp(46px,9.4vw,128px);line-height:.94;letter-spacing:-.025em;
+  max-width:13ch;margin:0;color:var(--deep-ink);text-wrap:balance;text-shadow:0 2px 40px rgba(0,0,0,.35)}
+/* the accent, lifted toward white so it reads as light on the dark ground whatever the palette */
+.sp-h em,.sp-h2 em{font-style:italic;font-weight:inherit;color:var(--sp-em,color-mix(in srgb,var(--accent) 62%,#fff))}
+.sp-lede{margin:22px 0 0;max-width:46ch;font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:color-mix(in srgb,var(--deep-ink) 78%,transparent)}
+.sp-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.sp-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:15px;
+  text-decoration:none;white-space:nowrap;transition:transform .25s var(--ease-out),box-shadow .25s var(--ease-out),background .25s}
+.sp-btn--pri{background:var(--sp-btn,var(--accent));color:var(--sp-btn-ink,var(--accent-ink));box-shadow:0 16px 44px -12px color-mix(in srgb,var(--accent) 70%,transparent)}
+.sp-btn--pri:hover{transform:translateY(-2px);box-shadow:0 22px 52px -12px color-mix(in srgb,var(--accent) 80%,transparent)}
+.sp-btn--ghost{border:1px solid color-mix(in srgb,var(--deep-ink) 40%,transparent);color:var(--deep-ink)}
+.sp-btn--ghost:hover{background:color-mix(in srgb,var(--deep-ink) 10%,transparent)}
+.sp-note{font-size:11px;line-height:1.4;letter-spacing:.02em;color:color-mix(in srgb,var(--deep-ink) 55%,transparent);margin:0}
+.sp-hero > .sp-note{position:absolute;right:var(--gutter);bottom:16px;max-width:46ch;text-align:right}
+@media (max-width:720px){.sp-hero > .sp-note{left:var(--gutter);text-align:left;bottom:12px}}
+
+.sp-mq{overflow:hidden;white-space:nowrap;background:var(--deep);color:var(--sp-em,color-mix(in srgb,var(--accent) 55%,#fff));
+  border-block:1px solid color-mix(in srgb,var(--deep-ink) 14%,transparent);padding:16px 0}
+.sp-mq-run{display:inline-flex;animation:sp-mq 38s linear infinite}
+.sp-mq span{display:inline-flex;align-items:center;font-family:var(--ff-display);font-style:italic;font-size:clamp(20px,2.4vw,30px);padding-right:0}
+.sp-mq i{font-style:normal;font-size:.55em;margin:0 .9em;opacity:.7}
+@keyframes sp-mq{to{transform:translateX(-50%)}}
+
+.sp-fan{background:var(--deep);color:var(--deep-ink);padding:clamp(64px,9vw,120px) var(--gutter) clamp(40px,6vw,72px);overflow:hidden}
+.sp-fan-head,.sp-fan .sp-note--fan{width:min(100%,var(--page,1200px));margin-inline:auto}
+.sp-h2{font-family:var(--ff-display);font-weight:var(--fw-display,500);font-size:clamp(40px,6.4vw,84px);line-height:.95;letter-spacing:-.025em;margin:0;color:var(--deep-ink)}
+.sp-stage{position:relative;height:clamp(400px,46vw,560px);margin:40px auto 0;perspective:1100px;max-width:1100px}
+.sp-card{position:absolute;left:50%;top:0;margin:0;width:clamp(220px,26vw,330px);aspect-ratio:3/4;translate:-50% 0;border-radius:18px;overflow:hidden;
+  box-shadow:0 40px 80px -20px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.1);transform-style:preserve-3d;
+  /* the finished fan: what reduced motion and a script-less page show */
+  transform:translate3d(calc(var(--k) * min(30vw,300px)),calc(var(--k) * var(--k) * 26px + 20px),calc(var(--k) * var(--k) * -110px)) rotateY(calc(var(--k) * -26deg)) rotateZ(calc(var(--k) * 3deg));
+  z-index:calc(10 - var(--k) * var(--k))}
+.sp-fan .sp-card-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block}
+.sp-gl{position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.22) 45%,transparent 60%);background-size:300% 100%;
+  background-position:var(--gx,60%) 0;mix-blend-mode:screen;pointer-events:none}
+.sp-lbl{position:absolute;left:12px;right:12px;bottom:12px;padding:11px 13px;border-radius:12px;color:#fff;
+  background:rgba(12,10,8,.5);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);font-size:13px;line-height:1.35}
+.sp-lbl b{display:block;font-family:var(--ff-display);font-size:19px;font-weight:500;line-height:1.15}
+.sp-lbl span{display:block;opacity:.8;margin-top:2px}
+@media (max-width:720px){
+  .sp-stage{height:430px}
+  .sp-card{width:min(62vw,250px);transform:translate3d(calc(var(--k) * 26vw),calc(var(--k) * var(--k) * 22px + 16px),calc(var(--k) * var(--k) * -120px)) rotateY(calc(var(--k) * -30deg)) rotateZ(calc(var(--k) * 3deg))}
+  .sp-lbl span{display:none}
+}
+.sp-tilt{width:min(100%,920px);margin:clamp(24px,5vw,56px) auto 0;perspective:900px}
+.sp-tilt-in{position:relative;margin:0;border-radius:22px;aspect-ratio:16/9;transform-style:preserve-3d;box-shadow:0 30px 70px -20px rgba(0,0,0,.6);will-change:transform}
+.sp-fan .sp-tilt-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;display:block;border-radius:inherit}
+.sp-badge{position:absolute;right:-8px;top:-16px;transform:translateZ(60px);background:var(--paper);color:var(--ink);border-radius:14px;padding:11px 16px;
+  font-family:var(--ff-display);font-size:clamp(17px,2vw,22px);line-height:1.1;box-shadow:0 20px 40px rgba(0,0,0,.45);max-width:70%}
+.sp-badge small{display:block;font-family:var(--ff-accent);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.sp-note--fan{margin-top:22px}
+@media (max-width:720px){.sp-badge{right:10px;top:-18px}}
+@media (prefers-reduced-motion:reduce){.sp-mq-run{animation:none}}
