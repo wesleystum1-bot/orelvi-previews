@@ -149,6 +149,126 @@
       <p class="claim-out">Want it taken down? Say so and it goes the same day.</p>
     </div>
   </div>
+
+  <div class="claim-chat" data-url="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant" data-site="clean-cut-lawn-care" data-tiers="[{&quot;id&quot;:&quot;launch&quot;,&quot;name&quot;:&quot;Launch&quot;,&quot;price&quot;:&quot;$399&quot;},{&quot;id&quot;:&quot;signature&quot;,&quot;name&quot;:&quot;Signature&quot;,&quot;price&quot;:&quot;$899&quot;},{&quot;id&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Custom&quot;,&quot;price&quot;:&quot;from $1,899&quot;}]" data-who="Wesley Stum" hidden></div>
+  <script>(function(){
+  var root = document.querySelector('.claim-chat'); if (!root) return;
+  var url = root.getAttribute('data-url'), site = root.getAttribute('data-site'), who = root.getAttribute('data-who');
+  var tiers = []; try { tiers = JSON.parse(root.getAttribute('data-tiers')) || []; } catch (e) {}
+  var acts = document.querySelector('.claim-acts'); if (!acts) return;
+  function el(tag, cls, text){ var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
+  var yesBtn = el('button', 'claim-act claim-yes'); yesBtn.type = 'button';
+  yesBtn.appendChild(el('span', 'claim-act-k', 'Like it?')); yesBtn.appendChild(el('span', 'claim-act-v', 'Say yes here'));
+  var askBtn = el('button', 'claim-act'); askBtn.type = 'button';
+  askBtn.appendChild(el('span', 'claim-act-k', 'Questions?')); askBtn.appendChild(el('span', 'claim-act-v', 'Ask the assistant'));
+  acts.insertBefore(askBtn, acts.firstChild); acts.insertBefore(yesBtn, acts.firstChild);
+  var out = document.querySelector('.claim-out');
+  if (out) { var down = el('button', 'claim-link', 'Take it down'); down.type = 'button'; out.appendChild(document.createTextNode(' ')); out.appendChild(down); down.addEventListener('click', function(){ open(); takedownCard(); }); }
+
+  var panel = el('section', 'cc-panel'); panel.setAttribute('role', 'dialog'); panel.setAttribute('aria-label', 'Talk about this preview'); panel.hidden = true;
+  var head = el('header'); var title = el('div'); title.appendChild(el('b', null, 'About your preview')); title.appendChild(el('small', null, 'AI assistant for ' + who));
+  var x = el('button', 'cc-x', '×'); x.type = 'button'; x.setAttribute('aria-label', 'Close');
+  head.appendChild(title); head.appendChild(x); panel.appendChild(head);
+  var log = el('ol', 'cc-log'); log.setAttribute('aria-live', 'polite'); panel.appendChild(log);
+  var form = el('form', 'cc-form'); form.setAttribute('autocomplete', 'off');
+  var input = el('input'); input.maxLength = 800; input.placeholder = 'Ask anything about it'; input.setAttribute('aria-label', 'Your message');
+  var send = el('button', 'cc-send', '↑'); send.type = 'submit'; send.setAttribute('aria-label', 'Send');
+  form.appendChild(input); form.appendChild(send); panel.appendChild(form);
+  panel.appendChild(el('p', 'cc-fine', 'AI can make mistakes; ' + who + ' confirms everything by email.'));
+  document.body.appendChild(panel);
+
+  var turns = [], busy = false, card = null, picked = '';
+  function open(){ if (!panel.hidden) return; panel.hidden = false; if (!log.children.length) bubble('cc-bot', 'Hi! I can answer questions about this preview, what it costs and what happens next. If you’d like it, I can take your yes right here.'); setTimeout(function(){ input.focus(); }, 30); }
+  function close(){ panel.hidden = true; }
+  x.addEventListener('click', close);
+  panel.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  askBtn.addEventListener('click', open);
+  yesBtn.addEventListener('click', function(){ open(); claimCard(); });
+  function bubble(cls, text){ var li = el('li', cls, text); log.appendChild(li); log.scrollTop = log.scrollHeight; return li; }
+  var MARK = /\[\[[^\]]*(\]\]?)?|\[$/g;
+  function clean(t){ return String(t).replace(MARK, '').trim(); }
+  var YES = /(i('?ll| will) take it|i want (it|this)|let'?s (do|go)|sign me up|how do i (pay|buy|get it|go ahead)|go ahead|i'?m in|we'?ll take it)/i;
+  var NO = /(take (it|this) down|remove (it|this|the page)|stop (emailing|contacting)|not interested|unsubscribe|leave (me|us) alone)/i;
+
+  function post(path, body){
+    return fetch(url + path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok || !j.ok) throw new Error(j.message || 'That did not go through.'); return j; }); });
+  }
+  function field(f, label, name, type, need){ var l = el('label', null, label); var i = el('input'); i.name = name; i.type = type; if (need) i.required = true; l.appendChild(i); f.appendChild(l); return i; }
+  function shell(cls){ if (card) card.remove(); card = el('li', 'cc-card ' + cls); var f = el('form'); f.noValidate = true; card.appendChild(f); log.appendChild(card); return f; }
+  function finish(f, label, onSend){
+    var err = el('p', 'cc-err'); err.setAttribute('role', 'alert'); err.hidden = true; f.appendChild(err);
+    var row = el('div', 'cc-row'); var go = el('button', null, label); go.type = 'submit'; var no = el('button', 'cc-ghost', 'Not now'); no.type = 'button';
+    row.appendChild(go); row.appendChild(no); f.appendChild(row);
+    no.addEventListener('click', function(){ card.remove(); card = null; input.focus(); });
+    f.addEventListener('submit', function(e){
+      e.preventDefault(); var bad = null;
+      f.querySelectorAll('[required]').forEach(function(i){ var ok = i.value.trim() && (i.type !== 'email' || /.+@.+\..+/.test(i.value)); i.setAttribute('aria-invalid', ok ? 'false' : 'true'); if (!ok && !bad) bad = i; });
+      if (bad) { err.hidden = false; err.textContent = 'A detail is missing.'; bad.focus(); return; }
+      go.disabled = true; err.hidden = true;
+      onSend().then(function(j){
+        card.remove(); card = null; var li = bubble('cc-bot cc-ok', j.message); turns.push({ role: 'assistant', content: j.message });
+        /* the closer's hand-off: the tier's own payment page, only an https link the desk returned */
+        if (j.payUrl && /^https:\/\/[^\s"'<>]+$/.test(j.payUrl)) {
+          var pay = el('a', 'cc-pay', j.payLabel || 'Pay securely'); pay.href = j.payUrl; pay.target = '_blank'; pay.rel = 'noopener';
+          li.appendChild(document.createElement('br')); li.appendChild(pay); log.scrollTop = log.scrollHeight;
+        }
+      })
+        .catch(function(e){ go.disabled = false; err.hidden = false; err.textContent = (e && e.message) || 'That did not go through.'; });
+    });
+    log.scrollTop = log.scrollHeight; var first = f.querySelector('input,select'); if (first) setTimeout(function(){ first.focus(); }, 30);
+  }
+  function claimCard(){
+    var f = shell('cc-yes');
+    f.appendChild(el('b', null, 'Go ahead with this site'));
+    f.appendChild(el('p', null, who + ' will email you to confirm the details and send the invoice. Nothing is charged here.'));
+    var name = field(f, 'Your name', 'name', 'text', 1), email = field(f, 'Email', 'email', 'email', 1), phone = field(f, 'Phone (optional)', 'phone', 'tel', 0);
+    var l = el('label', null, 'Tier'); var s = el('select'); s.name = 'tier';
+    tiers.forEach(function(t){ var o = el('option', null, t.name + ' (' + t.price + ')'); o.value = t.id; if (t.name === picked || t.id === picked) o.selected = true; s.appendChild(o); });
+    l.appendChild(s); f.appendChild(l);
+    var nl = el('label', null, 'Anything to change first? (optional)'); var note = el('input'); note.name = 'note'; nl.appendChild(note); f.appendChild(nl);
+    var wording = root.getAttribute('data-callme'), callme = null;
+    if (wording) {
+      var cl = el('label', 'cc-check'); callme = el('input'); callme.type = 'checkbox'; callme.name = 'call_me';
+      cl.appendChild(callme); cl.appendChild(el('span', null, wording)); f.appendChild(cl);
+      callme.addEventListener('change', function(){ phone.required = callme.checked; });
+    }
+    finish(f, 'Yes, I want it', function(){ return post('/claim', { kind: 'yes', site: site, name: name.value, email: email.value, phone: phone.value, tier: s.value, note: note.value, call_me: !!(callme && callme.checked), wording: wording || '' }); });
+  }
+  function takedownCard(){
+    var f = shell('cc-down');
+    f.appendChild(el('b', null, 'Take this preview down?'));
+    f.appendChild(el('p', null, 'The page comes down and you won’t hear from ' + who + ' again.'));
+    finish(f, 'Yes, take it down', function(){ return post('/claim', { kind: 'takedown', site: site }); });
+  }
+  function ask(text){
+    text = String(text || '').trim().slice(0, 800);
+    if (!text || busy) return;
+    busy = true; send.disabled = true;
+    bubble('cc-me', text); turns.push({ role: 'user', content: text });
+    while (turns.length > 19) turns.splice(0, 2);
+    var li = bubble('cc-bot', '…');
+    var done = function(answer, bad){
+      if (bad) { li.classList.add('cc-bad'); li.textContent = answer; turns.pop(); }
+      else {
+        var m = /\[\[TIER:\s*([^\]]+)\]\]/i.exec(answer); if (m) picked = m[1].trim();
+        li.textContent = clean(answer) || '…'; turns.push({ role: 'assistant', content: li.textContent });
+        if (/\[\[TAKEDOWN\]\]/i.test(answer) || NO.test(text)) takedownCard();
+        else if (/\[\[CLAIM\]\]/i.test(answer) || YES.test(text)) claimCard();
+      }
+      busy = false; send.disabled = false; log.scrollTop = log.scrollHeight;
+    };
+    fetch(url + '/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ site: site, messages: turns }) })
+      .then(function(r){
+        if (!r.ok) return r.json().catch(function(){ return {}; }).then(function(j){ done(j.error || 'The assistant is offline. Reply to the email instead.', true); });
+        if (!r.body || !r.body.getReader) return r.text().then(function(t){ done(t); });
+        var rd = r.body.getReader(), dec = new TextDecoder(), acc = '';
+        return (function pump(){ return rd.read().then(function(z){ if (z.done) { done(acc); return; } acc += dec.decode(z.value, { stream: true }); li.textContent = clean(acc) || '…'; log.scrollTop = log.scrollHeight; return pump(); }); })();
+      })
+      .catch(function(){ done('The assistant is offline. Reply to the email instead.', true); });
+  }
+  form.addEventListener('submit', function(e){ e.preventDefault(); var t = input.value; input.value = ''; ask(t); });
+})();</script>
 </aside>
 </body>
 </html>
