@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><filter id="gd" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="4" stitchTiles="stitch" seed="11" result="n"/>
+<feColorMatrix in="n" type="saturate" values="0" result="g"/>
+<feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.55" intercept="0"/></feComponentTransfer>
+</filter><filter id="ge" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="4" stitchTiles="stitch" seed="11" result="n"/>
+<feColorMatrix in="n" type="saturate" values="0" result="g"/>
+<feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.4" intercept="0"/></feComponentTransfer>
+</filter></defs><rect width="1200" height="900" fill="#edebe3"/><rect width="1200" height="900" fill="#1b241d" filter="url(#gd)" opacity=".1"/><rect width="1200" height="900" fill="#1b241d" filter="url(#ge)" opacity=".05"/></svg>

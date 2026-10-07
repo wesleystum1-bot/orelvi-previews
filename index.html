@@ -1,0 +1,1387 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ORELVI · See your new website before you pay for it</title>
+<meta name="description" content="ORELVI designs a real website for your business first. You look at it on your own phone, then decide. Three tiers from $399 if you want it, nothing if you don't.">
+<link rel="canonical" href="https://wesleystum1-bot.github.io/orelvi-previews/">
+<meta property="og:url" content="https://wesleystum1-bot.github.io/orelvi-previews/">
+<meta property="og:title" content="ORELVI">
+<meta property="og:description" content="We build your new website first. You decide if it's worth paying for.">
+<meta property="og:image" content="https://wesleystum1-bot.github.io/orelvi-previews/work/architectural-contractor/shot-desktop.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44' fill='none'%3E%3Cg transform='skewY(-24)'%3E%3Crect x='16' y='22' width='22' height='24' rx='3.5' fill='%23222' stroke='%23f4f2ee' stroke-width='3'/%3E%3Crect x='6' y='25' width='15' height='18' rx='3' fill='%23222' stroke='%23f4f2ee' stroke-width='3'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Schibsted Grotesk";src:url(fonts/schibsted.woff2) format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(fonts/plex-mono.woff2) format("woff2");font-weight:500;font-display:swap}
+:root{
+  /* ORELVI: black, frosted glass, white glow with one warm edge, as in the logo */
+  --paper:#060607; --ink:#f4f2ee; --ink-2:#c3beb5; --ink-3:#97928a;
+  --rule:rgba(255,255,255,.12); --reg:#f4f2ee; --teal:#c9c4bb; --stamp:#f2cf98; --stamp-ink:#0b0b0c; --ok:#9fd8b8;
+  --sheet:rgba(255,255,255,.045); --glass:rgba(255,255,255,.045); --glass-strong:rgba(255,255,255,.075); --glass-line:rgba(255,255,255,.14);
+  --glass-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 0 0 1px rgba(0,0,0,.4),0 28px 70px -30px rgba(0,0,0,.9);
+  --blob-1:rgba(255,255,255,.10); --blob-2:rgba(255,255,255,.05); --blob-3:rgba(242,190,120,.16); --blob-4:rgba(200,215,235,.08);
+  --display:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --read:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark only;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--read);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--reg);outline-offset:3px}
+.shell{max-width:1200px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;color:var(--ink)}
+h2{font-size:clamp(30px,4.4vw,52px);line-height:1.02;letter-spacing:-.025em;font-weight:800}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:2px;font:700 15px/1 var(--display);letter-spacing:.01em;text-decoration:none;border:2px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
+.btn.primary{background:var(--stamp);border-color:var(--stamp);color:var(--stamp-ink)}
+.btn:hover{transform:translateY(-1px)}
+.btn.primary:hover{filter:brightness(1.06)}
+
+/* registration target, drawn once and reused */
+.reg{display:inline-block;width:18px;height:18px;border:1.5px solid var(--reg);border-radius:50%;position:relative;flex:none}
+.reg::before,.reg::after{content:"";position:absolute;background:var(--reg)}
+.reg::before{left:50%;top:-5px;bottom:-5px;width:1.5px;transform:translateX(-50%)}
+.reg::after{top:50%;left:-5px;right:-5px;height:1.5px;transform:translateY(-50%)}
+
+/* masthead */
+.mast{border-bottom:1px solid var(--rule)}
+.mast .shell{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px;flex-wrap:wrap;padding-block:10px}
+.word{display:flex;align-items:center;gap:11px;text-decoration:none;font:800 19px/1 var(--display);letter-spacing:-.01em}
+.mast nav{display:flex;gap:4px 22px;flex-wrap:wrap;font:600 14px/1 var(--display)}
+.mast nav a{text-decoration:none;color:var(--ink-2);padding:10px 0}
+.mast nav a:hover{color:var(--ink)}
+.mast nav a.cta{color:var(--stamp)}
+
+/* hero */
+.hero{padding-block:clamp(28px,4vw,52px) clamp(48px,6vw,80px);border-bottom:1px solid var(--rule)}
+.hero .shell{display:grid;justify-items:center;text-align:center}
+.eyebrow{display:flex;gap:10px;align-items:center;color:var(--reg);margin:0 0 22px}
+.hero h1{font-size:clamp(36px,4.6vw,60px);line-height:1;letter-spacing:-.035em;font-weight:850;max-width:15em}
+.hero h1 em{font-style:normal;color:var(--stamp)}
+.lede{font-size:clamp(18px,1.5vw,20px);line-height:1.55;color:var(--ink-2);max-width:32em;margin:22px 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.terms{margin:22px 0 0;display:flex;gap:8px 22px;flex-wrap:wrap;color:var(--ink-3)}
+.terms span::before{content:"✕ ";color:var(--stamp)}
+
+/* section frame */
+section.band{padding-block:clamp(56px,8vw,112px);border-bottom:1px solid var(--rule)}
+.head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,26em);gap:16px 48px;align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.head p{margin:0;color:var(--ink-2)}
+.kicker{display:flex;gap:10px;align-items:center;color:var(--reg);margin:0 0 14px}
+
+/* work */
+.filter{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:-8px 0 30px;font:600 14px/1 var(--display)}
+.filter select{font:500 15px/1 var(--display);padding:10px 36px 10px 12px;border:1.5px solid var(--ink);border-radius:2px;background:var(--sheet);color:var(--ink);min-height:44px}
+.filter .count{color:var(--ink-3);font:500 12px var(--mono)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(36px,5vw,64px) clamp(24px,4vw,48px)}
+.work{display:grid;gap:18px;align-content:start}
+.work[hidden]{display:none}
+.sheet{position:relative;display:block;background:var(--sheet);padding:10px;box-shadow:0 1px 0 var(--rule);margin:0 10px 18px 0}
+.sheet .desk{aspect-ratio:1440/900;object-fit:cover;object-position:top;width:100%;height:auto;transition:filter .2s}
+.sheet .phone{height:auto;position:absolute;right:-10px;bottom:-18px;width:21%;aspect-ratio:390/844;object-fit:cover;object-position:top;background:var(--sheet);padding:4px;box-shadow:0 14px 30px -14px rgba(10,20,30,.45)}
+.sheet .crop{position:absolute;inset:-7px;pointer-events:none;background:
+  linear-gradient(var(--reg),var(--reg)) left top/14px 1.5px no-repeat,linear-gradient(var(--reg),var(--reg)) left top/1.5px 14px no-repeat,
+  linear-gradient(var(--reg),var(--reg)) right bottom/14px 1.5px no-repeat,linear-gradient(var(--reg),var(--reg)) right bottom/1.5px 14px no-repeat;opacity:0;transition:opacity .2s}
+.sheet:hover .crop,.sheet:focus-visible .crop{opacity:1}
+.sheet:hover .desk{filter:saturate(1.08)}
+.meta{display:grid;gap:6px;max-width:36em}
+.plate{margin:0;font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.meta h3{font-size:24px;line-height:1.1;letter-spacing:-.015em;font-weight:800}
+.fits{margin:2px 0 0;font-size:16px;color:var(--ink-2)}
+.shown{margin:0;font-size:14.5px;color:var(--ink-3)}
+.notes{border:0;padding:2px 0 0}
+.notes summary{font:600 13px/1.3 var(--display);color:var(--ink-3);justify-content:flex-start;gap:8px}
+.notes summary::after{order:-1}
+.notes p{margin:6px 0 2px;font-size:15px}
+.js .grid:not(.all) .work.extra{display:none}
+.more{display:flex;justify-content:center;margin-top:clamp(36px,5vw,56px)}
+.more[hidden]{display:none}
+.fits span{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--reg);margin-right:4px;vertical-align:1px}
+.open{font:700 14px/1 var(--display);color:var(--ink);margin-top:6px;justify-self:start;padding-block:8px}
+.note{margin:40px 0 0;color:var(--ink-3);font-size:15px;max-width:44em}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:2px solid var(--ink)}
+.steps li{padding:22px 22px 8px 0;display:grid;gap:10px;align-content:start}
+.steps li+li{padding-left:22px;border-left:1px solid var(--rule)}
+.steps .n{font:800 44px/1 var(--display);color:var(--reg);letter-spacing:-.03em}
+.steps h3{font-size:20px;letter-spacing:-.01em}
+.steps p{margin:0;color:var(--ink-2);font-size:16px}
+
+/* never */
+.never{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.never ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.never li{display:grid;grid-template-columns:28px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--rule);font-size:17px}
+.never li::before{content:"";width:18px;height:18px;margin-top:5px;background:
+  linear-gradient(45deg,transparent 45%,var(--stamp) 45% 55%,transparent 55%),linear-gradient(-45deg,transparent 45%,var(--stamp) 45% 55%,transparent 55%)}
+.never li b{font-family:var(--display);font-weight:700}
+
+
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:2px solid var(--ink);background:var(--sheet)}
+.tier{padding:28px 26px 30px;display:grid;grid-template-rows:auto 1fr auto;gap:20px}
+.tier+.tier{border-left:1px solid var(--rule)}
+.tier header{display:grid;gap:10px;align-content:start}
+.tier h3{font:500 13px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--reg)}
+.tier .amt{font:850 clamp(40px,4.6vw,56px)/1 var(--display);letter-spacing:-.035em}
+.tier .amt small{font:600 15px var(--display);letter-spacing:0;color:var(--ink-3);margin-left:4px}
+.tier .amt small.from{margin:0 6px 0 0}
+.tier .for{margin:0;font-size:17px;color:var(--ink)}
+.tier .first{margin:0;color:var(--ink-3);font-size:11px}
+.tier ul{list-style:none;margin:0;padding:0;display:grid;gap:0;align-content:start;border-top:1px solid var(--rule)}
+.tier li{padding:9px 0 9px 22px;border-bottom:1px solid var(--rule);font-size:15.5px;color:var(--ink-2);position:relative}
+.tier li::before{content:"";position:absolute;left:2px;top:15px;width:10px;height:6px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+.tier .btn{justify-self:start}
+.tier.main{background:var(--paper);outline:3px solid var(--stamp);outline-offset:-3px}
+.tier.main h3,.tier .pick{color:var(--stamp)}
+.tier .tname{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;justify-content:space-between}
+.tier .pick{font-size:11px}
+.care{margin:22px 0 0;color:var(--ink-2);font-size:16px;max-width:52em}
+.care b{font-family:var(--display);color:var(--ink)}
+
+/* booking */
+.booking .shell{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,72px);align-items:start}
+.booking .side p{color:var(--ink-2)}
+.booking .side .lines{font:600 17px/1.8 var(--display)}
+.book-form{display:grid;gap:18px;background:var(--sheet);padding:clamp(20px,3vw,34px);border:2px solid var(--ink)}
+.row.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+label{display:grid;gap:7px;font:600 14px/1.2 var(--display);color:var(--ink)}
+.opt{font-weight:400;color:var(--ink-3)}
+input,select,textarea{width:100%;font:400 16px/1.4 var(--read);color:var(--ink);background:var(--paper);border:1.5px solid var(--rule);border-radius:2px;padding:11px 12px;min-height:46px}
+input:focus,select:focus,textarea:focus{border-color:var(--reg);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--reg) 22%,transparent)}
+input[aria-invalid="true"]{border-color:var(--stamp)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.submit-row{display:flex;gap:14px 20px;align-items:center;flex-wrap:wrap}
+.fine{margin:0;color:var(--ink-3);font-size:14px;flex:1 1 16em}
+.status{margin:0;padding:14px 16px;border-left:4px solid var(--ok);background:var(--paper);font-size:16px}
+.status.bad{border-color:var(--stamp)}
+.book-contact{background:var(--sheet);border:2px solid var(--ink);padding:28px}
+.book-contact .lines{font:700 20px/1.7 var(--display);margin:0}
+
+/* faq */
+.faq{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px;border-top:1px solid var(--rule)}
+details{border-bottom:1px solid var(--rule);padding:16px 0}
+summary{cursor:pointer;font:700 18px/1.3 var(--display);list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mono);color:var(--reg)}
+details[open] summary::after{content:"–"}
+details p{margin:10px 0 0;color:var(--ink-2);font-size:16px;max-width:36em}
+
+/* closing */
+.last{padding-block:clamp(64px,9vw,128px);text-align:center;border-bottom:1px solid var(--rule);background:
+  radial-gradient(circle at 50% 0,color-mix(in srgb,var(--stamp) 7%,transparent),transparent 60%)}
+.last .shell{display:block}
+.last .kicker{justify-content:center}
+.last h2{font-size:clamp(34px,5.4vw,64px);max-width:14em}
+.last p{color:var(--ink-2);max-width:30em;margin:18px 0 30px;text-wrap:pretty}
+footer .word{color:var(--ink)}
+.last .actions{justify-content:center}
+
+footer{padding-block:48px 64px}
+footer .shell{display:grid;grid-template-columns:auto 1fr auto;gap:20px 40px;align-items:start;color:var(--ink-3);font-size:14px}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 22px;font:600 14px/1 var(--display);padding-top:4px}
+footer nav a{text-decoration:none;color:var(--ink-2);padding:6px 0}
+footer nav a:hover{color:var(--ink)}
+footer .lines{margin:0;font:600 15px/1.7 var(--display);color:var(--ink);text-align:right}
+footer .small{grid-column:1/-1;margin:8px 0 0;padding-top:20px;border-top:1px solid var(--rule)}
+
+/* phone booking dock: shows once the hero's button has scrolled away */
+.dock{display:none}
+@media (max-width:640px){
+  .dock{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:5;gap:12px;align-items:center;justify-content:space-between;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--paper) 94%,transparent);
+    -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-top:1px solid var(--rule);
+    transform:translateY(110%);transition:transform .25s ease}
+  .dock.on{transform:none}
+  .dock .btn{flex:1 1 auto;min-height:46px}
+  .dock span{font:500 11px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);max-width:9em}
+  footer{padding-bottom:110px}
+}
+
+@media (max-width:900px){
+  .booking .shell,.never,.head{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .steps li:nth-child(3){padding-left:0;border-left:0}
+  .tiers{grid-template-columns:1fr}
+  .tier+.tier{border-left:0;border-top:1px solid var(--rule)}
+  .faq{grid-template-columns:1fr}
+  footer .shell{grid-template-columns:1fr}
+  footer .lines{text-align:left}
+}
+@media (max-width:640px){
+  .grid{grid-template-columns:1fr}
+  .row.two{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .steps li,.steps li+li{padding-left:0;border-left:0;border-bottom:1px solid var(--rule);padding-bottom:20px}
+  .mast nav{gap:4px 16px}
+}
+section[id]{scroll-margin-top:72px}
+
+/* ---------- glass ---------- */
+body{position:relative;font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:-15%;z-index:-1;pointer-events:none;filter:blur(30px);background:
+  radial-gradient(38% 34% at 12% 18%,var(--blob-1),transparent 70%),
+  radial-gradient(34% 30% at 88% 12%,var(--blob-4),transparent 70%),
+  radial-gradient(42% 38% at 78% 78%,var(--blob-3),transparent 70%),
+  radial-gradient(36% 36% at 18% 88%,var(--blob-2),transparent 70%)}
+.mast,.ticker,.sheet,.sheet .phone,.steps li,.never ul,.tier,.book-form,.book-contact,.faq,.last .card,.frame,.frame .phone,.round,.kicker,.eyebrow,.filter select,.dock{
+  background:var(--glass);border:1px solid var(--glass-line);box-shadow:var(--glass-shadow);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);backdrop-filter:blur(18px) saturate(160%)}
+section.band,.hero{border-bottom:0}
+.mast{border-width:0 0 1px}
+h1,h2,h3{color:var(--ink)}
+.reg{width:12px;height:12px;border:0;border-radius:50%;background:linear-gradient(135deg,var(--reg),var(--teal));box-shadow:0 0 0 4px color-mix(in srgb,var(--reg) 16%,transparent)}
+.reg::before,.reg::after{display:none}
+.word .reg{width:16px;height:16px}
+.word .mark{width:30px;height:30px;flex:none;color:var(--ink)}
+.word .name{font-weight:400;letter-spacing:.32em;text-transform:uppercase}
+.kicker,.eyebrow{display:inline-flex;padding:7px 14px 7px 11px;border-radius:999px;color:var(--reg)}
+.kicker{margin-bottom:16px}
+.btn{border-radius:999px;border:1px solid var(--glass-line);background:var(--glass-strong);color:var(--ink);box-shadow:var(--glass-shadow);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.btn.primary{background:linear-gradient(135deg,var(--reg),var(--teal));border-color:transparent;color:#fff;box-shadow:0 12px 30px -12px color-mix(in srgb,var(--reg) 80%,transparent)}
+.hero h1 em{color:var(--stamp)}
+.hero .lede{margin-inline:auto}
+.hero .actions,.terms{justify-content:center}
+.terms span::before{color:var(--stamp)}
+.ticker{border-width:1px 0;box-shadow:none}
+.filter select{border-radius:12px;min-height:46px}
+input,select,textarea{border-radius:12px;background:var(--glass-strong);border:1px solid var(--rule)}
+.sheet{border-radius:20px;padding:10px;margin:0 12px 20px 0}
+.sheet .desk{border-radius:12px}
+.sheet .phone{border-radius:14px;padding:4px}
+.sheet .crop{display:none}
+.steps{gap:16px;border-top:0}
+.steps li,.steps li+li,.steps li:nth-child(3){padding:26px 24px;border-radius:20px;border:1px solid var(--glass-line)}
+.never ul{border-radius:24px;padding:6px 26px}
+.never li:last-child{border-bottom:0}
+.tiers{gap:18px;border:0;background:none}
+.tier,.tier+.tier{border-radius:26px;border:1px solid var(--glass-line)}
+.tier.main{outline:0;background:var(--glass-strong);border:1.5px solid var(--reg);box-shadow:var(--glass-shadow),0 24px 60px -24px color-mix(in srgb,var(--reg) 55%,transparent)}
+.tier.main h3,.tier .pick{color:var(--reg)}
+.book-form,.book-contact{border-radius:26px}
+.faq{border-top:0;border-radius:26px;padding:6px 28px;gap:0 40px}
+.last{background:none;padding-block:clamp(48px,7vw,96px)}
+.last .card{border-radius:32px;padding:clamp(40px,6vw,72px) clamp(20px,4vw,48px);display:grid;justify-items:center;background:
+  radial-gradient(60% 80% at 50% 0,color-mix(in srgb,var(--blob-1) 55%,transparent),transparent 70%),var(--glass)}
+.dock{border-width:1px 0 0;box-shadow:none}
+footer{border-top:1px solid var(--rule)}
+
+
+/* ---------- chat assistant ---------- */
+.chat-fab{position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:40;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 14px;border-radius:999px;border:1px solid var(--glass-line);
+  background:linear-gradient(135deg,color-mix(in srgb,var(--reg) 88%,transparent),color-mix(in srgb,var(--teal) 88%,transparent));color:#fff;font:700 15px/1 var(--display);cursor:pointer;
+  box-shadow:0 16px 40px -14px color-mix(in srgb,var(--reg) 80%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s}
+.chat-fab:hover{transform:translateY(-2px)}
+.chat-fab[aria-expanded="true"]{opacity:0;pointer-events:none;transform:scale(.9)}
+.spark{width:26px;height:26px;border-radius:50%;flex:none;background:radial-gradient(circle at 35% 30%,#fff 0 12%,transparent 13%),conic-gradient(from 200deg,#9fe7ff,#ffffff,#ffd2b5,#b9efd9,#9fe7ff);box-shadow:0 0 0 3px rgba(255,255,255,.35)}
+.chat-panel{position:fixed;right:clamp(10px,3vw,28px);bottom:clamp(10px,3vw,28px);z-index:41;width:min(400px,calc(100vw - 20px));height:min(600px,calc(100dvh - 90px));display:flex;flex-direction:column;border-radius:26px;overflow:hidden;
+  background:var(--glass-strong);border:1px solid var(--glass-line);box-shadow:var(--glass-shadow),0 30px 80px -30px rgba(22,62,104,.45);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%)}
+.chat-panel[hidden]{display:none}
+.chat-panel header{display:flex;align-items:center;gap:12px;padding:16px 16px 14px;border-bottom:1px solid var(--rule)}
+.chat-panel header div{flex:1;display:grid;gap:2px}
+.chat-panel header b{font:800 16px/1.2 var(--display)}
+.chat-panel header small{font:500 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.chat-panel .x{width:40px;height:40px;border-radius:50%;border:1px solid var(--glass-line);background:var(--glass);font:400 24px/1 var(--display);color:var(--ink);cursor:pointer}
+.chat-log{list-style:none;margin:0;padding:16px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;overscroll-behavior:contain}
+.chat-log li{max-width:86%;padding:11px 14px;border-radius:18px;font-size:15.5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-log .bot{align-self:flex-start;background:var(--glass);border:1px solid var(--glass-line);border-bottom-left-radius:6px;color:var(--ink)}
+.chat-log .me{align-self:flex-end;background:linear-gradient(135deg,var(--reg),var(--teal));color:#fff;border-bottom-right-radius:6px}
+.chat-log .bad{border-color:color-mix(in srgb,var(--stamp) 50%,transparent)}
+.chat-log .go{display:inline-flex;margin-top:8px;padding:7px 12px;border-radius:999px;background:var(--glass-strong);border:1px solid var(--glass-line);font:700 13px/1 var(--display);color:var(--reg);text-decoration:none}
+.chat-log .go{cursor:pointer}
+.chat-log li.card{max-width:100%;width:100%;align-self:stretch;background:var(--glass-strong);border:1px solid var(--glass-line);border-radius:18px;padding:14px;white-space:normal}
+.chat-card{display:grid;gap:8px;margin:0}
+.chat-card b{font:800 15px/1.25 var(--display)}
+.chat-card p{margin:0;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.chat-card .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chat-card label{display:grid;gap:3px;font:600 12px/1.2 var(--display);color:var(--ink-2)}
+.chat-card input,.chat-card select{min-height:40px;padding:7px 10px;font-size:15px}
+.chat-card .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.chat-card button{min-height:42px;padding:0 16px;border-radius:999px;border:0;background:linear-gradient(135deg,var(--reg),var(--teal));color:#fff;font:800 14px/1 var(--display);cursor:pointer}
+.chat-card button.ghost{background:transparent;color:var(--ink-2);border:1px solid var(--glass-line)}
+.chat-card button:disabled{opacity:.6;cursor:default}
+.chat-card .err{color:var(--stamp);font-weight:600}
+.chat-log .ok{border-color:color-mix(in srgb,var(--ok) 55%,transparent)}
+.typing{display:inline-flex;gap:4px;padding:4px 0}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--ink-3);animation:blink 1.2s infinite ease-in-out}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 10px}
+.chips[hidden]{display:none}
+.chips button{padding:8px 12px;border-radius:999px;border:1px solid var(--glass-line);background:var(--glass);font:600 13px/1.2 var(--display);color:var(--ink-2);cursor:pointer}
+.chips button:hover{color:var(--reg);border-color:var(--reg)}
+#chat-form{display:flex;gap:8px;padding:10px 12px 6px;border-top:1px solid var(--rule)}
+#chat-form input{flex:1;min-height:46px;border-radius:999px;padding:0 16px}
+#chat-form .send{width:46px;height:46px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--reg),var(--teal));color:#fff;font:800 18px/1 var(--display);cursor:pointer;flex:none}
+#chat-form .send:disabled{opacity:.5;cursor:default}
+.chat-talk{margin:0;padding:6px 16px 0;font:600 13px/1.3 var(--display)}
+.chat-talk a{color:var(--reg);display:inline-flex;align-items:center;min-height:44px}
+.chat-fine{margin:0;padding:4px 16px 12px;font-size:11.5px;line-height:1.4;color:var(--ink-3)}
+@media (max-width:640px){
+  .chat-fab{bottom:calc(84px + env(safe-area-inset-bottom));padding:0 16px 0 12px;min-height:48px}
+  .chat-panel{background:rgba(255,255,255,.9);right:10px;left:10px;width:auto;bottom:calc(10px + env(safe-area-inset-bottom));height:calc(100dvh - 20px - env(safe-area-inset-bottom))}
+}
+@media (prefers-reduced-motion:reduce){.typing i{animation:none;opacity:.6}}
+
+/* ---------- slider ---------- */
+.slider{margin-top:clamp(28px,4vw,44px);position:relative}
+.track{list-style:none;margin:0;display:flex;gap:clamp(16px,2.5vw,32px);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
+  padding:12px max(16px,calc((100% - min(900px,86vw)) / 2)) 8px;position:relative;scroll-behavior:smooth}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 min(900px,86vw);scroll-snap-align:center;transition:transform .7s cubic-bezier(.16,1,.3,1),opacity .7s}
+.js .slide:not(.is-active){transform:scale(.93);opacity:.5}
+.frame{position:relative;display:block;border-radius:24px;padding:10px 10px 12px;text-decoration:none;margin-bottom:26px}
+.chrome{display:flex;align-items:center;gap:7px;padding:2px 6px 10px}
+.chrome i{width:10px;height:10px;border-radius:50%;background:#ff8a66}
+.chrome i:nth-child(2){background:#ffc65c}
+.chrome i:nth-child(3){background:#4fd1b5}
+.chrome .url{margin-left:10px;flex:1;max-width:340px;padding:5px 12px;border-radius:999px;background:var(--glass-strong);font:500 11px/1.2 var(--mono);letter-spacing:.04em;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frame .desk{width:100%;height:auto;aspect-ratio:1440/900;object-fit:cover;object-position:top;border-radius:14px}
+.frame .phone{position:absolute;right:-12px;bottom:-26px;width:19%;min-width:84px;height:auto;aspect-ratio:390/844;object-fit:cover;object-position:top;border-radius:16px;padding:4px}
+.cap{display:flex;flex-wrap:wrap;justify-content:center;align-items:baseline;gap:4px 14px;margin:0;text-align:center;color:var(--ink-3);font-size:15px}
+.cap b{font:800 19px/1.2 var(--display);color:var(--ink);letter-spacing:-.01em}
+.cap .mono{font-size:11px;color:var(--reg)}
+.slider-note{margin:14px 0 0;text-align:center;color:var(--ink-3);font-size:11px;padding-inline:16px}
+.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:22px;padding-inline:16px;flex-wrap:wrap}
+.round{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;color:var(--ink);font:700 18px/1 var(--display);cursor:pointer;transition:transform .3s cubic-bezier(.16,1,.3,1)}
+.round:hover{transform:translateY(-2px)}
+.round[hidden]{display:none}
+.play span{width:12px;height:14px;border-inline:4px solid var(--ink);box-sizing:border-box}
+.play.paused span{width:0;height:0;border-width:8px 0 8px 13px;border-style:solid;border-color:transparent transparent transparent var(--ink);margin-left:4px}
+.dots{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:center;max-width:min(100%,420px)}
+.dots button{width:10px;height:10px;padding:0;border:0;border-radius:999px;background:color-mix(in srgb,var(--ink) 22%,transparent);cursor:pointer;transition:width .4s cubic-bezier(.16,1,.3,1),background .3s;position:relative}
+.dots button::before{content:"";position:absolute;inset:-8px -3px}
+.dots button[aria-current="true"]{width:30px;background:linear-gradient(90deg,var(--reg),var(--teal))}
+@media (max-width:640px){
+  .frame{padding:6px 6px 8px;border-radius:18px}
+  .frame .phone{right:-4px;bottom:-18px;width:24%}
+  .chrome .url{display:none}
+  .cap b{font-size:17px}
+}
+
+/* the hero's sheets lean and drift, so it clips its own overflow sideways */
+.hero,.band{overflow-x:clip}
+
+/* progress rule, sticky masthead */
+.progress{position:fixed;inset:0 0 auto 0;height:2px;background:var(--reg);transform-origin:0 50%;transform:scaleX(0);z-index:30;pointer-events:none}
+.mast{position:sticky;top:0;z-index:20;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .3s}
+.mast.away{transform:translateY(-100%)}
+.mast.lifted{box-shadow:0 10px 30px -22px rgba(10,20,30,.5)}
+.word .reg{transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.word:hover .reg{transform:scale(1.25)}
+
+/* the colour behind the glass drifts */
+.motion body::before{animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{0%{transform:translate3d(0,0,0) rotate(0deg)}50%{transform:translate3d(3%,-2%,0) rotate(4deg)}100%{transform:translate3d(-2%,3%,0) rotate(-3deg)}}
+
+/* trade ticker under the hero */
+.ticker{overflow:hidden;padding-block:14px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.ticker .run{display:flex;width:max-content;gap:0}
+.ticker ul{display:flex;list-style:none;margin:0;padding:0;flex:none}
+.ticker li{display:flex;align-items:center;gap:22px;padding-right:22px;font:500 13px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+.ticker li::after{content:"";width:9px;height:9px;border:1.5px solid var(--reg);border-radius:50%;flex:none}
+.motion .ticker .run{animation:tick 60s linear infinite}
+.motion .ticker:hover .run{animation-play-state:paused}
+@keyframes tick{to{transform:translateX(-50%)}}
+
+/* buttons: a light sweep, and a little pull toward the pointer */
+.btn{position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),filter .2s,background-color .2s,color .2s}
+.btn.primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-110%);transition:transform .7s cubic-bezier(.16,1,.3,1)}
+.btn.primary:hover::after{transform:translateX(110%)}
+.btn:not(.primary):hover{border-color:var(--reg);color:var(--reg)}
+.motion .btn:hover{transform:translate(var(--mx,0),var(--my,0))}
+
+/* ---------- everything below only exists when motion is on ---------- */
+.motion [data-m]{transition:opacity .9s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.motion [data-m="rise"]:not(.in){opacity:0;transform:translateY(28px)}
+.motion [data-m="fade"]:not(.in){opacity:0}
+
+/* words set one at a time */
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.wi{display:inline-block}
+.motion [data-m="split"] .wi{transform:translateY(108%);transition:transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--d,0s) + var(--i) * 45ms)}
+.motion [data-m="split"].in .wi{transform:none}
+.motion .hero h1 em{background:linear-gradient(var(--stamp),var(--stamp)) 0 92%/0 .08em no-repeat;transition:background-size 1s cubic-bezier(.16,1,.3,1) 1.1s}
+.motion .hero h1.in em{background-size:100% .08em}
+
+/* kicker targets turn into register */
+.motion .kicker .reg,.motion .eyebrow .reg{transition:transform 1.1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.motion .kicker:not(.in) .reg,.motion .eyebrow:not(.in) .reg{transform:scale(0)}
+
+/* the slider rises in and its first page is scanned onto the screen */
+.motion .slider .slide{transition:transform 1.1s cubic-bezier(.16,1,.3,1),opacity .9s}
+.motion .slider:not(.in) .slide{opacity:0;transform:translateY(60px) scale(.96)}
+.motion .slider .slide:nth-child(2){transition-delay:.12s}
+.motion .slider .slide:nth-child(n+3){transition-delay:.2s}
+.motion .slider.in .slide:first-child .desk{animation:print 1.4s cubic-bezier(.65,0,.35,1) .45s both}
+.motion .slider.in .slide:first-child .frame::after{content:"";position:absolute;left:0;right:0;height:2px;top:44px;background:var(--reg);box-shadow:0 0 18px 2px color-mix(in srgb,var(--reg) 60%,transparent);animation:sweep 1.4s cubic-bezier(.65,0,.35,1) .45s both;pointer-events:none}
+@keyframes print{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0)}}
+@keyframes sweep{0%{transform:translateY(0);opacity:1}92%{opacity:1}100%{transform:translateY(calc(var(--frame-h,520px)));opacity:0}}
+.motion .slider .slide:first-child .phone{animation:slip 1s cubic-bezier(.16,1,.3,1) 1.5s both}
+@keyframes slip{from{opacity:0;transform:translate(30px,40px) rotate(5deg)}}
+.motion .controls{transition:opacity .8s .9s}
+.motion .slider:not(.in) .controls{opacity:0}
+
+/* each concept is printed as it arrives */
+.motion .work .sheet{transition:opacity .6s,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:var(--d,0s)}
+.motion .work:not(.in) .sheet{opacity:0;transform:translateY(36px)}
+.motion .work .sheet .desk{clip-path:inset(0 0 100% 0);transition:clip-path 1.2s cubic-bezier(.65,0,.35,1),filter .2s;transition-delay:calc(var(--d,0s) + .15s)}
+.motion .work.in .sheet .desk{clip-path:inset(0)}
+.motion .work .sheet .phone{transition:transform 1s cubic-bezier(.16,1,.3,1),opacity .6s;transition-delay:calc(var(--d,0s) + .75s)}
+.motion .work:not(.in) .sheet .phone{opacity:0;transform:translate(24px,30px) rotate(4deg)}
+.motion .work .meta{transition:opacity .8s,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--d,0s) + .35s)}
+.motion .work:not(.in) .meta{opacity:0;transform:translateY(18px)}
+.motion .work .sheet.tilt{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.motion .work .sheet.tilt .phone{transform:translateZ(30px)}
+
+/* each step lands in turn */
+.motion .steps li{transition:opacity .8s,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(.35s + var(--i) * 160ms)}
+.motion .steps:not(.in) li{opacity:0;transform:translateY(24px)}
+.motion .steps .n{display:inline-block;transition:transform 1s cubic-bezier(.2,1.5,.4,1);transition-delay:calc(.45s + var(--i) * 160ms)}
+.motion .steps:not(.in) .n{transform:translateY(60%) scale(.6)}
+
+/* house rules: each mark is struck in turn */
+.motion .never li{transition:opacity .7s,transform .9s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * 110ms)}
+.motion .never ul:not(.in) li{opacity:0;transform:translateX(24px)}
+.motion .never li::before{transition:transform .6s cubic-bezier(.2,1.6,.4,1);transition-delay:calc(.25s + var(--i) * 110ms)}
+.motion .never ul:not(.in) li::before{transform:scale(0) rotate(-90deg)}
+
+/* pricing: the three cards rise, the chosen one is outlined */
+.motion .tier{transition:opacity .8s,transform 1s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i) * 140ms)}
+.motion .tiers:not(.in) .tier{opacity:0;transform:translateY(40px)}
+.motion .tier.main{border-color:transparent;position:relative}
+.motion .tier.main::after{content:"";position:absolute;inset:-1.5px;border:1.5px solid var(--reg);border-radius:inherit;pointer-events:none;clip-path:inset(0 100% 100% 0);transition:clip-path 1.2s cubic-bezier(.65,0,.35,1) .6s}
+.motion .tiers.in .tier.main::after{clip-path:inset(0)}
+.motion .tier li{transition:opacity .5s,transform .7s cubic-bezier(.16,1,.3,1);transition-delay:calc(.5s + var(--i) * 140ms + var(--j) * 60ms)}
+.motion .tiers:not(.in) .tier li{opacity:0;transform:translateX(-10px)}
+.tier{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+@media (hover:hover){.motion .tiers.in .tier:hover{transform:translateY(-6px)}}
+
+/* questions slide open */
+details p{transform-origin:top}
+.motion details[open] p{animation:open .5s cubic-bezier(.16,1,.3,1)}
+@keyframes open{from{opacity:0;transform:translateY(-8px)}}
+.motion summary::after{transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.motion details[open] summary::after{transform:rotate(180deg)}
+
+/* a booking is stamped */
+.book-form{position:relative}
+.booked-stamp{position:absolute;right:clamp(12px,4vw,40px);top:clamp(12px,4vw,40px);border:3px solid var(--ok);color:var(--ok);padding:10px 16px 9px;font:800 18px/1.1 var(--display);letter-spacing:.16em;text-transform:uppercase;transform:rotate(-8deg);background:color-mix(in srgb,var(--sheet) 80%,transparent);pointer-events:none}
+.booked-stamp small{display:block;font:500 10px/1.3 var(--mono);letter-spacing:.1em}
+.motion .booked-stamp{animation:thump .6s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes thump{0%{opacity:0;transform:rotate(-8deg) scale(1.9)}60%{opacity:1}100%{opacity:1;transform:rotate(-8deg) scale(1)}}
+
+/* the closing card's glow breathes */
+.motion .last .card{background-size:140% 140%,auto;animation:breathe 7s ease-in-out infinite alternate;background-position:50% 0}
+@keyframes breathe{to{background-size:200% 200%,auto}}
+
+
+/* ---------- ORELVI: what tokens alone cannot carry ---------- */
+.btn.primary,.chat-log .me,#chat-form .send,.chat-card button:not(.ghost),.dock .btn.primary{color:var(--stamp-ink)!important;background:linear-gradient(180deg,#ffffff,#d9d5ce)!important;box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 10px 40px -10px rgba(255,255,255,.35)!important}
+.btn.primary::after{background:linear-gradient(105deg,transparent 35%,rgba(242,207,152,.55) 50%,transparent 65%)}
+.btn:not(.primary){background:rgba(255,255,255,.04);color:var(--ink);border:1px solid var(--glass-line)}
+h1 em,h2 em{color:var(--stamp);text-shadow:0 0 28px rgba(242,207,152,.35)}
+.mast{background:rgba(6,6,7,.62)}
+.word .mark{color:var(--ink);filter:drop-shadow(0 0 6px rgba(255,255,255,.25))}
+@media (max-width:640px){.chat-panel{background:rgba(14,14,15,.94)}}
+input,select,textarea{background:rgba(255,255,255,.05);color:var(--ink);border-color:var(--glass-line)}
+input::placeholder,textarea::placeholder{color:var(--ink-3)}
+.tier.main{border-color:rgba(255,255,255,.55);box-shadow:var(--glass-shadow),0 0 60px -20px rgba(255,255,255,.25)}
+.dots button[aria-current="true"]{background:linear-gradient(90deg,#fff,var(--stamp))}
+.chat-fab{background:rgba(12,12,13,.82)!important;color:var(--ink)!important;border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 1px rgba(242,207,152,.18) inset,0 18px 50px -14px rgba(0,0,0,.9),0 0 34px -12px rgba(255,255,255,.3)}
+.spark{background:radial-gradient(circle at 35% 30%,#fff 0 12%,transparent 13%),conic-gradient(from 200deg,#ffffff,#8f8b84,#f2cf98,#2a2a2c,#ffffff)!important}
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"></div>
+<header class="mast">
+  <div class="shell">
+    <a class="word" href="#top" id="top"><svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><defs><linearGradient id="orelvi-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".7" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#f2cf98" stop-opacity=".35"/></linearGradient></defs><g transform="skewY(-24)"><rect x="16" y="22" width="22" height="24" rx="3.5" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/><rect x="6" y="25" width="15" height="18" rx="3" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/></g></svg><span class="name">ORELVI</span></a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#book" class="cta">Book a proof</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="shell">
+      <p class="eyebrow mono"><span class="reg" aria-hidden="true"></span>Proof before payment</p>
+      <h1>We build your new website first. <em>You decide</em> if it&rsquo;s worth paying for.</h1>
+      <p class="lede">Book a slot and we research your business, design a real site around it and send you the link to open on your own phone. If you want it, launching starts at $399. If you don&rsquo;t, you owe nothing.</p>
+      <div class="actions">
+        <a class="btn primary" href="#book">Book my free proof</a>
+        <a class="btn" href="#work">See 14 designs</a>
+      </div>
+      <p class="terms mono"><span>No deposit</span><span>No contract</span><span>No templates</span></p>
+  </div>
+  <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Example landing pages">
+    <ul class="track" id="track" aria-live="polite">
+      <li class="slide is-active" aria-roledescription="slide" aria-label="1 of 14: Architectural Contractor">
+        <a class="frame" href="work/architectural-contractor/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Ridgeline Roofing Co. &middot; concept</span></span>
+          <img class="desk" src="work/architectural-contractor/shot-desktop.jpg" alt="Concept homepage in the Architectural Contractor family" width="1440" height="900">
+          <img class="phone" src="work/architectural-contractor/shot-phone.jpg" alt="" width="390" height="844">
+        </a>
+        <p class="cap"><span class="mono">Proof 01 / 14</span><b>Architectural Contractor</b><span>Ridgeline Roofing Co., a fictional roofing &amp; exteriors business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="2 of 14: Premium Automotive">
+        <a class="frame" href="work/premium-automotive/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Meridian Detail Studio &middot; concept</span></span>
+          <img class="desk" src="work/premium-automotive/shot-desktop.jpg" alt="Concept homepage in the Premium Automotive family" width="1440" height="900">
+          <img class="phone" src="work/premium-automotive/shot-phone.jpg" alt="" width="390" height="844">
+        </a>
+        <p class="cap"><span class="mono">Proof 02 / 14</span><b>Premium Automotive</b><span>Meridian Detail Studio, a fictional paint correction &amp; coating business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="3 of 14: Landscape / Outdoor">
+        <a class="frame" href="work/landscape-outdoor/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Foxglove &amp; Stone &middot; concept</span></span>
+          <img class="desk" src="work/landscape-outdoor/shot-desktop.jpg" alt="Concept homepage in the Landscape / Outdoor family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/landscape-outdoor/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 03 / 14</span><b>Landscape / Outdoor</b><span>Foxglove &amp; Stone, a fictional garden design &amp; build business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="4 of 14: Barber / Grooming">
+        <a class="frame" href="work/barber-grooming/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Copperline Barbers &middot; concept</span></span>
+          <img class="desk" src="work/barber-grooming/shot-desktop.jpg" alt="Concept homepage in the Barber / Grooming family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/barber-grooming/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 04 / 14</span><b>Barber / Grooming</b><span>Copperline Barbers, a fictional barbershop business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="5 of 14: Salon / Beauty">
+        <a class="frame" href="work/salon-beauty/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Maren &amp; Ivy &middot; concept</span></span>
+          <img class="desk" src="work/salon-beauty/shot-desktop.jpg" alt="Concept homepage in the Salon / Beauty family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/salon-beauty/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 05 / 14</span><b>Salon / Beauty</b><span>Maren &amp; Ivy, a fictional hair studio business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="6 of 14: Trusted Home Service">
+        <a class="frame" href="work/trusted-home-service/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Conestoga Mechanical &middot; concept</span></span>
+          <img class="desk" src="work/trusted-home-service/shot-desktop.jpg" alt="Concept homepage in the Trusted Home Service family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/trusted-home-service/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 06 / 14</span><b>Trusted Home Service</b><span>Conestoga Mechanical, a fictional heating &amp; air conditioning business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="7 of 14: Luxury Minimal">
+        <a class="frame" href="work/luxury-minimal/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Alder &amp; Vale Dental &middot; concept</span></span>
+          <img class="desk" src="work/luxury-minimal/shot-desktop.jpg" alt="Concept homepage in the Luxury Minimal family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/luxury-minimal/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 07 / 14</span><b>Luxury Minimal</b><span>Alder &amp; Vale Dental, a fictional general &amp; cosmetic dentistry business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="8 of 14: Creative Portfolio">
+        <a class="frame" href="work/creative-portfolio/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Cass Harlow Studio &middot; concept</span></span>
+          <img class="desk" src="work/creative-portfolio/shot-desktop.jpg" alt="Concept homepage in the Creative Portfolio family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/creative-portfolio/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 08 / 14</span><b>Creative Portfolio</b><span>Cass Harlow Studio, a fictional architectural photography business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="9 of 14: High Energy Local">
+        <a class="frame" href="work/high-energy-local/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Kick Plate Exterior Wash &middot; concept</span></span>
+          <img class="desk" src="work/high-energy-local/shot-desktop.jpg" alt="Concept homepage in the High Energy Local family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/high-energy-local/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 09 / 14</span><b>High Energy Local</b><span>Kick Plate Exterior Wash, a fictional exterior cleaning business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="10 of 14: Classic Premium">
+        <a class="frame" href="work/classic-premium/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Hollis &amp; Wren &middot; concept</span></span>
+          <img class="desk" src="work/classic-premium/shot-desktop.jpg" alt="Concept homepage in the Classic Premium family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/classic-premium/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 10 / 14</span><b>Classic Premium</b><span>Hollis &amp; Wren, a fictional estate &amp; probate law business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="11 of 14: Technical Workshop">
+        <a class="frame" href="work/technical-workshop/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Nueces Film Works &middot; concept</span></span>
+          <img class="desk" src="work/technical-workshop/shot-desktop.jpg" alt="Concept homepage in the Technical Workshop family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/technical-workshop/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 11 / 14</span><b>Technical Workshop</b><span>Nueces Film Works, a fictional window film &amp; tint business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="12 of 14: Plain Practice">
+        <a class="frame" href="work/plain-practice/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Larimer Ledger &middot; concept</span></span>
+          <img class="desk" src="work/plain-practice/shot-desktop.jpg" alt="Concept homepage in the Plain Practice family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/plain-practice/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 12 / 14</span><b>Plain Practice</b><span>Larimer Ledger, a fictional tax &amp; accounting for small business business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="13 of 14: Hospitality Table">
+        <a class="frame" href="work/hospitality-table/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Ember &amp; Ash &middot; concept</span></span>
+          <img class="desk" src="work/hospitality-table/shot-desktop.jpg" alt="Concept homepage in the Hospitality Table family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/hospitality-table/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 13 / 14</span><b>Hospitality Table</b><span>Ember &amp; Ash, a fictional wood-fired kitchen business</span></p>
+      </li>
+      <li class="slide" aria-roledescription="slide" aria-label="14 of 14: Site Survey">
+        <a class="frame" href="work/site-survey/index.html">
+          <span class="chrome" aria-hidden="true"><i></i><i></i><i></i><span class="url">Neshaminy Hardscape &middot; concept</span></span>
+          <img class="desk" src="work/site-survey/shot-desktop.jpg" alt="Concept homepage in the Site Survey family" width="1440" height="900" loading="lazy">
+          <img class="phone" src="work/site-survey/shot-phone.jpg" alt="" width="390" height="844" loading="lazy">
+        </a>
+        <p class="cap"><span class="mono">Proof 14 / 14</span><b>Site Survey</b><span>Neshaminy Hardscape, a fictional patios, walls &amp; stonework business</span></p>
+      </li>
+    </ul>
+    <div class="controls">
+      <button type="button" class="round" id="prev" aria-label="Previous example"><span aria-hidden="true">&larr;</span></button>
+      <div class="dots" id="dots"><button type="button" aria-label="Show example 1: Architectural Contractor" aria-current="true"></button><button type="button" aria-label="Show example 2: Premium Automotive"></button><button type="button" aria-label="Show example 3: Landscape / Outdoor"></button><button type="button" aria-label="Show example 4: Barber / Grooming"></button><button type="button" aria-label="Show example 5: Salon / Beauty"></button><button type="button" aria-label="Show example 6: Trusted Home Service"></button><button type="button" aria-label="Show example 7: Luxury Minimal"></button><button type="button" aria-label="Show example 8: Creative Portfolio"></button><button type="button" aria-label="Show example 9: High Energy Local"></button><button type="button" aria-label="Show example 10: Classic Premium"></button><button type="button" aria-label="Show example 11: Technical Workshop"></button><button type="button" aria-label="Show example 12: Plain Practice"></button><button type="button" aria-label="Show example 13: Hospitality Table"></button><button type="button" aria-label="Show example 14: Site Survey"></button></div>
+      <button type="button" class="round" id="next" aria-label="Next example"><span aria-hidden="true">&rarr;</span></button>
+      <button type="button" class="round play" id="play" aria-label="Pause the slideshow" hidden><span aria-hidden="true"></span></button>
+    </div>
+    <p class="slider-note mono">Concept pages, each shown on a fictional business</p>
+  </div>
+</section>
+
+<div class="ticker" aria-label="Trades we design for">
+  <div class="run"><ul><li>Accounting</li><li>Architecture</li><li>Auto Detailing</li><li>Barbershop</li><li>Concrete</li><li>Construction</li><li>Dental</li><li>Design Studio</li><li>Electrical</li><li>Fitness</li><li>HVAC</li><li>Hardscape</li><li>Landscaping</li><li>Lawn Care</li><li>Legal</li><li>Local Service</li><li>Performance Shop</li><li>Pest Control</li><li>Photography</li><li>Plumbing</li><li>Pressure Washing</li><li>Remodeling</li><li>Restaurant</li><li>Roofing</li><li>Salon</li><li>Spa</li><li>Tree Service</li><li>Vehicle Wraps</li><li>Window Tint</li></ul><ul aria-hidden="true"><li>Accounting</li><li>Architecture</li><li>Auto Detailing</li><li>Barbershop</li><li>Concrete</li><li>Construction</li><li>Dental</li><li>Design Studio</li><li>Electrical</li><li>Fitness</li><li>HVAC</li><li>Hardscape</li><li>Landscaping</li><li>Lawn Care</li><li>Legal</li><li>Local Service</li><li>Performance Shop</li><li>Pest Control</li><li>Photography</li><li>Plumbing</li><li>Pressure Washing</li><li>Remodeling</li><li>Restaurant</li><li>Roofing</li><li>Salon</li><li>Spa</li><li>Tree Service</li><li>Vehicle Wraps</li><li>Window Tint</li></ul></div>
+</div>
+
+<section class="band" id="work">
+  <div class="shell">
+    <div class="head">
+      <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>The work</p><h2>14 design families. Not 14 colour swaps.</h2></div>
+      <p>Each family has its own layout, type and way of telling a business&rsquo;s story, and holds three page structures inside it, so two businesses in the same town never get the same page.</p>
+    </div>
+    <div class="filter">
+      <label for="trade" style="display:flex;gap:10px;align-items:center;font:600 14px var(--display)">Show designs for
+        <select id="trade"><option value="">every trade</option><option>Accounting</option><option>Architecture</option><option>Auto Detailing</option><option>Barbershop</option><option>Concrete</option><option>Construction</option><option>Dental</option><option>Design Studio</option><option>Electrical</option><option>Fitness</option><option>HVAC</option><option>Hardscape</option><option>Landscaping</option><option>Lawn Care</option><option>Legal</option><option>Local Service</option><option>Performance Shop</option><option>Pest Control</option><option>Photography</option><option>Plumbing</option><option>Pressure Washing</option><option>Remodeling</option><option>Restaurant</option><option>Roofing</option><option>Salon</option><option>Spa</option><option>Tree Service</option><option>Vehicle Wraps</option><option>Window Tint</option></select></label>
+      <span class="count" id="count">14 shown</span>
+    </div>
+    <div class="grid" id="grid">
+      <article class="work" data-fits="Roofing|Remodeling|Construction|Concrete|Tree Service|Hardscape|Landscaping|Electrical|HVAC|Architecture">
+        <a class="sheet" href="work/architectural-contractor/index.html" aria-label="Open the Architectural Contractor concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/architectural-contractor/shot-desktop.jpg" alt="Desktop view of the Architectural Contractor concept" loading="eager" width="1440" height="900">
+          <img class="phone" src="work/architectural-contractor/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 01 / 14</p>
+          <h3>Architectural Contractor</h3>
+          <p class="fits"><span>Fits</span> Roofing, Remodeling, Construction, Concrete, Tree Service, Hardscape, Landscaping, Electrical, HVAC, Architecture</p>
+          <p class="shown">Shown on Ridgeline Roofing Co., a fictional roofing &amp; exteriors business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Construction-document art direction: heavy grotesque display, visible grid, numbered indexes, rules instead of cards. Built around the estimate request.</p></details>
+          <a class="open" href="work/architectural-contractor/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work" data-fits="Auto Detailing|Window Tint|Vehicle Wraps|Performance Shop">
+        <a class="sheet" href="work/premium-automotive/index.html" aria-label="Open the Premium Automotive concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/premium-automotive/shot-desktop.jpg" alt="Desktop view of the Premium Automotive concept" loading="eager" width="1440" height="900">
+          <img class="phone" src="work/premium-automotive/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 02 / 14</p>
+          <h3>Premium Automotive</h3>
+          <p class="fits"><span>Fits</span> Auto Detailing, Window Tint, Vehicle Wraps, Performance Shop</p>
+          <p class="shown">Shown on Meridian Detail Studio, a fictional paint correction &amp; coating business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Dark studio art direction: letterboxed cinematic hero, condensed caps, ticker, accordion services, scope comparison table and a horizontal process rail. Sequenced for booking.</p></details>
+          <a class="open" href="work/premium-automotive/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work" data-fits="Landscaping|Lawn Care|Hardscape|Tree Service|Pressure Washing">
+        <a class="sheet" href="work/landscape-outdoor/index.html" aria-label="Open the Landscape / Outdoor concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/landscape-outdoor/shot-desktop.jpg" alt="Desktop view of the Landscape / Outdoor concept" loading="eager" width="1440" height="900">
+          <img class="phone" src="work/landscape-outdoor/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 03 / 14</p>
+          <h3>Landscape / Outdoor</h3>
+          <p class="fits"><span>Fits</span> Landscaping, Lawn Care, Hardscape, Tree Service, Pressure Washing</p>
+          <p class="shown">Shown on Foxglove &amp; Stone, a fictional garden design &amp; build business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Garden monograph art direction in three settings: a stacked masthead with a split editorial opening, a frontispiece under a running head, and a plate-free title page with a colophon line. Long, quiet vertical rhythm throughout.</p></details>
+          <a class="open" href="work/landscape-outdoor/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work" data-fits="Barbershop|Salon|Spa|Fitness">
+        <a class="sheet" href="work/barber-grooming/index.html" aria-label="Open the Barber / Grooming concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/barber-grooming/shot-desktop.jpg" alt="Desktop view of the Barber / Grooming concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/barber-grooming/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 04 / 14</p>
+          <h3>Barber / Grooming</h3>
+          <p class="fits"><span>Fits</span> Barbershop, Salon, Spa, Fitness</p>
+          <p class="shown">Shown on Copperline Barbers, a fictional barbershop business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Fashion-title art direction in three issues: a cover, a contents page and a two-page spread, each with its own masthead, crop-marked plates, and the wall menu set as a leader-dot price list, a ruled rate card or a glossary.</p></details>
+          <a class="open" href="work/barber-grooming/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work" data-fits="Salon|Spa|Barbershop|Dental">
+        <a class="sheet" href="work/salon-beauty/index.html" aria-label="Open the Salon / Beauty concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/salon-beauty/shot-desktop.jpg" alt="Desktop view of the Salon / Beauty concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/salon-beauty/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 05 / 14</p>
+          <h3>Salon / Beauty</h3>
+          <p class="fits"><span>Fits</span> Salon, Spa, Barbershop, Dental</p>
+          <p class="shown">Shown on Maren &amp; Ivy, a fictional hair studio business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Quiet-luxury editorial: a fixed left rail in three packings, three openings on the arch plate, the booking spine as a riding card, a ruled strip or a hanging aside, an offset portfolio grid and roman-numeral process notes.</p></details>
+          <a class="open" href="work/salon-beauty/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work" data-fits="HVAC|Plumbing|Electrical|Pest Control|Roofing|Remodeling|Construction|Concrete|Tree Service|Pressure Washing|Lawn Care|Local Service">
+        <a class="sheet" href="work/trusted-home-service/index.html" aria-label="Open the Trusted Home Service concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/trusted-home-service/shot-desktop.jpg" alt="Desktop view of the Trusted Home Service concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/trusted-home-service/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 06 / 14</p>
+          <h3>Trusted Home Service</h3>
+          <p class="fits"><span>Fits</span> HVAC, Plumbing, Electrical, Pest Control, Roofing, Remodeling, Construction, Concrete, Tree Service, Pressure Washing, Lawn Care, Local Service</p>
+          <p class="shown">Shown on Conestoga Mechanical, a fictional heating &amp; air conditioning business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Dispatch-board clarity in three settings: the board, the call sheet and the service record. A header that always shows the number, a hero built on the office's own particulars, a measured process flow line and coverage set as a map legend.</p></details>
+          <a class="open" href="work/trusted-home-service/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Dental|Legal|Accounting|Spa|Salon|Auto Detailing|Photography|Restaurant|Architecture|Design Studio|Fitness">
+        <a class="sheet" href="work/luxury-minimal/index.html" aria-label="Open the Luxury Minimal concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/luxury-minimal/shot-desktop.jpg" alt="Desktop view of the Luxury Minimal concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/luxury-minimal/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 07 / 14</p>
+          <h3>Luxury Minimal</h3>
+          <p class="fits"><span>Fits</span> Dental, Legal, Accounting, Spa, Salon, Auto Detailing, Photography, Restaurant, Architecture, Design Studio, Fitness</p>
+          <p class="shown">Shown on Alder &amp; Vale Dental, a fictional general &amp; cosmetic dentistry business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Quiet monograph art direction: a type-led hero, an index behind a corner mark, ledger rows instead of cards, and hierarchy carried by scale and air rather than UI.</p></details>
+          <a class="open" href="work/luxury-minimal/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Photography|Architecture|Design Studio|Salon|Restaurant|Remodeling|Vehicle Wraps">
+        <a class="sheet" href="work/creative-portfolio/index.html" aria-label="Open the Creative Portfolio concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/creative-portfolio/shot-desktop.jpg" alt="Desktop view of the Creative Portfolio concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/creative-portfolio/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 08 / 14</p>
+          <h3>Creative Portfolio</h3>
+          <p class="fits"><span>Fits</span> Photography, Architecture, Design Studio, Salon, Restaurant, Remodeling, Vehicle Wraps</p>
+          <p class="shown">Shown on Cass Harlow Studio, a fictional architectural photography business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Studio index art direction: a fixed vertical rail, an asymmetric hero, capability blocks on an unequal grid, and a sticky project stage that follows the index as you scroll.</p></details>
+          <a class="open" href="work/creative-portfolio/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Pressure Washing|Fitness|Performance Shop|Plumbing|HVAC|Electrical|Pest Control|Lawn Care|Auto Detailing|Window Tint|Roofing">
+        <a class="sheet" href="work/high-energy-local/index.html" aria-label="Open the High Energy Local concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/high-energy-local/shot-desktop.jpg" alt="Desktop view of the High Energy Local concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/high-energy-local/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 09 / 14</p>
+          <h3>High Energy Local</h3>
+          <p class="fits"><span>Fits</span> Pressure Washing, Fitness, Performance Shop, Plumbing, HVAC, Electrical, Pest Control, Lawn Care, Auto Detailing, Window Tint, Roofing</p>
+          <p class="shown">Shown on Kick Plate Exterior Wash, a fictional exterior cleaning business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Signage art direction: a marked headline against an angular action slab, full-bleed service bands with numerals bleeding off the margin, a masonry job wall and an overlapping process deck. Energy from scale and angle, never from gradients.</p></details>
+          <a class="open" href="work/high-energy-local/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Legal|Accounting|Restaurant|Local Service|Dental|Architecture|Roofing|Construction|Barbershop">
+        <a class="sheet" href="work/classic-premium/index.html" aria-label="Open the Classic Premium concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/classic-premium/shot-desktop.jpg" alt="Desktop view of the Classic Premium concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/classic-premium/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 10 / 14</p>
+          <h3>Classic Premium</h3>
+          <p class="fits"><span>Fits</span> Legal, Accounting, Restaurant, Local Service, Dental, Architecture, Roofing, Construction, Barbershop</p>
+          <p class="shown">Shown on Hollis &amp; Wren, a fictional estate &amp; probate law business.</p>
+          <details class="notes"><summary>Design notes</summary><p>Broadsheet art direction: a centred split masthead, a front page with a standing information ledger, a two-column prospectus of services, framed engraved plates and a roman-numeral engagement sequence.</p></details>
+          <a class="open" href="work/classic-premium/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Window Tint|Vehicle Wraps|Performance Shop|Auto Detailing|Concrete|Electrical|HVAC">
+        <a class="sheet" href="work/technical-workshop/index.html" aria-label="Open the Technical Workshop concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/technical-workshop/shot-desktop.jpg" alt="Desktop view of the Technical Workshop concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/technical-workshop/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 11 / 14</p>
+          <h3>Technical Workshop</h3>
+          <p class="fits"><span>Fits</span> Window Tint, Vehicle Wraps, Performance Shop, Auto Detailing, Concrete, Electrical, HVAC</p>
+          <p class="shown">Shown on Nueces Film Works, a fictional window film &amp; tint business.</p>
+          <details class="notes"><summary>Design notes</summary><p>The workshop bench: a bright ruled ground, mono measurement annotations and tabular figures — a title-block opening, a schedule of work, specimen plates with corner ticks and a numbered method.</p></details>
+          <a class="open" href="work/technical-workshop/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Legal|Accounting|Dental|Local Service|Pest Control|Plumbing">
+        <a class="sheet" href="work/plain-practice/index.html" aria-label="Open the Plain Practice concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/plain-practice/shot-desktop.jpg" alt="Desktop view of the Plain Practice concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/plain-practice/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 12 / 14</p>
+          <h3>Plain Practice</h3>
+          <p class="fits"><span>Fits</span> Legal, Accounting, Dental, Local Service, Pest Control, Plumbing</p>
+          <p class="shown">Shown on Larimer Ledger, a fictional tax &amp; accounting for small business business.</p>
+          <details class="notes"><summary>Design notes</summary><p>The well-set public document: a plain header, an opening note read at reading size, work set out as scope rather than a price list, and the appointment sequence written out in words. Warm paper throughout — this family never goes dark.</p></details>
+          <a class="open" href="work/plain-practice/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Restaurant|Spa|Salon|Barbershop|Fitness">
+        <a class="sheet" href="work/hospitality-table/index.html" aria-label="Open the Hospitality Table concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/hospitality-table/shot-desktop.jpg" alt="Desktop view of the Hospitality Table concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/hospitality-table/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 13 / 14</p>
+          <h3>Hospitality Table</h3>
+          <p class="fits"><span>Fits</span> Restaurant, Spa, Salon, Barbershop, Fitness</p>
+          <p class="shown">Shown on Ember &amp; Ash, a fictional wood-fired kitchen business.</p>
+          <details class="notes"><summary>Design notes</summary><p>A printed table card in three settings — the card handed to you, the card taped inside the door and the board on the wall — with the list of what is served set with leaders, and the opening hours given the weight they actually carry.</p></details>
+          <a class="open" href="work/hospitality-table/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+      <article class="work extra" data-fits="Hardscape|Landscaping|Concrete|Tree Service|Lawn Care|Pressure Washing">
+        <a class="sheet" href="work/site-survey/index.html" aria-label="Open the Site Survey concept">
+          <span class="crop" aria-hidden="true"></span>
+          <img class="desk" src="work/site-survey/shot-desktop.jpg" alt="Desktop view of the Site Survey concept" loading="lazy" width="1440" height="900">
+          <img class="phone" src="work/site-survey/shot-phone.jpg" alt="" loading="lazy" width="390" height="844">
+        </a>
+        <div class="meta">
+          <p class="plate">Proof 14 / 14</p>
+          <h3>Site Survey</h3>
+          <p class="fits"><span>Fits</span> Hardscape, Landscaping, Concrete, Tree Service, Lawn Care, Pressure Washing</p>
+          <p class="shown">Shown on Neshaminy Hardscape, a fictional patios, walls &amp; stonework business.</p>
+          <details class="notes"><summary>Design notes</summary><p>The measured drawing: a title block for a masthead, coordinate ticks, hatched fields instead of stock photography, and a schedule of works set as a real table. For trades sold by the site.</p></details>
+          <a class="open" href="work/site-survey/index.html">Open the full page <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </article>
+    </div>
+    <div class="more" id="more" hidden><button type="button" class="btn" id="more-btn">Show all 14 designs</button></div>
+    <p class="note">Every business on these pages is invented so we can show the design without speaking for anyone. Your proof uses your real name, services, hours and photos, and nothing we can&rsquo;t check.</p>
+  </div>
+</section>
+
+<section class="band" id="how">
+  <div class="shell">
+    <div class="head">
+      <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>How it works</p><h2>From booking to a site you can open.</h2></div>
+      <p>You spend five minutes on the form. We do the rest before you&rsquo;re asked for anything.</p>
+    </div>
+    <ol class="steps">
+      <li><span class="n">1</span><h3>You book</h3><p>Your business name, your town, what you do. A current site if you have one.</p></li>
+      <li><span class="n">2</span><h3>We research</h3><p>We read what&rsquo;s already public about you: your services, hours, area and the photos you&rsquo;ve posted.</p></li>
+      <li><span class="n">3</span><h3>You get a proof</h3><p>A finished site at a private link, checked on six screen sizes from a small phone to a wide desktop.</p></li>
+      <li><span class="n">4</span><h3>Launch or walk away</h3><p>Ask for changes, launch it on your domain, or say no thanks. All three are fine.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell never">
+    <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>House rules</p><h2>What never goes on your site.</h2>
+      <p style="color:var(--ink-2);margin:20px 0 0;max-width:30em">A site is only as good as what it can back up. If we can&rsquo;t verify it, it stays off the page until you give it to us.</p></div>
+    <ul>
+      <li><span><b>Made-up reviews or testimonials.</b> Only real ones you point us to.</span></li>
+      <li><span><b>Invented awards, badges or years in business.</b> Your record, or nothing.</span></li>
+      <li><span><b>Stock photos passed off as your work.</b> Your own photos, or a designed placeholder that says what it is.</span></li>
+      <li><span><b>Fake counters and urgency.</b> No invented customer counts, no countdown timers.</span></li>
+      <li><span><b>A contact form that goes nowhere.</b> It reaches your inbox, or it&rsquo;s a call button instead.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="band" id="pricing">
+  <div class="shell">
+    <div class="head">
+      <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>Pricing</p><h2>Three ways to launch. Pay once you&rsquo;ve seen it.</h2></div>
+      <p>Every tier passes the same checks on every screen size. What rises with the price is how much choice you get and how far the design goes around you.</p>
+    </div>
+    <div class="tiers">
+      <article class="tier" id="tier-launch">
+        <header>
+          <div class="tname"><h3>Launch</h3></div>
+          <div class="amt">$399<small>once</small></div>
+          <p class="for">A sharp one-page site that does the job.</p>
+          <p class="first mono">Starts with a free proof</p>
+        </header>
+        <ul><li>One proof in the design family that best fits your trade</li><li>Your services, hours, area and contact details, checked against what you publish</li><li>One round of changes</li><li>Contact form to your inbox, or a call button</li><li>Live on your domain</li></ul>
+        <a class="btn" href="#book" data-tier="Launch">Book Launch</a>
+      </article>
+      <article class="tier main" id="tier-signature">
+        <header>
+          <div class="tname"><h3>Signature</h3><span class="pick mono">Most choice for the price</span></div>
+          <div class="amt">$899<small>once</small></div>
+          <p class="for">For a business that wants to choose its look.</p>
+          <p class="first mono">3 free proofs to pick from</p>
+        </header>
+        <ul><li>Three proofs in three different design families, you pick one</li><li>Your own photographs placed through the page</li><li>Colour and typeface options within the family you choose</li><li>Three rounds of changes</li><li>Everything in Launch</li></ul>
+        <a class="btn primary" href="#book" data-tier="Signature">Book Signature</a>
+      </article>
+      <article class="tier" id="tier-custom">
+        <header>
+          <div class="tname"><h3>Custom</h3></div>
+          <div class="amt"><small class="from">from</small>$1,899<small>once</small></div>
+          <p class="for">Designed around you, beyond our families.</p>
+          <p class="first mono">Starts with a free call</p>
+        </header>
+        <ul><li>A call with you before we design anything</li><li>Copy written from that call, in your words</li><li>Art direction made for you: your own colours, type and layout</li><li>Extra pages beyond the homepage, quoted on the call</li><li>Five rounds of changes</li><li>Everything in Signature</li></ul>
+        <a class="btn" href="#book" data-tier="Custom">Book Custom</a>
+      </article>
+    </div>
+    <p class="care"><b>Care, $79 a month, any tier.</b> Optional. We keep the site current when your hours, prices or services change.</p>
+  </div>
+</section>
+
+<section class="band booking" id="book">
+  <div class="shell">
+    <div class="side">
+      <p class="kicker mono"><span class="reg" aria-hidden="true"></span>Book a proof</p>
+      <h2>Tell us who you are. We&rsquo;ll show you what we&rsquo;d build.</h2>
+      <p>There&rsquo;s no call to sit through first. We start on your proof as soon as the booking lands, and write back when it&rsquo;s ready or if we have a question.</p>
+      
+      
+      
+    </div>
+    
+      <div class="book-contact">
+        <p>Tell us your business name, your town and what you do, and we'll take it from there.</p>
+        <p class="lines"><a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></p>
+      </div>
+  </div>
+</section>
+
+<section class="band" id="faq">
+  <div class="shell">
+    <div class="head"><div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>Questions</p><h2>Before you book.</h2></div></div>
+    <div class="faq">
+      <details><summary>Is the proof really free?</summary><p>Yes. You pay only if you decide to launch it. There&rsquo;s no deposit and we don&rsquo;t take card details at booking.</p></details>
+      <details><summary>What if I already have a website?</summary><p>Tell us where it is. We&rsquo;ll use what&rsquo;s accurate on it and design the new one from scratch, so you can compare the two side by side.</p></details>
+      <details><summary>Do I need photos?</summary><p>They help. We use photos you&rsquo;ve already posted of your own work. Where there aren&rsquo;t any, the page carries a designed placeholder until you send some.</p></details>
+      <details><summary>Who owns the site?</summary><p>Once you&rsquo;ve paid to launch, it&rsquo;s yours: your domain, your content, your contact form going to your inbox.</p></details>
+      <details><summary>Can I ask for changes?</summary><p>Yes. Tell us what to change and we&rsquo;ll send you a revised proof before anything goes live.</p></details>
+      <details><summary>Do you work with my trade?</summary><p>Probably. The families above cover 29 trades, from roofing and detailing to dental and law. If yours isn&rsquo;t listed, book anyway and tell us what you do.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="last">
+  <div class="shell"><div class="card">
+    <p class="kicker mono"><span class="reg" aria-hidden="true"></span>Proof 15</p>
+    <h2>The next proof on the table could be yours.</h2>
+    <p>It costs nothing to see it. If it isn&rsquo;t right for you, that&rsquo;s the end of it.</p>
+    <div class="actions"><a class="btn primary" href="#book">Book my free proof</a><a class="btn" href="#pricing">Compare tiers</a></div>
+  </div></div>
+</section>
+</main>
+
+
+<div class="dock" id="dock" aria-hidden="true"><a class="btn primary" href="#book" tabindex="-1">Book my free proof</a><span>$399 only if you launch</span></div>
+
+<footer>
+  <div class="shell">
+    <a class="word" href="#top"><svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><g transform="skewY(-24)"><rect x="16" y="22" width="22" height="24" rx="3.5" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/><rect x="6" y="25" width="15" height="18" rx="3" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/></g></svg><span class="name">ORELVI</span></a>
+    <nav aria-label="Footer"><a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">Questions</a><a href="#book">Book a proof</a></nav>
+    <p class="lines"><a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></p>
+    <p class="small">&copy; 2026 ORELVI. Every business in the work above is fictional.</p>
+  </div>
+</footer>
+
+<script>
+
+
+(function(){
+  var sel = document.getElementById('trade'), grid = document.getElementById('grid'), count = document.getElementById('count');
+  var more = document.getElementById('more'), moreBtn = document.getElementById('more-btn');
+  var total = grid ? grid.querySelectorAll('.work').length : 0, extra = grid ? grid.querySelectorAll('.work.extra').length : 0;
+  /* Without script every concept shows; with it the grid opens on the first few. */
+  document.documentElement.classList.add('js');
+  function collapsed(){ return grid && !grid.classList.contains('all'); }
+  function counted(){ if (count && collapsed()) count.textContent = (total - extra) + ' of ' + total + ' shown'; }
+  if (more && extra) { more.hidden = false; counted(); }
+  if (moreBtn) moreBtn.addEventListener('click', function(){
+    grid.classList.add('all'); more.hidden = true; count.textContent = total + ' shown';
+    var first = grid.querySelector('.work.extra a'); if (first) first.focus({ preventScroll: true });
+  });
+  if (sel) sel.addEventListener('change', function(){
+    var t = sel.value, n = 0;
+    grid.classList.add('all'); if (more) more.hidden = true;
+    grid.querySelectorAll('.work').forEach(function(el){
+      var on = !t || el.getAttribute('data-fits').split('|').indexOf(t) !== -1;
+      el.hidden = !on; if (on) n++;
+    });
+    count.textContent = n + ' shown';
+  });
+
+  /* the example slider: native swipe and snap, with arrows, dots and a slideshow that stops when touched */
+  var track = document.getElementById('track');
+  if (track) {
+    var slideEls = Array.prototype.slice.call(track.children), dotEls = Array.prototype.slice.call(document.querySelectorAll('#dots button'));
+    var playBtn = document.getElementById('play'), active = 0, timer = null, stopped = false, rafId = 0;
+    var calm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function centerOf(i){ var el = slideEls[i]; return el.offsetLeft - (track.clientWidth - el.clientWidth) / 2; }
+    function go(i){ i = (i + slideEls.length) % slideEls.length; track.scrollTo({ left: centerOf(i), behavior: calm ? 'auto' : 'smooth' }); setActive(i); }
+    function setActive(i){
+      if (i === active && slideEls[i].classList.contains('is-active')) return;
+      active = i;
+      slideEls.forEach(function(el, k){ el.classList.toggle('is-active', k === i); });
+      dotEls.forEach(function(d, k){ if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+    }
+    track.addEventListener('scroll', function(){
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(function(){
+        var mid = track.scrollLeft + track.clientWidth / 2, best = 0, dist = Infinity;
+        slideEls.forEach(function(el, k){ var d = Math.abs(el.offsetLeft + el.clientWidth / 2 - mid); if (d < dist) { dist = d; best = k; } });
+        setActive(best);
+      });
+    }, { passive: true });
+    document.getElementById('prev').addEventListener('click', function(){ stop(); go(active - 1); });
+    document.getElementById('next').addEventListener('click', function(){ stop(); go(active + 1); });
+    dotEls.forEach(function(d, k){ d.addEventListener('click', function(){ stop(); go(k); }); });
+    /* a tap on a side slide brings it to the middle before it opens */
+    slideEls.forEach(function(el, k){ el.querySelector('a').addEventListener('click', function(e){ if (k !== active) { e.preventDefault(); stop(); go(k); } }); });
+    document.getElementById('slider').addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight') { e.preventDefault(); stop(); go(active + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); stop(); go(active - 1); }
+    });
+    function tickSlide(){ if (!document.hidden) go(active + 1); }
+    function start(){ if (stopped || calm || timer) return; timer = setInterval(tickSlide, 5000); track.setAttribute('aria-live', 'off'); }
+    function pause(){ clearInterval(timer); timer = null; track.setAttribute('aria-live', 'polite'); }
+    function stop(){ stopped = true; pause(); if (playBtn) { playBtn.classList.add('paused'); playBtn.setAttribute('aria-label', 'Play the slideshow'); } }
+    if (playBtn && !calm) {
+      playBtn.hidden = false;
+      playBtn.addEventListener('click', function(){
+        if (stopped) { stopped = false; playBtn.classList.remove('paused'); playBtn.setAttribute('aria-label', 'Pause the slideshow'); start(); go(active + 1); }
+        else stop();
+      });
+    }
+    ['pointerdown', 'wheel', 'touchstart'].forEach(function(ev){ track.addEventListener(ev, function(e){ if (ev !== 'wheel' || Math.abs(e.deltaX) > Math.abs(e.deltaY)) stop(); }, { passive: true }); });
+    var sliderEl = document.getElementById('slider');
+    sliderEl.addEventListener('pointerenter', pause); sliderEl.addEventListener('pointerleave', start);
+    sliderEl.addEventListener('focusin', pause); sliderEl.addEventListener('focusout', start);
+    start();
+  }
+
+  /* the chat assistant: the operator's own model, or the preview host's */
+  var chat = document.getElementById('chat');
+  if (chat) {
+    var fab = document.getElementById('chat-open'), panel = document.getElementById('chat-panel'), log = document.getElementById('chat-log');
+    var chatForm = document.getElementById('chat-form'), chatInput = document.getElementById('chat-input'), chips = document.getElementById('chat-chips');
+    var sendBtn = chatForm.querySelector('.send'), mode = chat.getAttribute('data-mode'), url = chat.getAttribute('data-url');
+    var turns = [], busy = false, sampler = null;
+    if (mode === 'preview' && window.claude && window.claude.use) window.claude.use('sample').then(function(x){ sampler = x; }).catch(function(){});
+    function openChat(){ panel.hidden = false; fab.setAttribute('aria-expanded', 'true'); setTimeout(function(){ chatInput.focus(); }, 30); }
+    function closeChat(){ panel.hidden = true; fab.setAttribute('aria-expanded', 'false'); fab.focus(); }
+    fab.addEventListener('click', openChat);
+    document.getElementById('chat-close').addEventListener('click', closeChat);
+    panel.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeChat(); });
+    function bubble(cls, text){ var li = document.createElement('li'); li.className = cls; if (text != null) li.textContent = text; log.appendChild(li); log.scrollTop = log.scrollHeight; return li; }
+    function typing(li){ li.innerHTML = '<span class="typing" aria-label="Thinking"><i></i><i></i><i></i></span>'; }
+    /* The model marks the moment to book with [[BOOK]] and its pick with [[TIER:Name]]; the visitor never sees them. */
+    var MARK = /\[\[[^\]]*(\]\]?)?|\[$/g;
+    function clean(t){ return String(t).replace(MARK, '').replace(/[ \t]+\n/g, '\n').trim(); }
+    function tierIn(t){ var m = /\[\[TIER:\s*([^\]]+)\]\]/i.exec(t); return m ? m[1].trim() : ''; }
+    var READY = /\b(book|sign me up|let'?s (do|go|start)|get started|i'?m in|go ahead|i('?d| would) like (one|a (free )?proof|to start)|how do i (start|sign up|book)|yes,? please)\b/i;
+    var carded = false, pickedTier = '';
+    function field(label, name, type, need, extra){ return '<label>' + label + '<input name="' + name + '" type="' + type + '"' + (need ? ' required' : '') + (extra || '') + '></label>'; }
+    function bookCard(){
+      if (carded) return; carded = true;
+      var li = bubble('card');
+      var opts = '<option value="">Not sure yet</option>' + CHAT_TIERS.map(function(t){ return '<option value="' + t.name + '"' + (t.name === pickedTier ? ' selected' : '') + '>' + t.name + ' (' + t.price + ')</option>'; }).join('');
+      var f = document.createElement('form'); f.className = 'chat-card'; f.noValidate = true;
+      f.innerHTML = '<b>Book your free proof</b><p>No card, no contract. We build it, you decide.</p>'
+        + '<div class="two">' + field('Business name', 'business', 'text', 1, ' autocomplete="organization"') + field('Trade', 'trade', 'text', 1, ' placeholder="e.g. plumber"') + '</div>'
+        + '<div class="two">' + field('Town or city', 'town', 'text', 1, ' autocomplete="address-level2"') + field('Your name', 'name', 'text', 1, ' autocomplete="name"') + '</div>'
+        + '<div class="two">' + field('Email', 'email', 'email', 1, ' autocomplete="email"') + field('Phone (optional)', 'phone', 'tel', 0, ' autocomplete="tel"') + '</div>'
+        + '<label>Tier you&rsquo;re leaning towards<select name="tier">' + opts + '</select></label>'
+        + '<p class="err" role="alert" hidden></p><div class="row"><button type="submit">Book my free proof</button><button type="button" class="ghost">Not now</button></div>';
+      li.appendChild(f);
+      var err = f.querySelector('.err'), sub = f.querySelector('[type=submit]');
+      f.querySelector('.ghost').addEventListener('click', function(){ li.remove(); carded = false; chatInput.focus(); });
+      f.addEventListener('submit', function(e){
+        e.preventDefault();
+        var data = {}, bad = null;
+        new FormData(f).forEach(function(v, k){ data[k] = String(v).trim(); });
+        f.querySelectorAll('[required]').forEach(function(el){
+          var ok = el.value.trim() && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
+          el.setAttribute('aria-invalid', ok ? 'false' : 'true'); if (!ok && !bad) bad = el;
+        });
+        if (bad) { err.hidden = false; err.textContent = 'A few details are missing.'; bad.focus(); return; }
+        err.hidden = true; sub.disabled = true; sub.textContent = 'Sending\u2026';
+        data.notes = 'Booked in the site chat. ' + turns.filter(function(t){ return t.role === 'user'; }).map(function(t){ return t.content; }).join(' / ').slice(0, 900);
+        saveBooking(data).then(function(){
+          li.remove();
+          var ok = bubble('bot ok', 'Booked. We\u2019ll start on the proof for ' + data.business + ' and write to ' + data.email + ' when it\u2019s ready. No card, no contract: you decide when you see it.');
+          turns.push({ role: 'assistant', content: ok.textContent });
+        }).catch(function(){
+          sub.disabled = false; sub.textContent = 'Book my free proof';
+          err.hidden = false; err.textContent = "That didn’t go through. Try again, or reach us directly: wesleystum1+orelvi@gmail.com";
+        });
+      });
+      log.scrollTop = log.scrollHeight;
+      var first = f.querySelector('input'); if (first) setTimeout(function(){ first.focus(); }, 30);
+    }
+    /* the pipeline, through the operator's assistant; the page's own form backend as well, or instead */
+    function saveBooking(data){
+      var bookForm = document.getElementById('book-form'), endpoint = bookForm && bookForm.getAttribute('data-endpoint');
+      var toForm = function(){
+        if (!endpoint) throw new Error('no endpoint');
+        var fd = new FormData(); Object.keys(data).forEach(function(k){ fd.append(k, data[k]); }); fd.append('_subject', 'New booking from the chat');
+        return fetch(endpoint, { method: 'POST', body: fd, headers: { Accept: 'application/json' } }).then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); });
+      };
+      if (mode === 'server') {
+        return fetch(url + '/book', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) })
+          .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok || !j.ok) throw new Error(j.message || 'HTTP ' + r.status); }); })
+          .then(function(){ if (endpoint) toForm().catch(function(){}); }, function(e){ if (endpoint) return toForm(); throw e; });
+      }
+      return (window.claude && window.claude.use ? window.claude.use('db') : Promise.resolve(null)).then(function(db){
+        if (!db) return toForm();
+        var id = 'b_' + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+        return db.doc('bookings/' + id).set(Object.assign({ receivedAt: new Date().toISOString(), source: 'chat' }, data));
+      });
+    }
+    function bookLink(li){
+      if (!/book|proof|form/i.test(li.textContent)) return;
+      var a = document.createElement('button'); a.type = 'button'; a.className = 'go'; a.textContent = 'Book a free proof here';
+      a.addEventListener('click', function(){ a.remove(); bookCard(); }); li.appendChild(document.createElement('br')); li.appendChild(a);
+    }
+    function ask(text){
+      text = String(text || '').trim().slice(0, 800);
+      if (!text || busy) return;
+      busy = true; sendBtn.disabled = true; chips.hidden = true;
+      bubble('me', text); turns.push({ role: 'user', content: text });
+      while (turns.length > 19) turns.splice(0, 2);
+      var li = bubble('bot'); typing(li);
+      var done = function(answer, bad){
+        if (bad) li.classList.add('bad');
+        var shown = bad ? answer : clean(answer);
+        li.textContent = shown;
+        if (!bad) {
+          turns.push({ role: 'assistant', content: shown });
+          pickedTier = tierIn(answer) || pickedTier;
+          if (/[[BOOK]]/i.test(answer) || READY.test(text)) bookCard(); else if (!carded) bookLink(li);
+        } else turns.pop();
+        busy = false; sendBtn.disabled = false; log.scrollTop = log.scrollHeight; if (!carded) chatInput.focus();
+      };
+      if (mode === 'server') {
+        fetch(url + '/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: turns }) })
+          .then(function(r){
+            if (!r.ok) return r.json().catch(function(){ return {}; }).then(function(j){ done(j.error || 'The assistant is offline right now. The booking form still works.', true); });
+            if (!r.body || !r.body.getReader) return r.text().then(function(t){ done(t.trim()); });
+            var reader = r.body.getReader(), dec = new TextDecoder(), acc = '';
+            return (function pump(){
+              return reader.read().then(function(x){
+                if (x.done) { done(acc.trim() || 'Sorry, I could not answer that. The booking form reaches the studio directly.'); return; }
+                acc += dec.decode(x.value, { stream: true }); li.textContent = clean(acc); log.scrollTop = log.scrollHeight; return pump();
+              });
+            })();
+          })
+          .catch(function(){ done('The assistant is offline right now. The booking form still works.', true); });
+      } else {
+        var go = function(s){
+          var history = turns.map(function(t){ return (t.role === 'user' ? 'Visitor: ' : 'Assistant: ') + t.content; }).join('\n');
+          s(CHAT_PROMPT + '\n\nCONVERSATION SO FAR\n' + history + '\n\nWrite only the reply the assistant gives next, to the visitor\u2019s last message.', {
+            modelTier: 'quick', cache: false,
+            onText: function(p){ li.textContent = clean(p.text); log.scrollTop = log.scrollHeight; }
+          }).then(function(r){ done(String(r.text || '').trim()); })
+            .catch(function(e){ done(e && e.code === 'not_granted' ? 'The assistant needs your OK to answer in this preview.' : 'The assistant could not answer just now. The booking form still works.', true); });
+        };
+        if (sampler) go(sampler);
+        else if (window.claude && window.claude.use) window.claude.use('sample').then(function(x){ if (x) { sampler = x; go(x); } else done('The assistant is not available in this preview.', true); });
+        else done('The assistant is not available here.', true);
+      }
+    }
+    chatForm.addEventListener('submit', function(e){ e.preventDefault(); var t = chatInput.value; chatInput.value = ''; ask(t); });
+    chips.querySelectorAll('button').forEach(function(b){ b.addEventListener('click', function(){ ask(b.textContent); }); });
+  }
+
+  var dock = document.getElementById('dock'), heroCta = document.querySelector('.hero .btn.primary');
+  if (dock && heroCta && 'IntersectionObserver' in window) {
+    var past = false, inBook = false, link = dock.querySelector('a');
+    var paint = function(){ var on = past && !inBook; dock.classList.toggle('on', on); dock.setAttribute('aria-hidden', on ? 'false' : 'true'); link.tabIndex = on ? 0 : -1; };
+    new IntersectionObserver(function(es){ past = !es[0].isIntersecting && es[0].boundingClientRect.top < 0; paint(); }).observe(heroCta);
+    var watch = [document.getElementById('book'), document.querySelector('.last')].filter(Boolean), seen = new Set();
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); }); inBook = seen.size > 0; paint(); });
+    watch.forEach(function(el){ io.observe(el); });
+  }
+
+  document.querySelectorAll('[data-tier]').forEach(function(a){
+    a.addEventListener('click', function(){ var t = document.getElementById('f-tier'); if (t) t.value = a.getAttribute('data-tier'); });
+  });
+
+  var form = document.getElementById('book-form');
+  if (!form) return;
+  var status = document.getElementById('f-status'), btn = document.getElementById('f-submit');
+  var endpoint = form.getAttribute('data-endpoint');
+  function say(msg, bad){ status.hidden = false; status.textContent = msg; status.className = 'status' + (bad ? ' bad' : ''); }
+  function fields(){ var o = {}; new FormData(form).forEach(function(v,k){ if (k.charAt(0) !== '_') o[k] = String(v).trim(); }); return o; }
+
+  /* On a claude.ai preview the page stores the booking in its own database;
+     on the real site it posts to the configured form backend. */
+  var dbPromise = (window.claude && window.claude.use) ? window.claude.use('db').catch(function(){ return null; }) : Promise.resolve(null);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = null;
+    form.querySelectorAll('[required]').forEach(function(el){
+      var ok = el.value.trim() && (el.type !== 'email' || /.+@.+\..+/.test(el.value));
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+      if (!ok && !bad) bad = el;
+    });
+    if (bad) { say('A few details are missing. Check the highlighted fields.', true); bad.focus(); return; }
+    var callme = form.elements.call_me && form.elements.call_me.checked;
+    if (callme && !form.elements.phone.value.trim()) { form.elements.phone.setAttribute('aria-invalid', 'true'); say('Add a phone number so the assistant can call you.', true); form.elements.phone.focus(); return; }
+    if (form.elements._gotcha && form.elements._gotcha.value) { say('Thanks. Your booking is in.'); return; }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    var data = fields();
+    dbPromise.then(function(db){
+      if (db) {
+        var id = 'b_' + Date.now().toString(36) + Math.random().toString(36).slice(2,7);
+        return db.doc('bookings/' + id).set(Object.assign({ receivedAt: new Date().toISOString() }, data)).then(function(){ return true; });
+      }
+      if (!endpoint) throw new Error('no endpoint');
+      return fetch(endpoint, { method: 'POST', body: new URLSearchParams(new FormData(form)), headers: { Accept: 'application/json' } })
+        .then(function(r){ if (!r.ok) throw new Error('HTTP ' + r.status); return true; });
+    }).then(function(){
+      form.reset();
+      say('Booked. We\u2019ll start on your proof and write to ' + data.email + ' when it\u2019s ready.' + (callme ? ' Our AI assistant will call you shortly.' : ''));
+      btn.textContent = 'Booked';
+      if (!form.querySelector('.booked-stamp')) { var st = document.createElement('p'); st.className = 'booked-stamp'; st.setAttribute('aria-hidden', 'true'); st.innerHTML = 'Booked<small>proof in progress</small>'; form.appendChild(st); }
+    }).catch(function(){
+      btn.disabled = false; btn.textContent = 'Book my free proof';
+      say("That didn’t go through. Try again, or reach us directly: wesleystum1+orelvi@gmail.com", true);
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var root = document.documentElement;
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* the masthead tucks away going down and returns going up; the rule tracks progress */
+  var mast = document.querySelector('.mast'), bar = document.querySelector('.progress'), lastY = window.scrollY, ticking = false;
+  function onScroll(){
+    var y = window.scrollY, max = document.documentElement.scrollHeight - window.innerHeight;
+    if (bar) bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    if (mast) {
+      mast.classList.toggle('lifted', y > 8);
+      var away = y > 240 && y > lastY + 2 && !mast.contains(document.activeElement);
+      if (y < lastY - 2 || y < 240) mast.classList.remove('away'); else if (away) mast.classList.add('away');
+    }
+    lastY = y; ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  onScroll();
+
+  if (still || !('IntersectionObserver' in window)) return;
+  root.classList.add('motion');
+
+  /* set a heading one word at a time, keeping inline marks such as <em> */
+  function split(el){
+    var n = 0;
+    (function walk(node){
+      Array.prototype.slice.call(node.childNodes).forEach(function(c){
+        if (c.nodeType === 3) {
+          var frag = document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function(part){
+            if (!part) return;
+            if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(part)); return; }
+            var w = document.createElement('span'); w.className = 'w';
+            var i = document.createElement('span'); i.className = 'wi'; i.style.setProperty('--i', n++); i.textContent = part;
+            w.appendChild(i); frag.appendChild(w);
+          });
+          c.parentNode.replaceChild(frag, c);
+        } else if (c.nodeType === 1 && !c.classList.contains('w')) walk(c);
+      });
+    })(el);
+    el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+    el.dataset.m = 'split';
+  }
+  document.querySelectorAll('.hero h1, main h2').forEach(split);
+
+  function mark(sel, kind, delay){
+    document.querySelectorAll(sel).forEach(function(el){ if (!el.dataset.m) { el.dataset.m = kind; if (delay != null) el.style.setProperty('--d', delay + 's'); } });
+  }
+  /* the hero arrives in order */
+  mark('.hero .eyebrow', 'rise', 0);
+  document.querySelector('.hero h1') && document.querySelector('.hero h1').style.setProperty('--d', '.1s');
+  mark('.hero .lede', 'rise', .55); mark('.hero .actions', 'rise', .7); mark('.hero .terms', 'rise', .85);
+  /* everything else rises as it scrolls in */
+  mark('.kicker', 'rise'); mark('.head > p', 'rise', .2); mark('.filter', 'rise', .1); mark('.note', 'rise'); mark('.more', 'rise');
+  mark('.never > div > p', 'rise', .2); mark('.care', 'rise', .2); mark('.booking .side p', 'rise', .2);
+  mark('.book-form, .book-contact', 'rise', .15); mark('.faq', 'rise', .1); mark('.last p, .last .actions', 'rise', .3);
+  mark('footer .shell', 'fade');
+
+  var groups = [['.steps li', '.steps'], ['.never li', '.never ul'], ['.tier', '.tiers']];
+  groups.forEach(function(g){ document.querySelectorAll(g[0]).forEach(function(el, i){ el.style.setProperty('--i', i); }); });
+  document.querySelectorAll('.tier').forEach(function(t, i){ t.querySelectorAll('li').forEach(function(li, j){ li.style.setProperty('--i', i); li.style.setProperty('--j', j); }); });
+  var watched = Array.prototype.slice.call(document.querySelectorAll('[data-m], .slider, .steps, .never ul, .tiers, .work'));
+  var firstFrame = document.querySelector('.slide .frame');
+  if (firstFrame) document.documentElement.style.setProperty('--frame-h', (firstFrame.clientHeight - 56) + 'px');
+  document.querySelectorAll('.work').forEach(function(el, i){ el.style.setProperty('--d', (i % 2) * .12 + 's'); });
+
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); if (e.target.classList.contains('tiers')) roll(); } });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+  watched.forEach(function(el){ io.observe(el); });
+  /* concepts still folded behind "Show all" are already observed, and print once they appear */
+
+  /* prices roll up and always land on the printed figure */
+  function roll(){
+    document.querySelectorAll('.tier .amt').forEach(function(amt, k){
+      var node = Array.prototype.find.call(amt.childNodes, function(c){ return c.nodeType === 3 && /\d/.test(c.textContent); });
+      if (!node) return;
+      var final = node.textContent, target = Number(final.replace(/[^\d.]/g, '')), t0 = null, dur = 1100, wait = 300 + k * 140;
+      if (!target) return;
+      function frame(t){
+        if (t0 === null) t0 = t + wait;
+        var p = Math.max(0, Math.min(1, (t - t0) / dur)), e = 1 - Math.pow(1 - p, 4);
+        node.textContent = p >= 1 ? final : '$' + Math.round(target * e).toLocaleString('en-US');
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    });
+  }
+
+  if (!fine) return;
+  /* depth under the pointer: each concept sheet, the buttons */
+  function tilt(el, area, strength){
+    area.addEventListener('pointermove', function(ev){
+      var r = area.getBoundingClientRect(), x = (ev.clientX - r.left) / r.width - .5, y = (ev.clientY - r.top) / r.height - .5;
+      el.style.setProperty('--ry', (x * strength) + 'deg'); el.style.setProperty('--rx', (-y * strength) + 'deg');
+    });
+    area.addEventListener('pointerleave', function(){ el.style.setProperty('--ry', '0deg'); el.style.setProperty('--rx', '0deg'); });
+  }
+  document.querySelectorAll('.work .sheet').forEach(function(s){
+    s.addEventListener('pointerenter', function(){ if (s.closest('.work.in')) s.classList.add('tilt'); });
+    s.addEventListener('pointerleave', function(){ s.classList.remove('tilt'); });
+    tilt(s, s, 6);
+  });
+  document.querySelectorAll('.btn').forEach(function(b){
+    b.addEventListener('pointermove', function(ev){
+      var r = b.getBoundingClientRect();
+      b.style.setProperty('--mx', ((ev.clientX - r.left) / r.width - .5) * 8 + 'px');
+      b.style.setProperty('--my', ((ev.clientY - r.top) / r.height - .5) * 8 + 'px');
+    });
+    b.addEventListener('pointerleave', function(){ b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 912 1200" width="912" height="1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs><linearGradient id="bd30" x1="62.10%" y1="1.49%" x2="37.90%" y2="98.51%"><stop offset="0%" stop-color="#9a9a96"/><stop offset="34%" stop-color="#6f6e69"/><stop offset="72%" stop-color="#1616NaN"/><stop offset="100%" stop-color="#0f0f0e"/></linearGradient><linearGradient id="fl32" x1="50.00%" y1="0.00%" x2="50.00%" y2="100.00%"><stop offset="0%" stop-color="#0b0bNaN"/><stop offset="100%" stop-color="#0303NaN"/></linearGradient><linearGradient id="sp33" x1="0.49%" y1="43.04%" x2="99.51%" y2="56.96%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="18%" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="52%" stop-color="#ffffff" stop-opacity="0.55"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/></linearGradient><filter id="gr31" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer>
+  </filter></defs>
+<rect width="912" height="1200" fill="#0f0f0e"/>
+<rect y="864" width="912" height="336.00000000000006" fill="url(#fl32)"/>
+<path d="M36.480000000000004 54.0 H875.5 L848.2 68.4 H63.8 Z" fill="rgba(255,255,255,0.3)"/>
+<rect x="36.480000000000004" y="49.2" width="839.0" height="1.4" fill="rgba(255,255,255,0.5)"/>
+<path d="M100.32000000000001 116.6 H811.7 L784.3 131.0 H127.7 Z" fill="rgba(255,255,255,0.22999999999999998)"/>
+<rect x="100.32000000000001" y="111.8" width="711.4" height="1.4" fill="rgba(255,255,255,0.38)"/>
+<path d="M164.16000000000003 179.2 H747.8 L720.5 193.6 H191.5 Z" fill="rgba(255,255,255,0.15999999999999998)"/>
+<rect x="164.16000000000003" y="174.4" width="583.7" height="1.4" fill="rgba(255,255,255,0.26)"/>
+<path d="M-45.6 314.84210526315786 C 273.59999999999997 228.44210526315786, 601.9200000000001 239.24210526315787, 957.6 304.04210526315785 L957.6 947.9584563274525 C 638.4 983.9584563274525, 273.59999999999997 983.9584563274525, -45.6 933.5584563274525 Z" fill="url(#bd30)"/>
+<path d="M63.84000000000003 1200 L63.84000000000003 923.9584563274525 C 90.65280000000004 707.9584563274525, 420.06719999999996 707.9584563274525, 446.88 923.9584563274525 L446.88 1200 Z" fill="#0404NaN"/>
+<path d="M63.84000000000003 923.9584563274525 C 90.65280000000004 707.9584563274525, 420.06719999999996 707.9584563274525, 446.88 923.9584563274525" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2.2"/>
+<path d="M-45.6 600.9 C 273.59999999999997 564.9, 601.9200000000001 576.9, 957.6 558.9" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"/>
+<path d="M-45.6 609.3 C 273.59999999999997 573.3, 601.9200000000001 585.3, 957.6 567.3" fill="none" stroke="#0808NaN" stroke-width="2.4"/>
+<path d="M-45.6 348.2 C 273.59999999999997 294.2, 601.9200000000001 305.0, 957.6 342.8 L957.6 374.0 C 601.9200000000001 336.2, 273.59999999999997 325.4, -45.6 379.4 Z" fill="url(#sp33)" opacity="0.9"/>
+<path d="M-45.6 399.8 C 273.59999999999997 345.8, 601.9200000000001 356.6, 957.6 394.4 L957.6 411.2 C 601.9200000000001 373.4, 273.59999999999997 362.6, -45.6 416.6 Z" fill="url(#sp33)" opacity="0.6"/>
+<path d="M-45.6 715.8 C 273.59999999999997 661.8, 601.9200000000001 672.6, 957.6 710.4 L957.6 721.2 C 601.9200000000001 683.4, 273.59999999999997 672.6, -45.6 726.6 Z" fill="url(#sp33)" opacity="0.32"/>
+<path d="M601.9 271.6 C 629.3 540.0, 588.2 720.0, 620.2 948.0" fill="none" stroke="#0303NaN" stroke-width="4"/>
+<path d="M598.9 271.6 C 626.3 540.0, 585.2 720.0, 617.2 948.0" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/>
+<path d="M54.72 620.8421052631579 C 273.59999999999997 548.8421052631579, 456 584.8421052631579, 674.88 524.8421052631579" fill="none" stroke="rgba(192,189,180,0.75)" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M0 983.9584563274525H912V1067.9584563274525H0Z" fill="rgba(111,110,105,0.12)"/>
+<rect width="912" height="1200" filter="url(#gr31)" opacity=".34"/>
+</svg>

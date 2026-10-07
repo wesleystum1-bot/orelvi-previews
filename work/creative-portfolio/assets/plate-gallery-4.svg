@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" width="1200" height="1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs><pattern id="ht2v" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="6" stroke="rgba(18,18,18,0.16)" stroke-width="1"/></pattern><filter id="gr2u" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1" numOctaves="3" stitchTiles="stitch" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer>
+  </filter></defs>
+<rect width="1200" height="1200" fill="#f7f5f2"/>
+<rect x="0.0" y="300.0" width="1200.0" height="450.0" fill="#121212"/>
+<rect x="100.0" y="0.0" width="400.0" height="300.0" fill="#e0452a"/>
+<rect x="600.0" y="750.0" width="500.0" height="450.0" fill="#5b5b58"/>
+<rect x="0.0" y="750.0" width="500.0" height="450.0" fill="#f0c0b6"/>
+<rect x="0.0" y="300.0" width="1200.0" height="450.0" fill="url(#ht2v)"/>
+<path d="M21.000000000000004 42.00000000000001 L63.000000000000014 42.00000000000001 M42.00000000000001 21.000000000000004 L42.00000000000001 63.000000000000014" stroke="rgba(18,18,18,0.5)" stroke-width="1"/>
+<path d="M1137 42.00000000000001 L1179 42.00000000000001 M1158 21.000000000000004 L1158 63.000000000000014" stroke="rgba(18,18,18,0.5)" stroke-width="1"/>
+<path d="M21.000000000000004 1158 L63.000000000000014 1158 M42.00000000000001 1137 L42.00000000000001 1179" stroke="rgba(18,18,18,0.5)" stroke-width="1"/>
+<path d="M1137 1158 L1179 1158 M1158 1137 L1158 1179" stroke="rgba(18,18,18,0.5)" stroke-width="1"/>
+<rect x="42.00000000000001" y="42.00000000000001" width="1116" height="1116" fill="none" stroke="rgba(18,18,18,0.18)" stroke-width="1"/>
+<rect width="1200" height="1200" filter="url(#gr2u)" opacity=".3"/>
+</svg>

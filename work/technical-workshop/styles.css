@@ -1,0 +1,736 @@
+@layer measure, tap;
+
+/* A plate the build filled with a real photograph. The family's own container
+   keeps its size, its corners and any mask it applies; the picture is sized to
+   fill that box rather than the box being resized to the picture, so placing a
+   photograph never changes the composition. In its own layer so a family that
+   wants different behaviour simply wins. */
+
+
+@font-face{font-family:"Outfit Variable";src:url("./fonts/outfit-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;}
+@font-face{font-family:"Figtree Variable";src:url("./fonts/figtree-latin-wght-normal.woff2") format("woff2");font-weight:300 900;font-style:normal;font-display:swap;}
+@font-face{font-family:"IBM Plex Mono";src:url("./fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body,h1,h2,h3,h4,p,figure,blockquote,dl,dd,ul,ol{margin:0}
+ul[class],ol[class]{list-style:none;padding:0}
+img,svg,video{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+a{color:inherit}
+
+:root{
+  --ink:#1a1a18;
+  --paper:#f5f4f0;
+  --deep:#141413;
+  --deep-ink:#eeede9;
+  --accent:#1a1a18;
+  --accent-ink:#f5f4f0;
+  --accent-ink-raw:#f5f4f0;
+  --muted:#63625e;
+  --muted-deep:#81807b;
+  --muted-ink:#868681;
+  --muted-tint:#63625e;
+  --muted-raw:#767570;
+  --accent-read:#1a1a18;
+  --accent-read-deep:#7f7f7e;
+  --accent-read-ink:#888887;
+  --hairline:rgba(26,26,24,.13);
+  --hair-strong:rgba(26,26,24,0.34);
+  /* The paper values again under stable names, so a light card nested in a dark
+     section can put back what it inherited (see deepGroundFix). */
+  --muted-paper:#63625e;
+  --accent-read-paper:#1a1a18;
+  --hairline-raw:rgba(26,26,24,.13);
+  --hair-strong-raw:rgba(26,26,24,0.34);
+  --tint-1:#ebeae6;
+  --tint-2:#e1e0dd;
+  --deep-tint:#252524;
+  --accent-soft:rgba(26,26,24,0.14);
+
+  --ff-display:"Outfit Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-body:"Figtree Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-accent:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fw-display:700;
+  --fw-body:400;
+  --tr-display:-0.035em;
+  --measure:66ch;
+  --measure-cap:74ch;
+
+  --fs--2: clamp(0.619rem, 0.508rem + 0.00vw, 0.619rem);
+  --fs--1: clamp(0.811rem, 0.665rem + 0.00vw, 0.811rem);
+  --fs-0: clamp(1.063rem, 0.871rem + 0.00vw, 1.063rem);
+  --fs-1: clamp(1.169rem, 0.959rem + 0.62vw, 1.392rem);
+  --fs-2: clamp(1.240rem, 1.017rem + 1.24vw, 1.823rem);
+  --fs-3: clamp(1.385rem, 1.136rem + 1.86vw, 2.389rem);
+  --fs-4: clamp(1.815rem, 1.488rem + 2.48vw, 3.129rem);
+  --fs-5: clamp(2.377rem, 1.950rem + 3.10vw, 4.099rem);
+  --fs-6: clamp(3.114rem, 2.554rem + 3.72vw, 5.370rem);
+  --fs-7: clamp(4.080rem, 3.346rem + 4.34vw, 7.034rem);
+
+  --u:7px;
+  --gap:calc(var(--u) * 3);
+  --section-y-base:clamp(1.7rem, 3.1vw + 1.5rem, 3.4rem);
+  --section-y:var(--section-y-base);
+  --page:1280px;
+  --gutter:clamp(18px, 4.2vw, 46px);
+  --r1:0px;--r2:0px;--r3:0px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur:.45s;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--ff-body);
+  font-weight:var(--fw-body);
+  font-size:var(--fs-0);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--ff-display);
+  font-weight:var(--fw-display);
+  letter-spacing:var(--tr-display);
+  line-height:1.02;
+  
+  text-wrap:balance;
+}
+p{text-wrap:pretty}
+
+.shell{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter)}
+.wide{width:100%;max-width:calc(var(--page) + 200px);margin-inline:auto;padding-inline:var(--gutter)}
+.measure{max-width:var(--measure)}
+
+.eyebrow{
+  font-family:var(--ff-accent);
+  font-size:var(--fs--2);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+
+.ic{flex:none}
+
+/* focus that is visible on both paper and deep surfaces */
+:where(a,button,[tabindex]):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:999;
+  background:var(--ink);color:var(--paper);padding:12px 18px;
+}
+.skip:focus{left:8px;top:8px}
+
+/* --- motion: opt-in, reveal-on-scroll, fully disabled when asked --- */
+[data-reveal]{opacity:0;transform:translateY(16px)}
+[data-reveal].is-in{opacity:1;transform:none;transition:opacity var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)}
+[data-reveal][data-reveal-delay="1"].is-in{transition-delay:.07s}
+[data-reveal][data-reveal-delay="2"].is-in{transition-delay:.14s}
+[data-reveal][data-reveal-delay="3"].is-in{transition-delay:.21s}
+[data-reveal][data-reveal-delay="4"].is-in{transition-delay:.28s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* --- measure: no line of running text may run to 200 characters ---
+   Paragraphs only. li and dd are layout containers as often as they are prose
+   — capping them collapsed three section grids to 60% of the page the first
+   time this shipped — so they are left to the family that laid them out. */
+@layer measure{
+  p,.demo-form output{max-width:min(100%,var(--measure-cap))}
+}
+
+/* --- tap targets ---
+   Touch-sized hit areas for navigation furniture, up to 900px — a tablet is a
+   touch device even though it is not a phone. Declared in the lowest
+   cascade layer on purpose: a family's own responsive rules are unlayered, so
+   its display:none at mobile still wins and the kit can never resurrect a
+   control the family deliberately hid. */
+@layer tap{
+  @media (max-width:900px){
+    :where(header,nav,footer,[data-menu],[data-navbar],[data-sbar]) :is(a[href],button,summary,[role="button"]){
+      min-height:44px;
+      min-width:2.75rem;
+      display:inline-flex;
+      align-items:center;
+    }
+    :where(header,nav,footer,[data-menu],[data-navbar],[data-sbar]) :is(a[href],button):has(>svg){
+      min-width:44px;
+      justify-content:center;
+    }
+    /* A phone number or email address is a primary action wherever it sits,
+       so it earns a full hit area even outside the navigation. */
+    :is(a[href^="tel:"],a[href^="mailto:"]):not(:where(p,dd) *){
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+    }
+  }
+}
+
+/* --- preview banner: every prospect site must say what it is --- */
+.preview-note{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--ff-accent);font-size:12px;line-height:1.45;
+  letter-spacing:.02em;
+  padding:10px var(--gutter);
+  display:flex;gap:10px;align-items:baseline;justify-content:center;
+  text-align:center;flex-wrap:wrap;
+  position:relative;z-index:60;
+}
+.preview-note b{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:11px}
+.preview-note span{opacity:.82;max-width:54ch}
+
+/* --- demo-safe forms: nothing is collected or sent --- */
+.demo-form output{display:block;font-size:var(--fs--1);color:var(--muted);margin-top:calc(var(--u)*1.5)}
+.demo-form output:empty{display:none}
+
+.hours-tbl{border-collapse:collapse;margin:clamp(20px,2.4vw,30px) 0 0;min-width:min(100%,264px);
+  font-variant-numeric:tabular-nums;text-align:left;color:inherit}
+.hours-tbl caption{text-align:left;font-family:var(--ff-accent);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;padding-bottom:9px;color:inherit}
+.hours-tbl th{text-align:left;font-weight:400;font-family:var(--ff-accent);font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;padding:8px 26px 8px 0;white-space:nowrap;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent);color:inherit}
+.hours-tbl td{text-align:right;font-size:.9rem;padding:8px 0;color:inherit;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent)}
+
+
+/* ============ TECHNICAL WORKSHOP ============ */
+/* A bright bench. Hairlines do the dividing, the mono face does the
+   annotating, and every figure is set with tabular numerals so a column of
+   them lines up the way it would on a printed sheet. */
+
+body{background:var(--paper);background-image:url("./assets/tooth.svg");background-size:560px;color:var(--ink)}
+::selection{background:rgba(26,26,24,0.2)}
+
+/* --- the annotation face --- */
+.ann{font-family:var(--ff-accent);font-size:10px;line-height:1.5;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.ann i{font-style:normal;padding-inline:6px;color:var(--accent-read)}
+dd,strong,td,th,.op-h,.sh-t{font-variant-numeric:tabular-nums}
+
+/* --- a dimension line: a rule with a tick at each end --- */
+.dim{display:block;height:8px;position:relative;
+  background:linear-gradient(var(--hair-strong),var(--hair-strong)) 0 50%/100% 1px no-repeat}
+.dim::before,.dim::after{content:"";position:absolute;top:0;bottom:0;width:1px;background:var(--hair-strong)}
+.dim::before{left:0}
+.dim::after{right:0}
+
+/* --- sections --- */
+.sect{padding-block:var(--section-y)}
+[data-band]{background:#ebeae6;border-block:1px solid rgba(26,26,24,0.15)}
+.sh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px clamp(12px,2vw,26px);
+  padding-bottom:10px;border-bottom:2px solid var(--ink);margin-bottom:clamp(18px,2.4vw,30px)}
+.sh-ref{color:var(--accent-read)}
+.sh-t{flex:1 1 auto;font-size:clamp(1.25rem,2.4vw,1.85rem);line-height:1.12;letter-spacing:-.02em;min-width:0}
+.sh-meta{margin-left:auto;text-align:right}
+.note{font-size:.82rem;line-height:1.6;color:var(--muted);margin-top:clamp(14px,1.8vw,20px);max-width:54ch}
+
+/* --- the annotation rail: three sections hang their head in the margin --- */
+.has-zone{display:grid;grid-template-columns:clamp(128px,16%,216px) minmax(0,1fr);
+  gap:0 clamp(18px,3vw,46px);align-items:start}
+.rh{display:grid;gap:6px;align-content:start;border-top:2px solid var(--ink);padding-top:9px}
+.rh-ref{color:var(--accent-read)}
+.rh-t{font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.14;letter-spacing:-.02em}
+.rh-meta{color:var(--muted)}
+.zone-body{min-width:0}
+
+/* --- buttons --- */
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--ink);color:var(--paper);
+  padding:14px 22px;min-height:48px;border-radius:var(--r1);border:0;
+  font-family:var(--ff-accent);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;transition:background .25s var(--ease)}
+.btn:hover{background:var(--accent);color:var(--accent-ink)}
+.btn-line{display:inline-flex;align-items:center;min-height:48px;padding:13px 20px;
+  border:1px solid rgba(26,26,24,0.3);border-radius:var(--r1);text-decoration:none;
+  font-family:var(--ff-accent);font-size:12px;letter-spacing:.1em;font-variant-numeric:tabular-nums;
+  transition:border-color .25s var(--ease),background .25s var(--ease)}
+.btn-line:hover{border-color:var(--ink);background:#ebeae6}
+
+/* ---------------- mastheads ---------------- */
+.mast{position:sticky;top:0;z-index:50;background:rgba(245,244,240,0.96);backdrop-filter:blur(5px);
+  border-bottom:1px solid rgba(26,26,24,0.15)}
+.mast.is-stuck{border-bottom-color:rgba(26,26,24,0.62)}
+.mk{display:grid;gap:3px;text-decoration:none;align-content:center;min-width:0}
+.mk-name{font-family:var(--ff-display);font-weight:var(--fw-display);font-size:clamp(1rem,1.7vw,1.24rem);
+  letter-spacing:-.02em;line-height:1.1}
+.mk-meta{font-family:var(--ff-accent);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.mk-tel{display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  font-family:var(--ff-accent);font-size:11px;letter-spacing:.1em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mk-tel:hover{color:var(--accent-read)}
+.mk-cta{display:inline-flex;align-items:center;min-height:40px;padding:10px 16px;
+  background:var(--ink);color:var(--paper);text-decoration:none;
+  font-family:var(--ff-accent);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  white-space:nowrap;transition:background .25s var(--ease)}
+.mk-cta:hover{background:var(--accent);color:var(--accent-ink)}
+.mk-burger{display:none;width:44px;height:44px;place-items:center}
+.bar-act{display:flex;align-items:center;gap:clamp(8px,1.4vw,18px);justify-self:end}
+
+/* masthead I — a bar of title-block cells over a datum strip */
+.bar{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter);
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  gap:clamp(10px,2vw,30px);padding-block:10px}
+.bar-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:0}
+.bar-nav a{font-family:var(--ff-accent);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;color:#464643;padding:8px clamp(9px,1.3vw,16px);white-space:nowrap;
+  border-left:1px solid rgba(26,26,24,0.15);transition:color .2s var(--ease)}
+.bar-nav a:last-child{border-right:1px solid rgba(26,26,24,0.15)}
+.bar-nav a:hover{color:var(--accent-read)}
+.bar-datum{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter);
+  display:flex;flex-wrap:wrap;gap:2px clamp(14px,2.4vw,28px);padding-block:6px;border-top:1px solid rgba(26,26,24,0.15)}
+
+/* masthead II — a tick scale over a two-row bench rail */
+.deck-tick{display:flex;justify-content:space-between;height:7px;padding-inline:var(--gutter);overflow:hidden}
+.deck-tick i{width:1px;background:rgba(26,26,24,0.3);height:7px}
+.deck-tick i:nth-child(4n+1){height:7px;background:rgba(26,26,24,0.45)}
+.deck-top{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding-block:9px}
+.deck-row{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter);
+  border-top:1px solid rgba(26,26,24,0.15)}
+.deck-nav{display:flex;flex-wrap:wrap;gap:0 clamp(14px,2.6vw,34px)}
+.deck-nav a{display:inline-flex;align-items:baseline;gap:7px;padding-block:9px;text-decoration:none;
+  font-family:var(--ff-accent);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#464643}
+.deck-nav em{font-style:normal;font-size:8.5px;letter-spacing:.06em;color:var(--accent-read);
+  font-variant-numeric:tabular-nums}
+.deck-nav a:hover{color:var(--ink)}
+
+/* masthead III — a tag. No links: the opening carries the sheet index. */
+.tag{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter);
+  display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding-block:11px}
+.tag-act{display:flex;align-items:center;gap:clamp(10px,1.8vw,20px)}
+.tag-idx{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 16px;
+  border:1px solid rgba(26,26,24,0.3);font-family:var(--ff-accent);font-size:10px;font-weight:600;
+  letter-spacing:.16em;text-transform:uppercase}
+.tag-idx:hover{border-color:var(--ink);background:#ebeae6}
+
+/* the index sheet */
+.idx{position:fixed;inset:0;z-index:49;background:var(--paper);color:var(--ink);
+  display:none;flex-direction:column;justify-content:center;gap:10px;
+  padding:110px var(--gutter) 46px;background-image:url("./assets/grid.svg");background-size:cover}
+.idx[data-open]{display:flex}
+.idx-cap{color:var(--accent-read)}
+.idx nav{display:grid;border-top:1px solid rgba(26,26,24,0.3)}
+.idx nav a{display:flex;align-items:baseline;gap:14px;padding:14px 0;text-decoration:none;
+  border-bottom:1px solid rgba(26,26,24,0.15);font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.3rem,5vw,2rem);letter-spacing:-.02em}
+.idx nav em{font-style:normal;font-family:var(--ff-accent);font-size:10px;letter-spacing:.14em;
+  color:var(--accent-read);font-variant-numeric:tabular-nums}
+.idx-tel{margin-top:18px;font-family:var(--ff-accent);font-size:12px;letter-spacing:.16em;
+  text-decoration:none;color:var(--accent-read);font-variant-numeric:tabular-nums}
+
+/* ---------------- openings ---------------- */
+.op{padding-block:clamp(22px,3vw,40px) clamp(26px,3.4vw,46px)}
+.op-slug{display:block;color:var(--muted)}
+.op-h{margin-top:clamp(12px,1.8vw,20px);line-height:1.03;letter-spacing:-.03em;overflow-wrap:break-word}
+.op-lead{margin-top:clamp(12px,1.6vw,20px);font-size:var(--fs-1);line-height:1.6;color:#464643;max-width:54ch}
+.op-act{display:flex;flex-wrap:wrap;gap:12px 14px;margin-top:clamp(16px,2.2vw,26px)}
+
+/* opening I — the title block */
+.op--title{display:block}
+.op--title .op-h{font-size:clamp(2rem,5.6vw,4.6rem);max-width:17ch}
+.tblock{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,178px),1fr));
+  margin-top:clamp(26px,3.4vw,44px);border-top:2px solid var(--ink);border-left:1px solid rgba(26,26,24,0.15);
+  background:url("./assets/grid.svg") left top/560px}
+.tblock>div{display:grid;gap:4px;align-content:start;min-width:0;padding:11px 14px 13px;
+  border-right:1px solid rgba(26,26,24,0.15);border-bottom:1px solid rgba(26,26,24,0.15)}
+.tblock dt{font-family:var(--ff-accent);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.tblock dd{margin:0;font-size:.92rem;line-height:1.4;overflow-wrap:anywhere}
+@media (min-width:760px){ .tblock>.wide,.order-facts>.wide{grid-column:span 2} }
+
+/* opening II — the bench */
+.op--bench{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);
+  column-gap:clamp(20px,3.4vw,52px);row-gap:clamp(20px,2.6vw,32px);align-items:start;
+  width:100%;padding-inline:max(var(--gutter),calc((100% - var(--page))/2 + var(--gutter)))}
+/* The bench opening set its headline at 2.6rem, which renders 42px on a 1440
+   page against 9px labels -- the quietest masthead of the three, and flat
+   enough that the page has no display moment at all. */
+.op--bench .op-h{font-size:clamp(2rem,5.2vw,4.4rem);max-width:15ch}
+.op--bench .spec--hero{align-self:start}
+.op--bench .spec--hero .plate{aspect-ratio:3/4}
+.callouts{grid-column:1/-1;border-top:2px solid var(--ink);padding-top:10px}
+.callouts-cap{color:var(--accent-read);padding-bottom:8px}
+.callouts ul{display:flex;flex-wrap:wrap;gap:0;margin:0;padding:0;list-style:none}
+.callouts li{font-family:var(--ff-accent);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;padding:5px clamp(12px,2vw,22px) 5px 0;margin-right:clamp(12px,2vw,22px);
+  border-right:1px solid rgba(26,26,24,0.15)}
+.callouts li:last-child{border-right:0;margin-right:0}
+
+/* opening III — the work order */
+.op--order{display:flex;flex-wrap:wrap;align-items:flex-start;
+  column-gap:clamp(20px,3.4vw,52px);row-gap:clamp(18px,2.4vw,30px);
+  width:100%;padding-inline:max(var(--gutter),calc((100% - var(--page))/2 + var(--gutter)))}
+.order-facts{flex:1 1 100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  margin:0;border-top:2px solid var(--ink);border-left:1px solid rgba(26,26,24,0.15)}
+.order-facts>div{display:grid;gap:4px;align-content:start;min-width:0;padding:10px 14px 12px;
+  border-right:1px solid rgba(26,26,24,0.15);border-bottom:1px solid rgba(26,26,24,0.15)}
+.order-facts dt{font-family:var(--ff-accent);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.order-facts dd{margin:0;font-size:.9rem;line-height:1.4;overflow-wrap:anywhere}
+.order-copy{flex:3 1 min(100%,420px)}
+.op--order .op-h{font-size:clamp(1.7rem,4.6vw,3.6rem);max-width:16ch}
+.order-index{flex:1 1 clamp(190px,22%,270px);display:grid;align-content:start;
+  border-top:2px solid var(--ink);padding-top:9px}
+.order-index-cap{color:var(--accent-read);padding-bottom:6px}
+.order-index a{display:flex;align-items:baseline;gap:10px;padding-block:9px;text-decoration:none;
+  border-bottom:1px solid rgba(26,26,24,0.15);font-size:.95rem}
+.order-index em{font-style:normal;font-family:var(--ff-accent);font-size:9px;letter-spacing:.14em;
+  color:var(--muted);font-variant-numeric:tabular-nums}
+.order-index a:hover{color:var(--accent-read)}
+
+/* ---------------- specimen plates ---------------- */
+/* The corner ticks sit on the figure, not the plate, so they survive a
+   photograph being dropped into the plate by the build. */
+.spec{position:relative;margin:0;padding:7px;display:grid;gap:9px}
+.spec::before{content:"";position:absolute;inset:0;pointer-events:none;
+  --tick:var(--accent-read);
+  background:
+    linear-gradient(var(--tick),var(--tick)) 0 0/12px 1px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 0 0/1px 12px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 100% 0/12px 1px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 100% 0/1px 12px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 0 100%/12px 1px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 0 100%/1px 12px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 100% 100%/12px 1px no-repeat,
+    linear-gradient(var(--tick),var(--tick)) 100% 100%/1px 12px no-repeat}
+.plate{position:relative;aspect-ratio:4/3;overflow:hidden;display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto;gap:10px;padding:12px 14px 13px;border:1px solid rgba(26,26,24,0.3);
+  background:#ebeae6 url("./assets/grid.svg") center/cover no-repeat}
+.plate[data-tex="1"]{background-image:url("./assets/rule.svg")}
+.plate[data-tex="2"]{background-image:url("./assets/chip.svg")}
+.plate-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+  font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;color:rgba(26,26,24,0.62)}
+.plate-top b{font-weight:600;color:var(--accent-read)}
+.plate-top i{font-style:normal;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* the dimensioned panel: a drawn rectangle with an extension line on two
+   sides, which is what these trades are actually measuring */
+/* The drawing goes inside the dimensioned panel, not across the whole
+   sheet, so the title block and the scale bar stay on paper where they can
+   be read. The panel itself carries no fill of its own any more. */
+.plate-draw{position:relative;display:block;margin:6px 30px 20px 6px;overflow:hidden;
+  border:1px solid rgba(26,26,24,0.26)}
+.plate-draw::before{content:"";position:absolute;left:0;right:0;bottom:-11px;height:7px;
+  background:linear-gradient(rgba(26,26,24,0.34),rgba(26,26,24,0.34)) 0 50%/100% 1px no-repeat,
+    linear-gradient(rgba(26,26,24,0.34),rgba(26,26,24,0.34)) 0 0/1px 7px no-repeat,
+    linear-gradient(rgba(26,26,24,0.34),rgba(26,26,24,0.34)) 100% 0/1px 7px no-repeat}
+.plate-draw::after{content:"";position:absolute;top:0;bottom:0;right:-15px;width:7px;
+  background:linear-gradient(rgba(26,26,24,0.34),rgba(26,26,24,0.34)) 50% 0/1px 100% no-repeat,
+    linear-gradient(rgba(26,26,24,0.34),rgba(26,26,24,0.34)) 0 0/7px 1px no-repeat,
+    linear-gradient(rgba(26,26,24,0.34),rgba(26,26,24,0.34)) 0 100%/7px 1px no-repeat}
+.plate-scale{display:block;height:6px;
+  background:repeating-linear-gradient(90deg,rgba(26,26,24,0.42) 0 1px,transparent 1px 11px)}
+.spec-cap{display:grid;gap:5px}
+.spec-cap h3{font-size:clamp(.98rem,1.5vw,1.12rem);line-height:1.25;letter-spacing:-.01em}
+.spx-sum{font-size:.88rem;line-height:1.55;color:#464643}
+.spx-loc{color:var(--accent-read)}
+
+.spx-set{display:grid;gap:clamp(20px,2.8vw,34px) clamp(16px,2.4vw,30px)}
+.spx-set--0{grid-template-columns:repeat(3,minmax(0,1fr))}
+.spx-set--0>.spec:first-child{grid-column:span 2}
+.spx-set--0>.spec:first-child .plate{aspect-ratio:16/9}
+.spx-set--1{grid-template-columns:repeat(3,minmax(0,1fr))}
+.spx-set--2{grid-template-columns:minmax(0,1fr)}
+.spx-log{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--ink)}
+.spx-log>li{padding-block:clamp(13px,1.8vw,20px);border-bottom:1px solid rgba(26,26,24,0.15)}
+.spx-log>li>.spec{grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);align-items:start;
+  gap:clamp(14px,2.4vw,32px)}
+.spx-log .plate{aspect-ratio:16/9}
+
+/* ---------------- schedule I: the ruled table ---------------- */
+.sched-wrap{width:100%}
+.sched{width:100%;border-collapse:collapse;text-align:left;font-variant-numeric:tabular-nums}
+.sched thead th{font-family:var(--ff-accent);font-size:9px;font-weight:600;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);padding:0 clamp(12px,2vw,26px) 9px 0;
+  border-bottom:1px solid var(--ink);vertical-align:bottom}
+.sched tbody th,.sched tbody td{vertical-align:top;padding:clamp(12px,1.6vw,17px) clamp(12px,2vw,26px) clamp(12px,1.6vw,17px) 0;
+  border-bottom:1px solid rgba(26,26,24,0.15)}
+.sched tbody th{font-family:var(--ff-display);font-weight:var(--fw-display);letter-spacing:-.015em;
+  font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.2;width:clamp(120px,19%,220px)}
+.sched .sched-ref{width:62px;padding-right:12px}
+.sched-note p{font-size:.92rem;line-height:1.6;color:#464643;max-width:54ch}
+.sched-spec{width:clamp(110px,20%,210px);padding-right:0!important}
+.sched-spec ul{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.sched-spec li{font-family:var(--ff-accent);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;padding-left:11px;position:relative}
+.sched-spec li::before{content:"";position:absolute;left:0;top:.52em;width:6px;height:1px;background:var(--accent-read)}
+
+/* ---------------- schedule II: the leader-dot index ---------------- */
+.parts{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.part{display:grid;grid-template-columns:auto minmax(0,auto) minmax(18px,1fr) auto;
+  align-items:baseline;column-gap:clamp(10px,1.6vw,18px);row-gap:6px;
+  padding-block:clamp(13px,1.7vw,19px);border-bottom:1px solid rgba(26,26,24,0.15)}
+.part-no{color:var(--accent-read)}
+.part-name{font-size:clamp(1rem,1.7vw,1.3rem);line-height:1.2;letter-spacing:-.015em}
+.part-leader{align-self:center;height:1px;background:repeating-linear-gradient(90deg,rgba(26,26,24,0.3) 0 1px,transparent 1px 5px)}
+.part-vals{text-align:right;white-space:normal}
+.part-note{grid-column:2/-1;font-size:.92rem;line-height:1.6;color:#464643;max-width:54ch}
+
+/* ---------------- schedule III: the hanging glossary ---------------- */
+.gloss{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);margin:0;
+  border-top:1px solid var(--ink)}
+.gloss dt{display:grid;gap:4px;align-content:start;font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.2;letter-spacing:-.015em;
+  padding:clamp(13px,1.7vw,19px) clamp(16px,2.6vw,34px) clamp(13px,1.7vw,19px) 0;
+  border-bottom:1px solid rgba(26,26,24,0.15)}
+.gloss dd{margin:0;padding:clamp(13px,1.7vw,19px) 0;border-bottom:1px solid rgba(26,26,24,0.15)}
+.gloss dd p{font-size:.94rem;line-height:1.62;color:#464643;max-width:54ch}
+.gloss-vals{display:flex;flex-wrap:wrap;gap:5px 0;margin:9px 0 0;padding:0;list-style:none}
+.gloss-vals li{font-family:var(--ff-accent);font-size:10px;letter-spacing:.09em;text-transform:uppercase;
+  font-variant-numeric:tabular-nums;color:var(--muted);padding:0 12px;position:relative}
+.gloss-vals li:first-child{padding-left:0}
+.gloss-vals li+li::before{content:"";position:absolute;left:0;top:.2em;bottom:.2em;width:1px;background:rgba(26,26,24,0.15)}
+
+/* ---------------- datum row ---------------- */
+.datum{padding-block:clamp(14px,2vw,24px)}
+.datum-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));
+  margin:0;padding:0;list-style:none;border-top:2px solid var(--ink);border-bottom:1px solid rgba(26,26,24,0.15)}
+.datum-row>div,.datum-row>li{display:grid;gap:5px;align-content:start;min-width:0;
+  padding:12px clamp(12px,1.8vw,20px) 13px;border-right:1px solid rgba(26,26,24,0.15)}
+.datum-row>div:last-child,.datum-row>li:last-child{border-right:0}
+.datum-row dt,.datum-row .ann{font-family:var(--ff-accent);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+.datum-row dd,.datum-row strong{margin:0;font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.05rem,1.9vw,1.4rem);line-height:1.18;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+
+/* ---------------- method ---------------- */
+.seq{list-style:none;margin:0;padding:0}
+.seq li{display:grid;gap:6px;align-content:start}
+.seq h3{font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.22;letter-spacing:-.015em}
+.seq p{font-size:.92rem;line-height:1.62;color:#464643;max-width:52ch}
+.seq-no{color:var(--accent-read)}
+.seq--0{display:grid}
+.seq--0 li{grid-template-columns:clamp(96px,14%,168px) minmax(0,1fr);gap:6px clamp(14px,2.4vw,32px);
+  padding-block:clamp(13px,1.7vw,19px);border-bottom:1px solid rgba(26,26,24,0.15)}
+.seq--0 li>h3{grid-column:2}
+.seq--0 li>p{grid-column:2}
+.seq--1{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.seq--1 li{padding:12px clamp(12px,1.6vw,20px) clamp(16px,2vw,24px) 0;border-top:2px solid var(--ink)}
+.seq--1 li+li{margin-left:0}
+.seq--2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(20px,3.4vw,48px)}
+.seq--2 li{padding-block:clamp(13px,1.7vw,19px);border-bottom:1px solid rgba(26,26,24,0.15)}
+
+/* ---------------- inside the shop ---------------- */
+.abt-in{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(20px,3vw,44px);align-items:start}
+.abt-copy{display:grid;gap:1em}
+.abt-copy p{font-size:.98rem;line-height:1.68;color:#464643;max-width:54ch}
+.abt-copy .abt-lede{font-family:var(--ff-display);font-weight:var(--fw-display);color:var(--ink);
+  font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.3;letter-spacing:-.02em;max-width:30ch}
+.abt-plates{display:grid;gap:clamp(14px,2vw,22px)}
+.abt-plates[data-n="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.abt-plates .plate{aspect-ratio:1/1}
+
+/* ---------------- on the record ---------------- */
+.rec-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));
+  margin:0;padding:0;list-style:none;gap:0 clamp(20px,3.4vw,48px)}
+.rec-list>div,.rec-list>li{display:grid;gap:4px;align-content:start;
+  padding-block:clamp(11px,1.5vw,16px);border-bottom:1px solid rgba(26,26,24,0.15)}
+.rec-list dt,.rec-list .ann{font-family:var(--ff-accent);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+.rec-list dd{margin:0;display:grid;gap:3px}
+.rec-list strong{font-family:var(--ff-display);font-weight:var(--fw-display);font-size:1.02rem;
+  letter-spacing:-.01em;line-height:1.3}
+.rec-src{font-size:.72rem;line-height:1.5;color:var(--muted)}
+.rec-src a{text-decoration:underline;text-underline-offset:3px}
+.rec-table{width:100%;border-collapse:collapse;text-align:left}
+.rec-table th,.rec-table td{vertical-align:baseline;padding:clamp(11px,1.5vw,16px) clamp(14px,2.4vw,32px) clamp(11px,1.5vw,16px) 0;
+  border-bottom:1px solid rgba(26,26,24,0.15)}
+.rec-table th{font-family:var(--ff-accent);font-size:9.5px;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted);width:clamp(120px,24%,260px)}
+.rec-table strong{font-family:var(--ff-display);font-weight:var(--fw-display);font-size:1.02rem;
+  letter-spacing:-.01em}
+.rec-table td:last-child{text-align:right;padding-right:0;width:clamp(120px,22%,220px)}
+
+/* --- questions as a definition list (setting III) --- */
+.qs-dl{display:grid;margin:0;border-top:1px solid var(--ink)}
+.qs-dl dt{display:grid;gap:5px;align-content:start;padding-top:clamp(14px,1.9vw,20px);
+  font-family:var(--ff-display);font-weight:var(--fw-display);letter-spacing:-.015em;
+  font-size:clamp(1rem,1.7vw,1.24rem);line-height:1.24;max-width:50ch}
+.qs-dl dd{margin:0;padding:7px 0 clamp(14px,1.9vw,20px);border-bottom:1px solid rgba(26,26,24,0.15);
+  font-size:.94rem;line-height:1.66;color:#464643;max-width:54ch}
+
+/* ---------------- questions ---------------- */
+.qs-list{display:grid}
+.qs-list--1{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 clamp(24px,4vw,56px)}
+.qs-row{display:grid;gap:7px;align-content:start;padding-block:clamp(14px,1.9vw,22px);
+  border-bottom:1px solid rgba(26,26,24,0.15)}
+.qs-no{color:var(--accent-read)}
+.qs-row h3{font-size:clamp(1rem,1.7vw,1.24rem);line-height:1.24;letter-spacing:-.015em;max-width:44ch}
+.qs-row p{font-size:.94rem;line-height:1.66;color:#464643;max-width:54ch}
+
+/* ---------------- coverage ---------------- */
+.cov-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));
+  gap:0 clamp(18px,3vw,40px);margin:0;padding:0;list-style:none;border-top:1px solid var(--ink)}
+.cov-list li{display:flex;align-items:baseline;gap:10px;padding-block:11px;border-bottom:1px solid rgba(26,26,24,0.15);
+  font-size:.96rem}
+.cov-list .ann{color:var(--muted)}
+
+/* ---------------- contact ---------------- */
+.con{background:#ebeae6;border-top:2px solid var(--ink)}
+.con-in{display:flex;flex-wrap:wrap;align-items:flex-start;
+  column-gap:clamp(24px,4vw,60px);row-gap:clamp(22px,3vw,34px)}
+.con-left{flex:1 1 min(100%,360px)}
+.con-form{flex:1 1 min(100%,340px)}
+.con-left{display:grid;gap:0;align-content:start}
+.con-h{margin-top:12px;font-size:clamp(1.5rem,3.2vw,2.4rem);line-height:1.08;letter-spacing:-.025em;max-width:16ch}
+.con-tel{display:grid;gap:4px;margin-top:clamp(18px,2.4vw,28px);text-decoration:none;width:fit-content}
+.con-tel strong{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.3rem,2.8vw,2rem);letter-spacing:-.02em;font-variant-numeric:tabular-nums;
+  border-bottom:1px solid rgba(26,26,24,0.3);padding-bottom:5px}
+.con-tel:hover strong{border-bottom-color:var(--accent-read)}
+.con-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));
+  margin:clamp(20px,2.6vw,32px) 0 0;padding:0;list-style:none;border-top:1px solid rgba(26,26,24,0.3)}
+.con-facts>div,.con-facts>li{display:grid;gap:4px;align-content:start;min-width:0;
+  padding:10px 14px 12px 0;border-bottom:1px solid rgba(26,26,24,0.15)}
+.con-facts dt,.con-facts .ann{font-family:var(--ff-accent);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--muted)}
+.con-facts dd{margin:0}
+.con-facts dd,.con-facts li{font-size:.92rem;line-height:1.45;overflow-wrap:anywhere}
+.con-facts a{text-decoration:underline;text-underline-offset:3px}
+.con-form{background:var(--paper);color:var(--ink);border:1px solid rgba(26,26,24,0.3);padding:clamp(16px,2.2vw,26px);
+  display:grid;gap:12px;align-content:start}
+.form-cap{color:var(--accent-read);padding-bottom:8px;border-bottom:1px solid rgba(26,26,24,0.15)}
+.fg{display:grid;gap:6px}
+.fg label{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.fg input,.fg select,.fg textarea{background:#ebeae6;border:1px solid rgba(26,26,24,0.3);border-radius:var(--r1);
+  padding:11px 12px;font-size:1rem;color:var(--ink);resize:vertical;min-height:44px;width:100%}
+.fg textarea{min-height:96px}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:0;border-color:var(--ink)}
+.con-form .btn{justify-self:start;margin-top:2px}
+
+/* ---------------- footer ---------------- */
+.ft{background:var(--deep);color:var(--deep-ink);padding-block:clamp(26px,3.4vw,44px) 22px}
+.ft-top{display:grid;gap:5px;padding-bottom:clamp(16px,2.2vw,24px)}
+.ft-name{font-family:var(--ff-display);font-weight:var(--fw-display);font-size:clamp(1.15rem,2.4vw,1.6rem);
+  letter-spacing:-.02em}
+.ft-cols{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px clamp(20px,3vw,44px);
+  padding-block:14px;border-top:1px solid rgba(238,237,233,0.2)}
+.ft-nav{display:flex;flex-wrap:wrap;gap:6px clamp(14px,2.4vw,28px)}
+.ft-nav a{font-family:var(--ff-accent);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;color:rgba(238,237,233,0.78)}
+.ft-nav a:hover{color:var(--accent-read)}
+.ft-c{display:flex;flex-wrap:wrap;gap:6px 16px}
+.ft-c a{font-size:.86rem;text-decoration:none;color:rgba(238,237,233,0.86);font-variant-numeric:tabular-nums}
+.ft-c a:hover{color:var(--accent-read)}
+.ft-legal{display:grid;gap:5px;padding-top:14px;border-top:1px solid rgba(238,237,233,0.14)}
+.ft-legal p{font-size:.72rem;line-height:1.55;color:rgba(238,237,233,0.66);max-width:54ch}
+
+/* ---------------- responsive ---------------- */
+@media (max-width:1100px){
+  .spx-set--0{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .spx-set--1{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .seq--1{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gloss{grid-template-columns:minmax(0,240px) minmax(0,1fr)}
+}
+@media (max-width:900px){
+  .has-zone{grid-template-columns:1fr}
+  .rh{margin-bottom:clamp(16px,3vw,22px)}
+  .mast .bar-nav,.mast .deck-row,.mast .mk-cta{display:none}
+  .mast .mk-burger{display:grid}
+  .bar{grid-template-columns:minmax(0,1fr) auto}
+  .op--bench{grid-template-columns:1fr}
+  .op--bench .spec--hero .plate{aspect-ratio:3/2}
+  .abt-in{grid-template-columns:1fr}
+  .abt-plates[data-n="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .qs-list--1{grid-template-columns:1fr;gap:0}
+  .spx-set--2>.spec{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .spx-log>li>.spec{grid-template-columns:1fr}
+  .spx-log .plate{aspect-ratio:3/2}
+  .rec-table,.rec-table tbody,.rec-table tr,.rec-table th,.rec-table td{display:block;width:auto}
+  .rec-table tr{padding-block:clamp(11px,3vw,15px);border-bottom:1px solid rgba(26,26,24,0.15)}
+  .rec-table th,.rec-table td{padding:0;border-bottom:0}
+  .rec-table td:last-child{text-align:left;width:auto}
+  .order-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .seq--2{grid-template-columns:1fr}
+  .spx-set--0,.spx-set--1{grid-template-columns:1fr}
+  .spx-set--0>.spec:first-child{grid-column:auto}
+  .spx-set--0>.spec:first-child .plate{aspect-ratio:3/2}
+  /* a four-column schedule has nowhere to go on a phone, so the rows stack */
+  .sched,.sched tbody,.sched tr,.sched th,.sched td{display:block;width:auto}
+  .sched thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .sched tbody tr{padding-block:clamp(14px,4vw,20px);border-bottom:1px solid rgba(26,26,24,0.15)}
+  .sched tbody th,.sched tbody td{padding:0;border-bottom:0;width:auto}
+  .sched tbody th{margin:2px 0 6px}
+  .sched .sched-ref{width:auto}
+  .sched-spec{padding-right:0!important;margin-top:9px}
+  .sched-spec ul{display:flex;flex-wrap:wrap;gap:4px 14px}
+  .part{grid-template-columns:auto minmax(0,1fr)}
+  .part-leader{display:none}
+  .part-vals{grid-column:2/-1;text-align:left}
+  .gloss{grid-template-columns:1fr}
+  .gloss dt{padding:clamp(13px,3.4vw,18px) 0 5px;border-bottom:0}
+  .gloss dd{padding-top:0}
+  .seq--1{grid-template-columns:1fr}
+  .seq--0 li{grid-template-columns:1fr}
+  .seq--0 li>h3,.seq--0 li>p{grid-column:1}
+}
+@media (max-width:520px){
+  .order-facts{grid-template-columns:1fr}
+  .abt-plates[data-n="2"]{grid-template-columns:1fr}
+  .callouts li{border-right:0;margin-right:0;padding-right:14px}
+}
+
+/* --- drawn plates ----------------------------------------------------- */
+/* The family keeps its frame, its labels and its wash; only the picture
+   inside the frame comes from here. !important is deliberate: this is a
+   build-time override of whatever surface the family had reached for, and
+   several families set the plate's background on a more specific selector
+   than an attribute. */
+[data-photo-slot="hero"]{background-image:url("./assets/plate-hero.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+[data-photo-slot="about"]{background-image:url("./assets/plate-about.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+[data-photo-slot="work"]{background-image:url("./assets/plate-work.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+[data-photo-slot="gallery-0"]{background-image:url("./assets/plate-gallery-0.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+[data-photo-slot="gallery-1"]{background-image:url("./assets/plate-gallery-1.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+[data-photo-slot="gallery-2"]{background-image:url("./assets/plate-gallery-2.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+/* Every family lays a wash over its plate so the caption on it stays legible.
+   Those washes were written when there was nothing underneath them to see --
+   one of them reaches 86% opacity -- and over a real drawing they put the
+   drawing out. Damping the wash keeps the caption readable and lets the
+   picture through, and the contrast gate checks what results. */
+[data-photo-slot]::before{opacity:.62}
+/* A real photograph beats a drawing, every time. */
+[data-has-photo]{background-image:none!important}
+[data-has-photo]::before{opacity:1}
+
+
+/* --- auto-derived: readable tokens on inverted grounds (see deepGroundFix) --- */
+.ft{
+  --muted:var(--muted-deep);
+  --accent-read:var(--accent-read-deep);
+  --hairline:rgba(255,255,255,.18);
+  --hair-strong:rgba(255,255,255,.34);
+}
+.skip,
+.preview-note,
+.btn,
+.mk-cta{
+  --muted:var(--muted-ink);
+  --accent-read:var(--accent-read-ink);
+  --hairline:rgba(255,255,255,.18);
+  --hair-strong:rgba(255,255,255,.34);
+}
+body,
+.idx,
+.con-form{
+  --muted:var(--muted-paper);
+  --accent-read:var(--accent-read-paper);
+  --hairline:var(--hairline-raw);
+  --hair-strong:var(--hair-strong-raw);
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 723" width="1200" height="723" preserveAspectRatio="xMidYMid slice" role="img">
+<defs><linearGradient id="bd3g" x1="62.10%" y1="1.49%" x2="37.90%" y2="98.51%"><stop offset="0%" stop-color="#9a9a96"/><stop offset="34%" stop-color="#6f6e69"/><stop offset="72%" stop-color="#1616NaN"/><stop offset="100%" stop-color="#0f0f0e"/></linearGradient><linearGradient id="fl3i" x1="50.00%" y1="0.00%" x2="50.00%" y2="100.00%"><stop offset="0%" stop-color="#0b0bNaN"/><stop offset="100%" stop-color="#0303NaN"/></linearGradient><linearGradient id="sp3j" x1="0.49%" y1="43.04%" x2="99.51%" y2="56.96%"><stop offset="0%" stop-color="#ffffff" stop-opacity="0"/><stop offset="18%" stop-color="#ffffff" stop-opacity="0.9"/><stop offset="52%" stop-color="#ffffff" stop-opacity="0.55"/><stop offset="100%" stop-color="#ffffff" stop-opacity="0"/></linearGradient><filter id="gr3h" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.2"/></feComponentTransfer>
+  </filter></defs>
+<rect width="1200" height="723" fill="#0f0f0e"/>
+<rect y="520.56" width="1200" height="202.44000000000003" fill="url(#fl3i)"/>
+<path d="M-60 227.745 C 360 175.68900000000002, 792 182.196, 1260 221.238 L1260 552.9451890172251 C 840 574.635189017225, 360 574.635189017225, -60 544.269189017225 Z" fill="url(#bd3g)"/>
+<path d="M564.0000000000001 723 L564.0000000000001 538.485189017225 C 599.2800000000001 408.34518901722504, 1032.72 408.34518901722504, 1068 538.485189017225 L1068 723 Z" fill="#0404NaN"/>
+<path d="M564.0000000000001 538.485189017225 C 599.2800000000001 408.34518901722504, 1032.72 408.34518901722504, 1068 538.485189017225" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2.2"/>
+<path d="M-60 374.2 C 360 352.5, 792 359.8, 1260 348.9" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"/>
+<path d="M-60 379.3 C 360 357.6, 792 364.8, 1260 354.0" fill="none" stroke="#0808NaN" stroke-width="2.4"/>
+<path d="M-60 246.4 C 360 213.9, 792 220.4, 1260 243.2 L1260 262.0 C 792 239.2, 360 232.7, -60 265.2 Z" fill="url(#sp3j)" opacity="0.9"/>
+<path d="M-60 273.3 C 360 240.7, 792 247.3, 1260 270.0 L1260 280.1 C 792 257.4, 360 250.9, -60 283.4 Z" fill="url(#sp3j)" opacity="0.6"/>
+<path d="M-60 437.8 C 360 405.3, 792 411.8, 1260 434.6 L1260 441.1 C 792 418.3, 360 411.8, -60 444.3 Z" fill="url(#sp3j)" opacity="0.32"/>
+<path d="M360.0 201.7 C 396.0 325.4, 342.0 433.8, 384.0 552.9" fill="none" stroke="#0303NaN" stroke-width="4"/>
+<path d="M357.0 201.7 C 393.0 325.4, 339.0 433.8, 381.0 552.9" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="1.3"/>
+<path d="M72 412.11 C 360 368.73, 600 390.42, 888 354.27" fill="none" stroke="rgba(192,189,180,0.75)" stroke-width="2.2" stroke-linecap="round"/>
+<path d="M0 574.635189017225H1200V625.245189017225H0Z" fill="rgba(111,110,105,0.12)"/>
+<rect width="1200" height="723" filter="url(#gr3h)" opacity=".34"/>
+</svg>

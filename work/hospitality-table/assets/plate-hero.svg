@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" width="960" height="1200" preserveAspectRatio="xMidYMid slice" role="img">
+<defs><radialGradient id="bg3q" cx="30%" cy="26%" r="86%"><stop offset="0%" stop-color="#fdfbf9"/><stop offset="54%" stop-color="#faf7f1"/><stop offset="100%" stop-color="#d1cac0"/></radialGradient><linearGradient id="fm3r" x1="26.53%" y1="5.85%" x2="73.47%" y2="94.15%"><stop offset="0%" stop-color="#cc32NaN"/><stop offset="36%" stop-color="#7a6b57"/><stop offset="68%" stop-color="#1d1aNaN"/><stop offset="100%" stop-color="#1815NaN"/></linearGradient><radialGradient id="sd3s" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#231f19" stop-opacity="0.4"/><stop offset="100%" stop-color="#231f19" stop-opacity="0"/></radialGradient><filter id="bl3u" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="31.2"/></filter><filter id="gr3t" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1" numOctaves="3" stitchTiles="stitch" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.24"/></feComponentTransfer>
+  </filter></defs>
+<rect width="960" height="1200" fill="url(#bg3q)"/>
+<path d="M0 720.0H960" stroke="rgba(35,31,25,0.08)" stroke-width="1"/>
+<rect y="720.0" width="960" height="480.0" fill="rgba(35,31,25,0.05)"/>
+<ellipse cx="560.8" cy="880.0" rx="543.1" ry="33.6" fill="url(#sd3s)" filter="url(#bl3u)"/>
+<path d="M741.9 336.0 C 740.9 350.4, 745.9 375.6, 735.9 422.4 C 725.8 469.2, 707.7 554.7, 681.5 616.8 C 655.4 678.9, 608.1 751.8, 579.0 795.0 C 549.8 838.2, 518.6 862.5, 506.5 876.0 L253.1 876.0 C 241.0 862.5, 209.8 838.2, 180.7 795.0 C 151.5 751.8, 104.2 678.9, 78.1 616.8 C 51.9 554.7, 33.8 469.2, 23.8 422.4 C 13.7 375.6, 18.7 350.4, 17.7 336.0 Z" fill="url(#fm3r)"/>
+<ellipse cx="379.8" cy="336.0" rx="362.1" ry="86.9" fill="#1210NaN" opacity="0.72"/>
+<path d="M17.7 336.0 A 362.1 86.9 0 0 1 741.9 336.0" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="1.6"/>
+<path d="M741.9 336.0 C 740.9 350.4, 745.9 375.6, 735.9 422.4 C 725.8 469.2, 707.7 554.7, 681.5 616.8 C 655.4 678.9, 608.1 751.8, 579.0 795.0 C 549.8 838.2, 518.6 862.5, 506.5 876.0" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round"/>
+<rect width="960" height="1200" filter="url(#gr3t)" opacity=".4"/>
+</svg>

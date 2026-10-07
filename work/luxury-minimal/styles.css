@@ -1,0 +1,681 @@
+@layer measure, tap;
+
+/* A plate the build filled with a real photograph. The family's own container
+   keeps its size, its corners and any mask it applies; the picture is sized to
+   fill that box rather than the box being resized to the picture, so placing a
+   photograph never changes the composition. In its own layer so a family that
+   wants different behaviour simply wins. */
+
+
+@font-face{font-family:"Playfair Display Variable";src:url("./fonts/playfair-display-latin-wght-normal.woff2") format("woff2");font-weight:400 900;font-style:normal;font-display:swap;}
+@font-face{font-family:"DM Sans Variable";src:url("./fonts/dm-sans-latin-standard-normal.woff2") format("woff2");font-weight:100 1000;font-style:normal;font-display:swap;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body,h1,h2,h3,h4,p,figure,blockquote,dl,dd,ul,ol{margin:0}
+ul[class],ol[class]{list-style:none;padding:0}
+img,svg,video{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+a{color:inherit}
+
+:root{
+  --ink:#1a1a18;
+  --paper:#f5f4f0;
+  --deep:#141413;
+  --deep-ink:#eeede9;
+  --accent:#1a1a18;
+  --accent-ink:#f5f4f0;
+  --accent-ink-raw:#f5f4f0;
+  --muted:#63625e;
+  --muted-deep:#81807b;
+  --muted-ink:#868681;
+  --muted-tint:#63625e;
+  --muted-raw:#767570;
+  --accent-read:#1a1a18;
+  --accent-read-deep:#7f7f7e;
+  --accent-read-ink:#888887;
+  --hairline:rgba(26,26,24,.13);
+  --hair-strong:rgba(26,26,24,0.34);
+  /* The paper values again under stable names, so a light card nested in a dark
+     section can put back what it inherited (see deepGroundFix). */
+  --muted-paper:#63625e;
+  --accent-read-paper:#1a1a18;
+  --hairline-raw:rgba(26,26,24,.13);
+  --hair-strong-raw:rgba(26,26,24,0.34);
+  --tint-1:#ebeae6;
+  --tint-2:#e1e0dd;
+  --deep-tint:#252524;
+  --accent-soft:rgba(26,26,24,0.14);
+
+  --ff-display:"Playfair Display Variable", Georgia, "Times New Roman", serif;
+  --ff-body:"DM Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-accent:"DM Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fw-display:500;
+  --fw-body:400;
+  --tr-display:-0.025em;
+  --measure:68ch;
+  --measure-cap:74ch;
+
+  --fs--2: clamp(0.610rem, 0.500rem + 0.00vw, 0.610rem);
+  --fs--1: clamp(0.805rem, 0.660rem + 0.00vw, 0.805rem);
+  --fs-0: clamp(1.063rem, 0.871rem + 0.00vw, 1.063rem);
+  --fs-1: clamp(1.178rem, 0.966rem + 0.62vw, 1.403rem);
+  --fs-2: clamp(1.259rem, 1.032rem + 1.24vw, 1.851rem);
+  --fs-3: clamp(1.417rem, 1.162rem + 1.86vw, 2.444rem);
+  --fs-4: clamp(1.871rem, 1.534rem + 2.48vw, 3.226rem);
+  --fs-5: clamp(2.470rem, 2.025rem + 3.10vw, 4.258rem);
+  --fs-6: clamp(3.260rem, 2.673rem + 3.72vw, 5.620rem);
+  --fs-7: clamp(4.303rem, 3.528rem + 4.34vw, 7.419rem);
+
+  --u:10px;
+  --gap:calc(var(--u) * 3);
+  --section-y-base:clamp(4.2rem, 7.6vw + 1.5rem, 8.4rem);
+  --section-y:var(--section-y-base);
+  --page:1240px;
+  --gutter:clamp(18px, 4.2vw, 46px);
+  --r1:0px;--r2:0px;--r3:0px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur:.45s;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--ff-body);
+  font-weight:var(--fw-body);
+  font-size:var(--fs-0);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--ff-display);
+  font-weight:var(--fw-display);
+  letter-spacing:var(--tr-display);
+  line-height:1.02;
+  
+  text-wrap:balance;
+}
+p{text-wrap:pretty}
+
+.shell{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter)}
+.wide{width:100%;max-width:calc(var(--page) + 200px);margin-inline:auto;padding-inline:var(--gutter)}
+.measure{max-width:var(--measure)}
+
+.eyebrow{
+  font-family:var(--ff-accent);
+  font-size:var(--fs--2);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+
+.ic{flex:none}
+
+/* focus that is visible on both paper and deep surfaces */
+:where(a,button,[tabindex]):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:999;
+  background:var(--ink);color:var(--paper);padding:12px 18px;
+}
+.skip:focus{left:8px;top:8px}
+
+/* --- motion: opt-in, reveal-on-scroll, fully disabled when asked --- */
+[data-reveal]{opacity:0;transform:translateY(16px)}
+[data-reveal].is-in{opacity:1;transform:none;transition:opacity var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)}
+[data-reveal][data-reveal-delay="1"].is-in{transition-delay:.07s}
+[data-reveal][data-reveal-delay="2"].is-in{transition-delay:.14s}
+[data-reveal][data-reveal-delay="3"].is-in{transition-delay:.21s}
+[data-reveal][data-reveal-delay="4"].is-in{transition-delay:.28s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* --- measure: no line of running text may run to 200 characters ---
+   Paragraphs only. li and dd are layout containers as often as they are prose
+   — capping them collapsed three section grids to 60% of the page the first
+   time this shipped — so they are left to the family that laid them out. */
+@layer measure{
+  p,.demo-form output{max-width:min(100%,var(--measure-cap))}
+}
+
+/* --- tap targets ---
+   Touch-sized hit areas for navigation furniture, up to 900px — a tablet is a
+   touch device even though it is not a phone. Declared in the lowest
+   cascade layer on purpose: a family's own responsive rules are unlayered, so
+   its display:none at mobile still wins and the kit can never resurrect a
+   control the family deliberately hid. */
+@layer tap{
+  @media (max-width:900px){
+    :where(header,nav,footer,[data-menu],[data-navbar],[data-sbar]) :is(a[href],button,summary,[role="button"]){
+      min-height:44px;
+      min-width:2.75rem;
+      display:inline-flex;
+      align-items:center;
+    }
+    :where(header,nav,footer,[data-menu],[data-navbar],[data-sbar]) :is(a[href],button):has(>svg){
+      min-width:44px;
+      justify-content:center;
+    }
+    /* A phone number or email address is a primary action wherever it sits,
+       so it earns a full hit area even outside the navigation. */
+    :is(a[href^="tel:"],a[href^="mailto:"]):not(:where(p,dd) *){
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+    }
+  }
+}
+
+/* --- preview banner: every prospect site must say what it is --- */
+.preview-note{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--ff-accent);font-size:12px;line-height:1.45;
+  letter-spacing:.02em;
+  padding:10px var(--gutter);
+  display:flex;gap:10px;align-items:baseline;justify-content:center;
+  text-align:center;flex-wrap:wrap;
+  position:relative;z-index:60;
+}
+.preview-note b{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:11px}
+.preview-note span{opacity:.82;max-width:54ch}
+
+/* --- demo-safe forms: nothing is collected or sent --- */
+.demo-form output{display:block;font-size:var(--fs--1);color:var(--muted);margin-top:calc(var(--u)*1.5)}
+.demo-form output:empty{display:none}
+
+.hours-tbl{border-collapse:collapse;margin:clamp(20px,2.4vw,30px) 0 0;min-width:min(100%,264px);
+  font-variant-numeric:tabular-nums;text-align:left;color:inherit}
+.hours-tbl caption{text-align:left;font-family:var(--ff-accent);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;padding-bottom:9px;color:inherit}
+.hours-tbl th{text-align:left;font-weight:400;font-family:var(--ff-accent);font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;padding:8px 26px 8px 0;white-space:nowrap;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent);color:inherit}
+.hours-tbl td{text-align:right;font-size:.9rem;padding:8px 0;color:inherit;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent)}
+
+
+/* ============ LUXURY MINIMAL ============ */
+
+body{background:var(--paper);color:var(--ink)}
+::selection{background:rgba(26,26,24,0.88);color:var(--paper)}
+/* the kit caps running text at 74ch; these list items are structural, not prose */
+.svc-list>li,.proc-list>li,.led-row>dd,.hero-ix>li,.svc-spread>*{max-width:none}
+
+/* --- corner mark header: no nav bar at any width --- */
+.hd{position:sticky;top:0;z-index:70;background:var(--paper);transition:box-shadow .4s var(--ease)}
+.hd.is-stuck{box-shadow:0 1px 0 rgba(26,26,24,0.14)}
+.hd-in{max-width:calc(var(--page) + 140px);margin-inline:auto;padding:0 var(--gutter);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px}
+.hd .mark{display:grid;gap:3px;text-decoration:none;padding:10px 0}
+.mark-name{font-family:var(--ff-display);font-size:1.02rem;letter-spacing:.01em;line-height:1.1}
+.mark-sub{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,26,24,0.62)}
+.hd .hd-mark{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 0 0 10px;margin-right:-4px}
+.hd-mark-label{font-family:var(--ff-accent);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#535350}
+.hd-mark-label::before{content:"Index"}
+.hd-mark[aria-expanded="true"] .hd-mark-label::before{content:"Close"}
+.hd-mark-bars{display:grid;gap:5px;width:26px}
+.hd-mark-bars i{display:block;height:1.5px;background:var(--ink);transition:transform .35s var(--ease)}
+.hd-mark[aria-expanded="true"] .hd-mark-bars i:first-child{transform:translateY(3.25px) rotate(45deg)}
+.hd-mark[aria-expanded="true"] .hd-mark-bars i:last-child{transform:translateY(-3.25px) rotate(-45deg)}
+.hd-mark:hover .hd-mark-bars i:first-child{transform:translateX(-4px)}
+
+/* setting 2 — a ruled colophon line above the mark, the way a title page
+   carries its imprint; the bar below then holds nothing but name and place */
+.hd--line .hd-rule{max-width:calc(var(--page) + 140px);margin-inline:auto;padding:9px var(--gutter) 8px;
+  display:grid;grid-template-columns:auto minmax(24px,1fr) auto;align-items:center;gap:16px;
+  font-family:var(--ff-accent);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#535350}
+.hd--line .hd-rule-m{height:1px;background:rgba(26,26,24,0.14)}
+.hd--line .hd-rule-r{color:var(--ink);text-decoration:none}
+.hd--line .hd-rule-r:hover{color:#535350}
+.hd-in--wide{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;
+  min-height:68px;padding-top:6px;padding-bottom:16px;border-top:1px solid rgba(26,26,24,0.14)}
+.hd--line .mark--lg{padding:0}
+.hd--line .mark--lg .mark-name{font-size:clamp(1.15rem,2.1vw,1.6rem);letter-spacing:-.015em}
+.hd-place{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(26,26,24,0.62);justify-self:start;padding-left:clamp(12px,2vw,28px)}
+
+/* setting 3 — mirrored: the index sits at the left margin, the name hangs on
+   the right, and the whole bar reads right to left */
+.hd--right{text-align:right}
+.hd-in--right{display:grid;grid-template-columns:auto auto;justify-content:space-between;align-items:center;
+  min-height:80px;border-bottom:1px solid rgba(26,26,24,0.14)}
+.hd--right .mark--right{justify-items:end}
+.hd--right .mark--right .mark-name{font-size:clamp(1.05rem,1.9vw,1.4rem)}
+.hd--right .hd-mark{padding:0 10px 0 0;margin-left:-4px;flex-direction:row-reverse}
+.hd--right .hd-mark:hover .hd-mark-bars i:first-child{transform:translateX(4px)}
+
+.index{position:fixed;inset:0;z-index:60;background:var(--ink);color:var(--paper);
+  display:none;flex-direction:column;justify-content:space-between;
+  padding:calc(86px + clamp(34px,8vh,110px)) var(--gutter) clamp(30px,6vh,60px)}
+.index[data-open]{display:flex}
+.index-nav{display:grid;max-width:calc(var(--page) + 140px);width:100%;margin-inline:auto}
+.index .index-nav a{display:grid;grid-template-columns:52px 1fr;align-items:baseline;gap:8px;
+  padding:clamp(12px,2.2vh,22px) 0;text-decoration:none;border-bottom:1px solid rgba(245,244,240,0.14)}
+.index .index-nav a:first-child{border-top:1px solid rgba(245,244,240,0.14)}
+.index-nav a em{font-family:var(--ff-accent);font-style:normal;font-size:10px;letter-spacing:.18em;color:rgba(245,244,240,0.49)}
+.index-nav a span{font-family:var(--ff-display);font-size:clamp(1.5rem,5.2vw,2.9rem);line-height:1.06;
+  letter-spacing:-.01em;transition:transform .35s var(--ease-out);display:inline-block}
+.index-nav a:hover span{transform:translateX(12px)}
+.index-foot{max-width:calc(var(--page) + 140px);width:100%;margin-inline:auto;
+  display:flex;flex-wrap:wrap;gap:8px 28px;padding-top:24px}
+.index-foot a,.index-foot span{font-family:var(--ff-accent);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(245,244,240,0.68);text-decoration:none;
+  min-width:0;overflow-wrap:anywhere}
+.index-foot a:hover{color:var(--paper)}
+
+/* --- hero, setting 1: the full page --- */
+.hero{position:relative;border-bottom:1px solid rgba(26,26,24,0.14)}
+.hero--full{overflow:hidden}
+.hero-rules{position:absolute;inset:0;max-width:calc(var(--page) + 140px);margin-inline:auto;padding:0 var(--gutter);
+  display:grid;grid-template-columns:repeat(3,1fr);pointer-events:none}
+.hero-rules i{border-right:1px solid rgba(26,26,24,0.07)}
+.hero-rules i:last-child{border-right:0}
+.hero-in{position:relative;max-width:calc(var(--page) + 140px);margin-inline:auto;padding:clamp(26px,4vh,46px) var(--gutter) clamp(44px,7vh,80px);
+  min-height:min(calc(100svh - 76px),1000px);display:grid;grid-template-rows:auto 1fr auto;gap:clamp(24px,4vh,48px)}
+/* Not just a lower floor: the free row is what holds the statement down
+   against the foot, and with nothing in the page to hold it against it is
+   simply a gap. A thin opening drops the row, keeps the air as deliberate
+   spacing between three things, and lets the section under it come up. */
+.hero--short .hero-in{min-height:0;grid-template-rows:auto auto auto;
+  gap:clamp(30px,6vh,72px);padding-bottom:clamp(40px,6vh,72px)}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap}
+.hero-eyebrow{font-family:var(--ff-accent);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#535350;padding-top:4px}
+.hero-meta{display:flex;gap:clamp(20px,3vw,46px);margin:0;flex-wrap:wrap}
+.hero-meta dt{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,26,24,0.62);margin-bottom:6px}
+.hero-meta dd{margin:0;font-size:.86rem;color:#535350;max-width:26ch}
+/* Anchored to the foot, not centred in the free row: centring split the air
+   into a gap above the statement and a second gap under it, and two gaps read
+   as a page with nothing on it. Held down against the lead and the actions,
+   the air becomes one field, which is what the three rules are drawn for. */
+.hero-h{align-self:end;overflow-wrap:break-word;
+  font-size:clamp(2.6rem,8.4vw,7.2rem);line-height:.94;letter-spacing:-.025em;
+  max-width:14ch;margin:0;text-wrap:balance}
+.hero-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(20px,4vw,60px);align-items:end;
+  border-top:1px solid rgba(26,26,24,0.14);padding-top:clamp(20px,3vh,34px)}
+.hero-lead{font-size:var(--fs-0);line-height:1.6;color:#535350;max-width:52ch}
+.hero-act{display:flex;align-items:center;gap:clamp(16px,2.4vw,30px);flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);
+  padding:16px 28px;font-family:var(--ff-accent);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;min-height:48px;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.btn:hover{opacity:.84;transform:translateY(-1px)}
+.btn--inv{background:var(--paper);color:var(--ink);justify-content:center}
+.link{font-size:.95rem;text-decoration:none;padding:12px 0;border-bottom:1px solid rgba(26,26,24,0.26);transition:border-color .3s var(--ease)}
+.link:hover{border-bottom-color:var(--ink)}
+.cue{position:absolute;right:calc(var(--gutter) - 6px);top:50%;transform:translateY(-50%);
+  display:grid;justify-items:center;gap:12px;text-decoration:none;min-height:44px;min-width:44px;z-index:2}
+.cue-label{font-family:var(--ff-accent);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:rgba(26,26,24,0.62);
+  writing-mode:vertical-rl}
+.cue-line{width:1px;height:42px;background:rgba(26,26,24,0.26);position:relative;overflow:hidden}
+.cue-line::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:var(--ink);
+  animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{top:-100%}60%{top:100%}100%{top:100%}}
+
+/* --- hero, setting 2: the title page ---
+   Not the whole viewport: the page states itself, prints its standing facts
+   along the foot, and stops. */
+.hero--title{max-width:calc(var(--page) + 140px);margin-inline:auto;padding:clamp(30px,5vh,62px) var(--gutter) clamp(26px,4vh,44px);
+  display:grid;align-content:start;gap:clamp(18px,2.6vh,30px);border-bottom:1px solid rgba(26,26,24,0.14)}
+.hero-h--title{align-self:start;font-size:clamp(2.1rem,5.4vw,4.4rem);line-height:1.0;letter-spacing:-.03em;max-width:17ch}
+.hero-under{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(18px,3.4vw,54px);align-items:end;
+  border-top:1px solid rgba(26,26,24,0.14);padding-top:clamp(16px,2.4vh,26px)}
+.hero--title .hero-led{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,30px);margin:0;
+  border-top:1px solid rgba(26,26,24,0.14);padding-top:clamp(14px,2vh,22px)}
+.hero-led dt{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,26,24,0.62);margin-bottom:7px}
+.hero-led dd{margin:0;font-size:.9rem;line-height:1.5;color:#535350;min-width:0;overflow-wrap:anywhere}
+
+/* --- hero, setting 3: the plate ---
+   The statement on the left, a tall drawn frame on the right, the service
+   index hanging under the copy because the ledger itself comes late. */
+.hero--plate{padding:0;border-bottom:1px solid rgba(26,26,24,0.14);display:grid}
+.hero-split{max-width:calc(var(--page) + 140px);margin-inline:auto;padding:clamp(28px,5vh,58px) var(--gutter) clamp(34px,5vh,64px);
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.58fr);gap:clamp(24px,4vw,72px);align-items:start}
+.hero-col{display:grid;gap:clamp(16px,2.4vh,28px);align-content:start}
+.hero-h--plate{align-self:start;font-size:clamp(2.2rem,6vw,5.6rem);line-height:.96;letter-spacing:-.03em;max-width:12ch}
+.hero--plate .hero-ix{list-style:none;margin:clamp(8px,1.6vh,18px) 0 0;padding:0;
+  border-top:1px solid rgba(26,26,24,0.14);display:grid}
+.hero--plate .hero-ix li{padding:11px 0;border-bottom:1px solid rgba(26,26,24,0.14);font-size:.92rem;color:#535350}
+.hero-aside{display:grid;gap:12px}
+.hero-plate{position:relative;overflow:hidden;aspect-ratio:3/4;display:grid;align-content:end;
+  padding:clamp(18px,2.4vw,30px);color:var(--deep-ink);
+  background:#141413 url("./assets/plate.svg") center/cover no-repeat}
+.hero-plate::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(200deg,rgba(20,20,19,0.22) 0%,rgba(20,20,19,0.86) 74%)}
+.hero-plate>*{position:relative}
+.hp-frame{position:absolute;inset:clamp(12px,1.6vw,20px);border:1px solid rgba(238,237,233,0.24);z-index:1}
+.hp-word{position:absolute;top:clamp(26px,3vw,44px);right:clamp(24px,3vw,40px);z-index:1;
+  writing-mode:vertical-rl;font-family:var(--ff-display);font-size:clamp(1rem,1.7vw,1.5rem);
+  letter-spacing:.06em;color:rgba(238,237,233,0.5);max-height:62%;overflow:hidden}
+.hp-ix{position:relative;z-index:2;font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:rgba(238,237,233,0.78)}
+.hero-note{font-family:var(--ff-accent);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,26,24,0.62)}
+
+/* --- section heads: hanging index over a hairline --- */
+.sec{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:clamp(18px,3vw,44px);row-gap:10px;
+  align-items:baseline;border-top:1px solid rgba(26,26,24,0.14);padding-block:clamp(22px,2.6vw,34px) clamp(28px,3.4vw,54px);
+  margin-top:var(--section-y)}
+.sec-ix{font-family:var(--ff-accent);font-size:10px;letter-spacing:.2em;color:rgba(26,26,24,0.62)}
+.sec-h{font-size:clamp(1.35rem,2.4vw,2rem);letter-spacing:-.01em;font-weight:var(--fw-display);line-height:1}
+.sec-note{grid-column:2;font-family:var(--ff-accent);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,26,24,0.62)}
+
+/* --- services, setting 1: ledger rows --- */
+.svc-list{list-style:none;padding:0;margin:0}
+.svc-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,31ch);gap:clamp(18px,3.4vw,52px);
+  align-items:baseline;padding-block:clamp(26px,3.4vw,50px);border-top:1px solid rgba(26,26,24,0.14)}
+.svc-row:last-child{border-bottom:1px solid rgba(26,26,24,0.14)}
+.svc-name{font-size:clamp(1.7rem,4.6vw,3.5rem);line-height:1.0;letter-spacing:-.028em;
+  transition:transform .45s var(--ease-out)}
+.svc-row:hover .svc-name{transform:translateX(clamp(6px,1vw,14px))}
+.svc-note p{color:#535350;font-size:.96rem;line-height:1.62;max-width:40ch}
+.svc-tags{margin-top:12px;font-family:var(--ff-accent);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:rgba(26,26,24,0.62)!important}
+
+/* --- services, setting 2: the ruled schedule ---
+   A fee schedule is a table in print and a table here: the same three columns
+   read across every row, so nothing is a heading pretending to be data. */
+.svc-sched{width:100%;border-collapse:collapse;table-layout:fixed}
+.svc-sched thead th{text-align:left;font-family:var(--ff-accent);font-weight:600;font-size:9.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(26,26,24,0.62);
+  padding:0 clamp(14px,2.4vw,40px) 14px 0;border-bottom:1px solid rgba(26,26,24,0.26);vertical-align:bottom}
+.svc-sched thead th:last-child{padding-right:0}
+.svc-sched tbody th{text-align:left;font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.15rem,2.4vw,1.85rem);line-height:1.1;letter-spacing:-.02em;vertical-align:top;
+  padding:clamp(20px,2.6vw,34px) clamp(14px,2.4vw,40px) clamp(20px,2.6vw,34px) 0;border-bottom:1px solid rgba(26,26,24,0.14)}
+.svc-sched tbody td{vertical-align:top;color:#535350;font-size:.95rem;line-height:1.6;
+  padding:clamp(22px,2.6vw,36px) clamp(14px,2.4vw,40px) clamp(20px,2.6vw,34px) 0;border-bottom:1px solid rgba(26,26,24,0.14)}
+.svc-sched tbody td:last-child{padding-right:0}
+.svc-sched .svc-inc{font-family:var(--ff-accent);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(26,26,24,0.62)}
+.svc-sched colgroup,.svc-sched col{border:0}
+.svc-sched tbody th{width:30%}
+.svc-sched tbody td:first-of-type{width:44%}
+
+/* --- services, setting 3: full-width spreads ---
+   Each line of work gets a page of its own: the name runs the measure, the
+   note hangs in the outer third under it. */
+.svc-spread{display:grid}
+.svc-page{border-top:1px solid rgba(26,26,24,0.14);padding-block:clamp(24px,3.2vw,46px) clamp(26px,3.6vw,54px);
+  display:grid;gap:clamp(16px,2.4vw,34px)}
+.svc-page:last-child{border-bottom:1px solid rgba(26,26,24,0.14)}
+.svc-page-top{display:grid;grid-template-columns:auto minmax(0,42ch);justify-content:space-between;
+  gap:clamp(16px,3vw,48px);align-items:start}
+.svc-page-ix{font-family:var(--ff-accent);font-size:10px;letter-spacing:.24em;color:rgba(26,26,24,0.62);padding-top:3px}
+.svc-page-h{font-size:clamp(2rem,6.4vw,4.6rem);line-height:.98;letter-spacing:-.035em;max-width:none}
+.svc-page-note{min-width:0}
+.svc-page-note p{color:#535350;font-size:.96rem;line-height:1.62}
+
+/* --- practice: offset statement --- */
+.man{padding-block:0}
+.man-in{display:grid;grid-template-columns:minmax(0,.42fr) minmax(0,1fr);column-gap:clamp(18px,3vw,44px);
+  border-top:1px solid rgba(26,26,24,0.14);padding-block:clamp(22px,2.6vw,34px) 0;margin-top:var(--section-y)}
+.man-label{font-family:var(--ff-accent);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(26,26,24,0.62);
+  padding-top:.9em;display:flex;gap:clamp(12px,2vw,26px)}
+.man-ix{color:rgba(26,26,24,0.62)}
+.man-body{justify-self:start;width:100%;max-width:none}
+/* measured in the display face's own ch, so a wide sans is not squeezed into
+   the column a narrow serif wants */
+.man-p{font-family:var(--ff-display);font-weight:var(--fw-display);font-size:clamp(1.45rem,3.6vw,2.85rem);
+  line-height:1.2;letter-spacing:-.025em;max-width:17ch}
+.man-p + .man-p{margin-top:.7em}
+
+/* --- process: ghost numerals --- */
+.proc-list{list-style:none;padding:0;margin:0}
+.proc-in{display:grid;grid-template-columns:minmax(0,.4fr) minmax(0,1.6fr);gap:clamp(12px,3vw,46px);
+  align-items:start;padding-block:clamp(24px,3vw,46px);border-top:1px solid rgba(26,26,24,0.14)}
+.proc-step:last-child .proc-in{border-bottom:1px solid rgba(26,26,24,0.14)}
+.proc-no{font-family:var(--ff-display);font-size:clamp(3rem,9vw,7rem);line-height:.78;letter-spacing:-.05em;
+  color:rgba(26,26,24,0.61)}
+.proc-body{padding-top:clamp(4px,1vw,14px)}
+.proc-body h3{font-size:clamp(1.15rem,2.2vw,1.6rem);letter-spacing:-.015em}
+.proc-body p{margin-top:12px;color:#535350;line-height:1.65;max-width:52ch}
+
+/* --- credentials: dot-leader ledger --- */
+.led{margin:0;display:grid}
+.led-row{display:grid;grid-template-columns:auto minmax(24px,1fr) auto;align-items:baseline;gap:12px;
+  padding-block:16px;border-top:1px solid rgba(26,26,24,0.14)}
+.led-row:last-child{border-bottom:1px solid rgba(26,26,24,0.14)}
+.led dt{font-family:var(--ff-accent);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#535350}
+.led-dots{border-bottom:1px dotted rgba(26,26,24,0.26);transform:translateY(-3px)}
+.led dd{margin:0;font-family:var(--ff-display);font-size:clamp(1rem,1.8vw,1.35rem);letter-spacing:-.01em;text-align:right}
+.led-src{margin-top:16px;font-size:.78rem;color:rgba(26,26,24,0.62);font-style:italic}
+
+/* --- the ink band: one section mid-page turns the page over ---
+   Which section that is moves with the setting, and is always one the business
+   has copy for, so a practice with no written process never gets a blank band. */
+[data-ground="deep"]{background:var(--ink);color:var(--paper)}
+[data-ground="deep"] .sec{margin-top:0;border-top-color:transparent;padding-top:clamp(40px,5.4vw,84px)}
+[data-ground="deep"] .sec-ix,[data-ground="deep"] .sec-note{color:rgba(245,244,240,0.64)}
+.man[data-ground="deep"]{margin-top:var(--section-y);padding-block:clamp(44px,6vw,96px)}
+.man[data-ground="deep"] .man-in{border-top:0;margin-top:0;padding-block:0}
+.man[data-ground="deep"] .man-label,.man[data-ground="deep"] .man-ix{color:rgba(245,244,240,0.64)}
+.proc[data-ground="deep"]{margin-top:var(--section-y);padding-bottom:clamp(44px,6vw,96px)}
+.proc[data-ground="deep"] .proc-in{border-top-color:rgba(245,244,240,0.48)}
+.proc[data-ground="deep"] .proc-step:last-child .proc-in{border-bottom-color:rgba(245,244,240,0.48)}
+.proc[data-ground="deep"] .proc-no{color:rgba(245,244,240,0.48)}
+.proc[data-ground="deep"] .proc-body p{color:rgba(245,244,240,0.86)}
+.cred[data-ground="deep"]{margin-top:var(--section-y);padding-bottom:clamp(44px,6vw,96px)}
+.cred[data-ground="deep"] .led-row{border-top-color:rgba(245,244,240,0.48)}
+.cred[data-ground="deep"] .led-row:last-child{border-bottom-color:rgba(245,244,240,0.48)}
+.cred[data-ground="deep"] .led dt{color:rgba(245,244,240,0.86)}
+.cred[data-ground="deep"] .led-dots{border-bottom-color:rgba(245,244,240,0.48)}
+.cred[data-ground="deep"] .led-src{color:rgba(245,244,240,0.64)}
+.svc[data-ground="deep"]{margin-top:var(--section-y);padding-bottom:clamp(44px,6vw,96px)}
+.svc[data-ground="deep"] .svc-row,.svc[data-ground="deep"] .svc-page{border-top-color:rgba(245,244,240,0.48)}
+.svc[data-ground="deep"] .svc-row:last-child,.svc[data-ground="deep"] .svc-page:last-child{border-bottom-color:rgba(245,244,240,0.48)}
+.svc[data-ground="deep"] .svc-note p,.svc[data-ground="deep"] .svc-page-note p{color:rgba(245,244,240,0.86)}
+.svc[data-ground="deep"] .svc-page-ix,.svc[data-ground="deep"] .svc-tags{color:rgba(245,244,240,0.64)!important}
+.svc[data-ground="deep"] .svc-sched thead th{color:rgba(245,244,240,0.64);border-bottom-color:rgba(245,244,240,0.48)}
+.svc[data-ground="deep"] .svc-sched tbody th,.svc[data-ground="deep"] .svc-sched tbody td{border-bottom-color:rgba(245,244,240,0.48)}
+.svc[data-ground="deep"] .svc-sched tbody td{color:rgba(245,244,240,0.86)}
+.svc[data-ground="deep"] .svc-sched .svc-inc{color:rgba(245,244,240,0.64)}
+
+/* --- selected work: full-bleed plates (designed, not photographic) --- */
+.proj-stack{display:grid;gap:clamp(30px,4vw,58px)}
+.proj-item{display:grid}
+.proj-plate{position:relative;overflow:hidden;aspect-ratio:21/8;display:grid;align-content:end;
+  padding:clamp(24px,4vw,58px);color:var(--deep-ink);
+  background:#141413 url("./assets/engrave.svg") center/cover no-repeat}
+.proj-plate::before{content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(20,20,19,0.88) 0%,rgba(20,20,19,0.3) 58%,rgba(20,20,19,0.74) 100%)}
+.proj-plate>*{position:relative}
+.proj-plate[data-tex="1"]{background-image:url("./assets/rule.svg")}
+.proj-plate[data-tex="2"]{background-image:url("./assets/drift.svg")}
+.pp-frame{position:absolute;inset:clamp(14px,2vw,26px);border:1px solid rgba(238,237,233,0.2);z-index:1}
+.pp-ghost{position:absolute;top:clamp(20px,3vw,44px);right:clamp(26px,4vw,58px);z-index:1;
+  font-family:var(--ff-display);font-size:clamp(3rem,9vw,7.5rem);line-height:.74;letter-spacing:-.05em;
+  color:rgba(238,237,233,0.5)}
+.pp-copy{position:relative;z-index:2;display:grid;gap:12px;max-width:26ch}
+.pp-ix{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(238,237,233,0.7)}
+.pp-title{font-size:clamp(1.5rem,4.2vw,3.2rem);line-height:1.02;letter-spacing:-.03em}
+.pp-tags{font-family:var(--ff-accent);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(238,237,233,0.78)}
+.proj-cap{max-width:calc(var(--page) + 140px);width:100%;margin-inline:auto;padding:14px var(--gutter) 0;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px clamp(20px,4vw,60px);align-items:baseline}
+.proj-cap-l{display:grid;gap:6px}
+.proj-loc{font-family:var(--ff-display);font-size:1.15rem;letter-spacing:-.01em}
+.proj-sum{color:#535350;font-size:.92rem;max-width:48ch}
+.proj-slot{display:inline-flex;align-items:center;gap:8px;font-family:var(--ff-accent);font-size:9px;
+  letter-spacing:.16em;text-transform:uppercase;color:rgba(26,26,24,0.62);justify-self:end;text-align:right}
+.proj-note{margin-top:clamp(18px,2.4vw,30px);font-size:.78rem;font-style:italic;color:rgba(26,26,24,0.62);max-width:54ch}
+
+/* --- questions: endnotes, no accordion --- */
+/* The questions hang off their heading rather than sitting under it. Every
+   other section on this page is one measure stacked under its head, and five
+   of those in a row is the monotony the composition check is for — restraint
+   is meant to be quiet, not identical. The head keeps its own narrow track and
+   the notes take the rest. */
+/* Two defects lived in this row. The head's track was minmax(0,.26fr), which
+   is free to shrink below the width of the word "Questions" -- the heading
+   then overflowed its cell and rendered on top of an answer. And .sec carries
+   the section's top margin, which inside this grid pushed the head a whole
+   section's gap below the notes it belongs to. The spacing moves to the row,
+   and the track is allowed to hold its own content. */
+.faq-in{display:grid;grid-template-columns:minmax(auto,.3fr) repeat(2,minmax(0,1fr));
+  column-gap:clamp(20px,3.2vw,52px);row-gap:clamp(14px,2vw,24px);align-items:start;
+  padding-top:var(--section-y)}
+/* .sec's own second track is minmax(0,1fr), so its min-content width is the
+   index alone, so the outer track resolves far narrower than the heading.
+   The heading's track has to refuse to shrink below the word it holds. */
+.faq-in>.sec{grid-column:1;margin-bottom:0;margin-top:0;grid-template-columns:auto minmax(min-content,1fr)}
+.faq-in>.faq-cols{grid-column:2 / -1;min-width:0}
+.faq-cols{columns:2;column-gap:clamp(32px,5vw,86px)}
+.faq-note{break-inside:avoid;-webkit-column-break-inside:avoid;border-top:1px solid rgba(26,26,24,0.14);
+  padding-top:16px;margin-bottom:clamp(26px,3vw,44px)}
+.faq-note h3{font-size:clamp(1.02rem,1.8vw,1.28rem);line-height:1.26;letter-spacing:-.01em;max-width:30ch}
+.faq-note p{margin-top:10px;color:#535350;font-size:.94rem;line-height:1.64}
+
+/* --- contact: the one ink anchor --- */
+.cta{background:var(--ink);color:var(--paper);margin-top:var(--section-y)}
+.cta-in{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(34px,6vw,96px);
+  padding-block:clamp(50px,7vw,104px)}
+.cta-label{font-family:var(--ff-accent);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(245,244,240,0.66)}
+.cta-h{margin-top:18px;font-size:clamp(1.8rem,4.4vw,3.2rem);line-height:1.06;letter-spacing:-.025em;max-width:15ch}
+.cta-tel{display:inline-block;margin-top:clamp(26px,3vw,40px);font-family:var(--ff-display);
+  font-size:clamp(1.5rem,3.4vw,2.4rem);letter-spacing:-.02em;text-decoration:none;
+  border-bottom:1px solid rgba(245,244,240,0.35);padding-bottom:6px;transition:border-color .3s var(--ease)}
+.cta-tel:hover{border-bottom-color:var(--paper)}
+.cta-facts{display:grid;gap:18px;margin:clamp(30px,3.6vw,46px) 0 0}
+.cta-facts dt{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(245,244,240,0.62);margin-bottom:6px}
+.cta-facts dd{margin:0;font-size:.95rem;line-height:1.6;color:rgba(245,244,240,0.88);min-width:0;overflow-wrap:anywhere}
+.cta-facts a{text-decoration:none;border-bottom:1px solid rgba(245,244,240,0.3)}
+.cta-form{display:grid;gap:clamp(18px,2.4vw,28px);align-content:start}
+.ff{display:grid;gap:8px}
+.ff label{font-family:var(--ff-accent);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,244,240,0.58)}
+.ff input,.ff textarea{background:transparent;border:0;border-bottom:1px solid rgba(245,244,240,0.3);
+  padding:10px 0;font-size:1rem;color:var(--paper);border-radius:0;resize:vertical}
+.ff input:focus,.ff textarea:focus{outline:0;border-bottom-color:var(--paper)}
+.cta-form .btn--inv{justify-self:start;margin-top:4px}
+.cta-form output{color:rgba(245,244,240,0.78)}
+
+/* --- footer --- */
+.ft{background:var(--ink);color:var(--paper);padding-bottom:30px}
+.ft-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px clamp(18px,3vw,46px);align-items:center;
+  border-top:1px solid rgba(245,244,240,0.16);padding-block:clamp(26px,3vw,40px)}
+.ft-name{font-family:var(--ff-display);font-size:1.05rem;letter-spacing:.01em}
+.ft-nav{display:flex;flex-wrap:wrap;gap:8px 24px;grid-column:1/-1;justify-content:flex-start;
+  border-top:1px solid rgba(245,244,240,0.1);padding-top:18px}
+.ft-nav a{font-family:var(--ff-accent);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;color:rgba(245,244,240,0.7)}
+.ft-nav a:hover{color:var(--paper)}
+.ft-c{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:flex-end}
+.ft-c a{font-size:.84rem;text-decoration:none;color:rgba(245,244,240,0.72);min-width:0;overflow-wrap:anywhere}
+.ft-c a:hover{color:var(--paper)}
+.ft-legal{display:grid;gap:6px;padding-top:18px;border-top:1px solid rgba(245,244,240,0.1)}
+.ft-legal p{font-size:.7rem;line-height:1.55;color:rgba(245,244,240,0.6);max-width:52ch}
+
+/* ---------------- responsive ---------------- */
+@media (max-width:1024px){
+  .cta-in{grid-template-columns:1fr;gap:38px}
+  .ft-in{grid-template-columns:1fr;gap:18px}
+  .ft-c{justify-content:flex-start}
+  .hero-split{grid-template-columns:minmax(0,1fr) minmax(0,.7fr);gap:clamp(20px,3vw,40px)}
+  .hero--title .hero-led{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}
+}
+@media (max-width:860px){
+  .faq-in{display:block}
+  .faq-cols{columns:1}
+  .svc-row{grid-template-columns:1fr;gap:14px}
+  .svc-note p{max-width:54ch}
+  .svc-page-top{grid-template-columns:1fr;gap:10px}
+  .proc-in{grid-template-columns:1fr;gap:6px}
+  .proc-no{font-size:clamp(2.6rem,12vw,4rem)}
+  .man-in{grid-template-columns:1fr;row-gap:18px}
+  .man-body{justify-self:start}
+  .hero-bottom{grid-template-columns:1fr;gap:22px;align-items:start}
+  .hero-under{grid-template-columns:1fr;gap:20px;align-items:start}
+  .hero-split{grid-template-columns:1fr;gap:28px}
+  .hero-aside{max-width:440px}
+  .proj-cap{grid-template-columns:1fr}
+  .proj-slot{justify-self:start;text-align:left}
+  .pp-ghost{font-size:clamp(2.6rem,14vw,4rem)}
+  .led-row{grid-template-columns:1fr auto;gap:10px}
+  .led-dots{display:none}
+  .hd-in--wide{grid-template-columns:minmax(0,1fr) auto;row-gap:4px;align-items:center}
+  .hd-place{grid-row:2;grid-column:1;padding-left:0}
+  /* a fixed three-column schedule squeezes the treatment name to two letters
+     per line on a phone, so the rows stack and the head goes away */
+  .svc-sched,.svc-sched tbody,.svc-sched tr{display:block;width:100%}
+  .svc-sched thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .svc-sched tbody tr{border-top:1px solid rgba(26,26,24,0.14);padding-block:22px}
+  .svc-sched tbody tr:last-child{border-bottom:1px solid rgba(26,26,24,0.14)}
+  .svc-sched tbody th,.svc-sched tbody td{display:block;width:auto;border:0;padding:0 0 10px}
+  .svc-sched tbody td:last-child{padding-bottom:0}
+}
+@media (max-width:560px){
+  /* A full-page hero is a desktop gesture. On a phone the same rule left about
+     400px of dead air under the statement and pushed the one action below the
+     first screen, which is both the banned empty hero and a page whose point
+     you have to scroll to find. Sized so the action lands on the first screen
+     with the preview ribbon and the masthead above it, and the section after
+     it shows its top edge. */
+  .hero-in{min-height:min(calc(100svh - 300px),620px);gap:clamp(18px,2.6vh,30px);
+    padding-bottom:clamp(30px,4.5vh,52px)}
+  .hero-h{font-size:clamp(2.3rem,11.4vw,3.6rem);max-width:12ch}
+  .hero-h--title{font-size:clamp(2rem,9.6vw,3.2rem)}
+  .hero-h--plate{font-size:clamp(2.1rem,10.4vw,3.4rem)}
+  .hero-meta{gap:20px}
+  .cue{display:none}
+  /* two columns with three rules wrapped to a second row and halved the rule;
+     drop the third so one rule runs the full height */
+  .hero-rules{grid-template-columns:1fr 1fr}
+  .hero-rules i:nth-child(3){display:none}
+  .hero-rules i:nth-child(2){border-right:0}
+  .hero--title .hero-led{grid-template-columns:1fr;row-gap:16px}
+  .proj-plate{aspect-ratio:4/3}
+  .hero-plate{aspect-ratio:4/3}
+  .hp-word{display:none}
+  .led dd{font-size:1rem}
+  .svc-page-h{font-size:clamp(1.8rem,10vw,2.6rem)}
+}
+
+/* --- drawn plates ----------------------------------------------------- */
+/* The family keeps its frame, its labels and its wash; only the picture
+   inside the frame comes from here. !important is deliberate: this is a
+   build-time override of whatever surface the family had reached for, and
+   several families set the plate's background on a more specific selector
+   than an attribute. */
+[data-photo-slot="hero"]{background-image:url("./assets/plate-hero.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+/* Every family lays a wash over its plate so the caption on it stays legible.
+   Those washes were written when there was nothing underneath them to see --
+   one of them reaches 86% opacity -- and over a real drawing they put the
+   drawing out. Damping the wash keeps the caption readable and lets the
+   picture through, and the contrast gate checks what results. */
+[data-photo-slot]::before{opacity:.62}
+/* A real photograph beats a drawing, every time. */
+[data-has-photo]{background-image:none!important}
+[data-has-photo]::before{opacity:1}
+
+
+/* --- auto-derived: readable tokens on inverted grounds (see deepGroundFix) --- */
+.skip,
+.preview-note,
+.index,
+.btn,
+[data-ground="deep"],
+.cta,
+.ft{
+  --muted:var(--muted-ink);
+  --accent-read:var(--accent-read-ink);
+  --hairline:rgba(255,255,255,.18);
+  --hair-strong:rgba(255,255,255,.34);
+}
+body,
+.btn--inv{
+  --muted:var(--muted-paper);
+  --accent-read:var(--accent-read-paper);
+  --hairline:var(--hairline-raw);
+  --hair-strong:var(--hair-strong-raw);
+}
