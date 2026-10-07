@@ -134,7 +134,6 @@
       <p class="claim-out">Want it taken down? Say so and it goes the same day.</p>
     </div>
   </div>
-
   <div class="claim-chat" data-url="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant" data-site="duke-hicks" data-tiers="[{&quot;id&quot;:&quot;launch&quot;,&quot;name&quot;:&quot;Launch&quot;,&quot;price&quot;:&quot;$399&quot;},{&quot;id&quot;:&quot;signature&quot;,&quot;name&quot;:&quot;Signature&quot;,&quot;price&quot;:&quot;$899&quot;},{&quot;id&quot;:&quot;custom&quot;,&quot;name&quot;:&quot;Custom&quot;,&quot;price&quot;:&quot;from $1,899&quot;}]" data-who="Wesley Stum" hidden></div>
   <script>(function(){
   var root = document.querySelector('.claim-chat'); if (!root) return;
@@ -191,14 +190,8 @@
       f.querySelectorAll('[required]').forEach(function(i){ var ok = i.value.trim() && (i.type !== 'email' || /.+@.+\..+/.test(i.value)); i.setAttribute('aria-invalid', ok ? 'false' : 'true'); if (!ok && !bad) bad = i; });
       if (bad) { err.hidden = false; err.textContent = 'A detail is missing.'; bad.focus(); return; }
       go.disabled = true; err.hidden = true;
-      onSend().then(function(j){
-        card.remove(); card = null; var li = bubble('cc-bot cc-ok', j.message); turns.push({ role: 'assistant', content: j.message });
-        /* the closer's hand-off: the tier's own payment page, only an https link the desk returned */
-        if (j.payUrl && /^https:\/\/[^\s"'<>]+$/.test(j.payUrl)) {
-          var pay = el('a', 'cc-pay', j.payLabel || 'Pay securely'); pay.href = j.payUrl; pay.target = '_blank'; pay.rel = 'noopener';
-          li.appendChild(document.createElement('br')); li.appendChild(pay); log.scrollTop = log.scrollHeight;
-        }
-      })
+      onSend().then(function(j){ card.remove(); card = null; var ok = bubble('cc-bot cc-ok', j.message); turns.push({ role: 'assistant', content: j.message });
+        if (j.payUrl && /^https:\/\//.test(j.payUrl)) { var pay = el('a', 'cc-pay', j.payLabel || 'Pay by card'); pay.href = j.payUrl; pay.target = '_blank'; pay.rel = 'noopener'; ok.appendChild(pay); log.scrollTop = log.scrollHeight; } })
         .catch(function(e){ go.disabled = false; err.hidden = false; err.textContent = (e && e.message) || 'That did not go through.'; });
     });
     log.scrollTop = log.scrollHeight; var first = f.querySelector('input,select'); if (first) setTimeout(function(){ first.focus(); }, 30);
@@ -206,7 +199,7 @@
   function claimCard(){
     var f = shell('cc-yes');
     f.appendChild(el('b', null, 'Go ahead with this site'));
-    f.appendChild(el('p', null, who + ' will email you to confirm the details and send the invoice. Nothing is charged here.'));
+    f.appendChild(el('p', null, who + ' will email you to confirm the details and send the invoice. Nothing is charged in this chat.'));
     var name = field(f, 'Your name', 'name', 'text', 1), email = field(f, 'Email', 'email', 'email', 1), phone = field(f, 'Phone (optional)', 'phone', 'tel', 0);
     var l = el('label', null, 'Tier'); var s = el('select'); s.name = 'tier';
     tiers.forEach(function(t){ var o = el('option', null, t.name + ' (' + t.price + ')'); o.value = t.id; if (t.name === picked || t.id === picked) o.selected = true; s.appendChild(o); });
