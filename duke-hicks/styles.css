@@ -1,0 +1,747 @@
+@layer measure, tap;
+
+/* A plate the build filled with a real photograph. The family's own container
+   keeps its size, its corners and any mask it applies; the picture is sized to
+   fill that box rather than the box being resized to the picture, so placing a
+   photograph never changes the composition. In its own layer so a family that
+   wants different behaviour simply wins. */
+
+
+@font-face{font-family:"Spline Sans Variable";src:url("./fonts/spline-sans-latin-wght-normal.woff2") format("woff2");font-weight:300 700;font-style:normal;font-display:swap;}
+@font-face{font-family:"Onest Variable";src:url("./fonts/onest-latin-wght-normal.woff2") format("woff2");font-weight:100 900;font-style:normal;font-display:swap;}
+@font-face{font-family:"IBM Plex Mono";src:url("./fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2");font-weight:500;font-style:normal;font-display:swap;}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body,h1,h2,h3,h4,p,figure,blockquote,dl,dd,ul,ol{margin:0}
+ul[class],ol[class]{list-style:none;padding:0}
+img,svg,video{display:block;max-width:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+button{background:none;border:0;cursor:pointer;padding:0}
+a{color:inherit}
+
+:root{
+  --ink:#22251f;
+  --paper:#f6f5f0;
+  --deep:#252a22;
+  --deep-ink:#f2f4ed;
+  --accent:#8b9b79;
+  --accent-ink:#181c14;
+  --accent-ink-raw:#181c14;
+  --muted:#63665e;
+  --muted-deep:#91958d;
+  --muted-ink:#8c8f87;
+  --muted-tint:#63665e;
+  --muted-raw:#767a70;
+  --accent-read:#59634d;
+  --accent-read-deep:#8b9b79;
+  --accent-read-ink:#8b9b79;
+  --hairline:rgba(34,37,31,.12);
+  --hair-strong:rgba(34,37,31,0.34);
+  /* The paper values again under stable names, so a light card nested in a dark
+     section can put back what it inherited (see deepGroundFix). */
+  --muted-paper:#63665e;
+  --accent-read-paper:#59634d;
+  --hairline-raw:rgba(34,37,31,.12);
+  --hair-strong-raw:rgba(34,37,31,0.34);
+  --tint-1:#ecece7;
+  --tint-2:#e3e2dd;
+  --deep-tint:#353a32;
+  --accent-soft:rgba(139,155,121,0.14);
+
+  --ff-display:"Spline Sans Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-body:"Onest Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-accent:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --fw-display:700;
+  --fw-body:400;
+  --tr-display:-0.02em;
+  --measure:70ch;
+  --measure-cap:74ch;
+
+  --fs--2: clamp(0.691rem, 0.567rem + 0.00vw, 0.691rem);
+  --fs--1: clamp(0.857rem, 0.703rem + 0.00vw, 0.857rem);
+  --fs-0: clamp(1.063rem, 0.871rem + 0.00vw, 1.063rem);
+  --fs-1: clamp(1.107rem, 0.907rem + 0.62vw, 1.317rem);
+  --fs-2: clamp(1.111rem, 0.911rem + 1.24vw, 1.634rem);
+  --fs-3: clamp(1.175rem, 0.963rem + 1.86vw, 2.026rem);
+  --fs-4: clamp(1.457rem, 1.195rem + 2.48vw, 2.512rem);
+  --fs-5: clamp(1.807rem, 1.481rem + 3.10vw, 3.115rem);
+  --fs-6: clamp(2.240rem, 1.837rem + 3.72vw, 3.862rem);
+  --fs-7: clamp(2.778rem, 2.278rem + 4.34vw, 4.789rem);
+
+  --u:9px;
+  --gap:calc(var(--u) * 3);
+  --section-y-base:clamp(3.1rem, 5.6vw + 1.5rem, 6.2rem);
+  --section-y:var(--section-y-base);
+  --page:1100px;
+  --gutter:clamp(18px, 4.2vw, 46px);
+  --r1:2px;--r2:3px;--r3:4px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --dur:.45s;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--ff-body);
+  font-weight:var(--fw-body);
+  font-size:var(--fs-0);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--ff-display);
+  font-weight:var(--fw-display);
+  letter-spacing:var(--tr-display);
+  line-height:1.02;
+  
+  text-wrap:balance;
+}
+p{text-wrap:pretty}
+
+.shell{width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter)}
+.wide{width:100%;max-width:calc(var(--page) + 200px);margin-inline:auto;padding-inline:var(--gutter)}
+.measure{max-width:var(--measure)}
+
+.eyebrow{
+  font-family:var(--ff-accent);
+  font-size:var(--fs--2);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  font-weight:600;
+}
+
+.ic{flex:none}
+
+/* focus that is visible on both paper and deep surfaces */
+:where(a,button,[tabindex]):focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:2px;
+}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:999;
+  background:var(--ink);color:var(--paper);padding:12px 18px;
+}
+.skip:focus{left:8px;top:8px}
+
+/* --- motion: opt-in, reveal-on-scroll, fully disabled when asked --- */
+[data-reveal]{opacity:0;transform:translateY(16px)}
+[data-reveal].is-in{opacity:1;transform:none;transition:opacity var(--dur) var(--ease-out),transform var(--dur) var(--ease-out)}
+[data-reveal][data-reveal-delay="1"].is-in{transition-delay:.07s}
+[data-reveal][data-reveal-delay="2"].is-in{transition-delay:.14s}
+[data-reveal][data-reveal-delay="3"].is-in{transition-delay:.21s}
+[data-reveal][data-reveal-delay="4"].is-in{transition-delay:.28s}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  [data-reveal]{opacity:1!important;transform:none!important}
+}
+
+/* --- measure: no line of running text may run to 200 characters ---
+   Paragraphs only. li and dd are layout containers as often as they are prose
+   — capping them collapsed three section grids to 60% of the page the first
+   time this shipped — so they are left to the family that laid them out. */
+@layer measure{
+  p,.demo-form output{max-width:min(100%,var(--measure-cap))}
+}
+
+/* --- tap targets ---
+   Touch-sized hit areas for navigation furniture, up to 900px — a tablet is a
+   touch device even though it is not a phone. Declared in the lowest
+   cascade layer on purpose: a family's own responsive rules are unlayered, so
+   its display:none at mobile still wins and the kit can never resurrect a
+   control the family deliberately hid. */
+@layer tap{
+  @media (max-width:900px){
+    :where(header,nav,footer,[data-menu],[data-navbar],[data-sbar]) :is(a[href],button,summary,[role="button"]){
+      min-height:44px;
+      min-width:2.75rem;
+      display:inline-flex;
+      align-items:center;
+    }
+    :where(header,nav,footer,[data-menu],[data-navbar],[data-sbar]) :is(a[href],button):has(>svg){
+      min-width:44px;
+      justify-content:center;
+    }
+    /* A phone number or email address is a primary action wherever it sits,
+       so it earns a full hit area even outside the navigation. */
+    :is(a[href^="tel:"],a[href^="mailto:"]):not(:where(p,dd) *){
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+    }
+  }
+}
+
+/* --- preview banner: every prospect site must say what it is --- */
+.preview-note{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--ff-accent);font-size:12px;line-height:1.45;
+  letter-spacing:.02em;
+  padding:10px var(--gutter);
+  display:flex;gap:10px;align-items:baseline;justify-content:center;
+  text-align:center;flex-wrap:wrap;
+  position:relative;z-index:60;
+}
+.preview-note b{font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:11px}
+.preview-note span{opacity:.82;max-width:54ch}
+
+/* --- demo-safe forms: nothing is collected or sent --- */
+.demo-form output{display:block;font-size:var(--fs--1);color:var(--muted);margin-top:calc(var(--u)*1.5)}
+.demo-form output:empty{display:none}
+
+.hours-tbl{border-collapse:collapse;margin:clamp(20px,2.4vw,30px) 0 0;min-width:min(100%,264px);
+  font-variant-numeric:tabular-nums;text-align:left;color:inherit}
+.hours-tbl caption{text-align:left;font-family:var(--ff-accent);font-size:.64rem;letter-spacing:.14em;
+  text-transform:uppercase;padding-bottom:9px;color:inherit}
+.hours-tbl th{text-align:left;font-weight:400;font-family:var(--ff-accent);font-size:.72rem;
+  letter-spacing:.08em;text-transform:uppercase;padding:8px 26px 8px 0;white-space:nowrap;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent);color:inherit}
+.hours-tbl td{text-align:right;font-size:.9rem;padding:8px 0;color:inherit;
+  border-top:1px solid color-mix(in srgb, currentColor 22%, transparent)}
+
+
+/* ============ PLAIN PRACTICE ============ */
+/* A page set the way a good public-facing document is set: one column of
+   reading width, plain headings, generous leading, and nothing on it that a
+   reader has to decode. No dark bands anywhere — this family stays on paper. */
+
+body{background:var(--paper);color:var(--ink)}
+::selection{background:rgba(139,155,121,0.2)}
+
+main{display:block}
+main > section{padding-block:var(--section-y)}
+main > section:first-child{padding-block:0}
+
+/* A tinted reading panel, never an inverted one. */
+[data-panel]{background:#efeee9;border-block:1px solid rgba(34,37,31,0.08)}
+
+/* --- section heading, and the four ways a section sets it against its body ---
+   A document does not set every section the same way: some headings sit over
+   the text, some sit out in the margin beside it, some tables are allowed to
+   run wider than the column. Each setting deals these out differently. */
+.sec{border-top:1px solid rgba(34,37,31,0.26);padding-top:clamp(14px,1.8vw,22px)}
+.sec-body{min-width:0}
+.lay-stack{display:block}
+.lay-flow{display:flex;flex-direction:column}
+.lay-flow>.sec-body{padding-left:clamp(0px,4.2vw,68px);width:100%}
+/* running prose gets a reading measure; a form, a table or a plate grid needs
+   the whole column and is left alone */
+.happens .lay-flow>.sec-body,.asked .lay-flow>.sec-body,
+.area .lay-flow>.sec-body{max-width:calc(var(--measure) + 16ch)}
+.sec.lay-wide{display:grid;grid-template-columns:minmax(0,1fr);row-gap:0;
+  max-width:calc(var(--page) + 150px)}
+.lay-margin{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,2.2fr);
+  column-gap:clamp(24px,4vw,64px);row-gap:0;align-items:start}
+.lay-margin>.head{padding-bottom:0}
+.lay-margin .head-h{font-size:clamp(1.2rem,2vw,1.52rem)}
+.lay-margin .head-note{font-size:.9rem;margin-left:0;max-width:34ch}
+
+.head{display:grid;gap:10px;padding-bottom:clamp(22px,2.8vw,38px)}
+.head-row{display:flex;align-items:baseline;gap:clamp(12px,1.6vw,20px)}
+.head-no{font-family:var(--ff-accent);font-size:.82rem;line-height:1.2;color:var(--accent-read);
+  min-width:1.4em;flex:none}
+.head-h{font-size:clamp(1.42rem,2.6vw,2rem);line-height:1.18;letter-spacing:-.012em;min-width:0}
+.head-note{font-size:1rem;line-height:1.7;color:#51534d;max-width:50ch;margin-left:calc(1.4em + clamp(12px,1.6vw,20px))}
+
+.act{display:inline-flex;align-items:center;justify-content:center;
+  background:var(--ink);color:var(--paper);border-radius:var(--r2);
+  padding:14px 24px;min-height:50px;font-family:var(--ff-body);font-size:1rem;font-weight:600;
+  text-decoration:none;border:1px solid var(--ink);
+  transition:background .22s var(--ease),color .22s var(--ease)}
+.act:hover{background:var(--paper);color:var(--ink)}
+.act-plain{display:inline-flex;align-items:center;min-height:50px;padding:6px 2px;
+  font-size:1rem;text-decoration:underline;text-underline-offset:4px;
+  text-decoration-thickness:1px;text-decoration-color:rgba(34,37,31,0.64)}
+.act-plain:hover{text-decoration-color:var(--ink)}
+.act-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px clamp(16px,2.4vw,28px)}
+
+/* --- masthead I: one line, travelling with the reader --- */
+.masthead-line{position:relative;z-index:55;background:rgba(246,245,240,0.97);border-bottom:1px solid rgba(34,37,31,0.14)}
+.masthead-sticky{position:sticky;top:0;backdrop-filter:blur(6px)}
+.ml-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:8px clamp(14px,2.4vw,32px);
+  width:100%;max-width:var(--page);margin-inline:auto;padding:clamp(12px,1.5vw,18px) var(--gutter)}
+.mark{display:grid;gap:2px;text-decoration:none;min-width:0}
+.mark-name{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.02rem,1.9vw,1.3rem);line-height:1.15;letter-spacing:-.012em}
+.mark-kind{font-size:.8rem;line-height:1.35;color:#51534d}
+.ml-nav{display:flex;flex-wrap:wrap;gap:4px clamp(12px,1.9vw,24px);min-width:0}
+.masthead-line .ml-nav a{font-size:.94rem;text-decoration:none;color:#51534d;
+  padding:4px 0;border-bottom:1px solid transparent;white-space:nowrap}
+.masthead-line .ml-nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.ml-tel{display:inline-flex}
+.ml-tel a{font-size:.94rem;text-decoration:underline;text-underline-offset:4px;
+  text-decoration-color:rgba(34,37,31,0.64);white-space:nowrap}
+
+/* --- masthead II: the name over a full rank of links --- */
+.masthead-stack{position:relative;z-index:55;background:var(--paper);border-bottom:1px solid rgba(34,37,31,0.26)}
+.ms-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;
+  width:100%;max-width:var(--page);margin-inline:auto;padding:clamp(16px,2vw,26px) var(--gutter) clamp(10px,1.2vw,14px)}
+.masthead-stack .mark-name{font-size:clamp(1.2rem,2.6vw,1.75rem)}
+.ms-rank{border-top:1px solid rgba(34,37,31,0.08)}
+.ms-nav{display:flex;flex-wrap:wrap;gap:2px clamp(14px,2.2vw,28px);
+  width:100%;max-width:var(--page);margin-inline:auto;padding:clamp(6px,.9vw,10px) var(--gutter) clamp(9px,1.1vw,13px)}
+.masthead-stack .ms-nav a{font-size:.95rem;text-decoration:none;color:#51534d;padding:5px 0;
+  border-bottom:1px solid transparent;white-space:nowrap}
+.masthead-stack .ms-nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.masthead-stack .ms-nav .ms-tel{margin-left:auto;color:var(--accent-read);
+  text-decoration:underline;text-underline-offset:4px}
+
+/* --- masthead III: name, links and the direct contacts, three columns --- */
+.masthead-side{position:relative;z-index:55;background:var(--paper);border-bottom:1px solid rgba(34,37,31,0.14)}
+.mz-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;
+  gap:10px clamp(16px,2.6vw,36px);
+  width:100%;max-width:var(--page);margin-inline:auto;padding:clamp(14px,1.8vw,22px) var(--gutter)}
+/* Six links do not fit on one line in the middle track of a side masthead, and
+   a flex wrap left them ragged and accidental. A three-column index wraps to
+   the same two rows but aligns them, which is what a document header does. */
+.mz-nav{display:grid;grid-template-columns:repeat(3,max-content);justify-content:center;
+  gap:7px clamp(14px,1.9vw,26px);min-width:0}
+.masthead-side .mz-nav a{font-size:.92rem;text-decoration:none;color:#51534d;padding:4px 0;
+  border-bottom:1px solid transparent;white-space:nowrap}
+.masthead-side .mz-nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.mz-reach{display:grid;gap:1px;justify-items:end;text-align:right}
+.masthead-side .mz-reach a{font-size:.85rem;line-height:1.45;text-decoration:underline;
+  text-underline-offset:3px;text-decoration-color:rgba(34,37,31,0.64);max-width:22ch;overflow-wrap:anywhere}
+
+/* --- the small-screen menu --- */
+.menu-btn{display:none;width:44px;height:44px;place-items:center;justify-self:end;flex:none}
+/* The overlay sits UNDER the masthead on purpose: the button that opened it
+   has to stay reachable, or the only way back is the Escape key. */
+.menu{position:fixed;inset:0;z-index:50;background:var(--paper);color:var(--ink);
+  display:none;flex-direction:column;justify-content:center;gap:18px;overflow-y:auto;
+  padding:120px var(--gutter) 48px}
+.menu[data-open]{display:flex}
+.menu-nav{display:grid;gap:2px}
+.menu .menu-nav a{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.25rem,5.4vw,1.8rem);line-height:1.25;text-decoration:none;padding:9px 0;
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.menu-reach{display:grid;gap:6px;padding-top:8px}
+.menu .menu-reach a{font-size:1rem;text-decoration:underline;text-underline-offset:4px;
+  overflow-wrap:anywhere}
+
+/* --- opening I: the note, read straight down --- */
+.open-note{display:block;padding-block:clamp(32px,6vw,86px) clamp(30px,4.6vw,64px);
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.on-in{display:grid;gap:clamp(16px,2vw,24px);align-content:center;min-height:inherit;
+  width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter)}
+@media (min-width:901px){.open-note{min-height:min(760px,82vh)}
+  .open-note--short{min-height:min(520px,58vh)}}
+.on-kicker{font-size:.9rem;line-height:1.5;color:#51534d;max-width:none}
+.on-h{font-size:clamp(1.95rem,4.9vw,3.7rem);line-height:1.1;letter-spacing:-.02em;max-width:20ch}
+.on-lead{font-size:clamp(1.06rem,1.5vw,1.28rem);line-height:1.68;max-width:54ch}
+.on-sum{font-size:1rem;line-height:1.7;color:#51534d;max-width:54ch}
+.on-standing{font-size:.9rem;line-height:1.6;color:#51534d;max-width:54ch}
+
+/* --- opening II: the note with the ways in beside it --- */
+.open-panel{display:grid;grid-template-columns:minmax(0,1.42fr) minmax(0,.92fr);
+  align-items:start;column-gap:clamp(26px,4.4vw,72px);row-gap:clamp(24px,3vw,40px);
+  padding-block:clamp(34px,4.6vw,74px) clamp(32px,4.2vw,62px);
+  padding-inline:max(var(--gutter),calc((100% - var(--page))/2 + var(--gutter)));
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.op-copy{display:block;min-width:0}
+.op-kicker{font-size:.9rem;line-height:1.5;color:#51534d}
+/* Plain is not the same as timid. At 2.35rem the headline rendered 38px, which
+   on this page is barely larger than a sub-head and leaves the opening with
+   nothing to look at first. */
+.op-h{font-size:clamp(1.9rem,4.6vw,3.7rem);line-height:1.1;letter-spacing:-.022em;
+  max-width:19ch;margin-top:12px}
+.op-lead{font-size:clamp(1.02rem,1.3vw,1.16rem);line-height:1.72;max-width:54ch;margin-top:18px}
+.op-sum{font-size:.98rem;line-height:1.7;color:#51534d;max-width:54ch;margin-top:12px}
+.op-copy .act-row{margin-top:clamp(20px,2.4vw,30px)}
+.op-reach{border:1px solid rgba(34,37,31,0.14);border-radius:var(--r3);background:#efeee9;
+  padding:clamp(18px,2.2vw,26px);min-width:0}
+.op-reach-h{font-size:1.02rem;line-height:1.3;letter-spacing:-.005em;
+  padding-bottom:12px;border-bottom:1px solid rgba(34,37,31,0.08)}
+.op-reach-dl{display:grid;margin:0}
+.op-reach-dl>div{display:grid;gap:3px;padding-block:12px;border-bottom:1px solid rgba(34,37,31,0.08);min-width:0}
+.op-reach-dl>div:last-child{border-bottom:0;padding-bottom:0}
+.op-reach-dl dt{font-size:.8rem;line-height:1.4;color:#51534d}
+.op-reach-dl dd{margin:0;font-size:.98rem;line-height:1.55;overflow-wrap:anywhere}
+.op-reach-dl dd a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(34,37,31,0.64)}
+
+/* --- opening III: the note across three columns, with a plate --- */
+.open-index{display:flex;padding-block:clamp(34px,4.4vw,70px) clamp(30px,4vw,58px);
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.oi-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);
+  align-items:start;column-gap:clamp(22px,3.4vw,54px);row-gap:clamp(16px,2vw,26px);
+  width:100%;max-width:var(--page);margin-inline:auto;padding-inline:var(--gutter)}
+.oi-kicker{grid-column:1/-1;font-size:.9rem;line-height:1.5;color:#51534d}
+.oi-h{grid-column:1/-1;font-size:clamp(1.78rem,3.9vw,2.9rem);line-height:1.12;
+  letter-spacing:-.02em;max-width:24ch}
+.oi-col{min-width:0;display:grid;gap:14px;align-content:start}
+.oi-lead{font-size:clamp(1.02rem,1.3vw,1.14rem);line-height:1.72}
+.oi-sum{font-size:.98rem;line-height:1.7;color:#51534d}
+.oi-fig{margin:0;display:grid;gap:9px;min-width:0}
+.oi-plate{aspect-ratio:4/3;border:1px solid rgba(34,37,31,0.14);border-radius:var(--r3);overflow:hidden;
+  display:grid;align-content:end;gap:5px;padding:clamp(14px,1.6vw,20px);
+  background:#e9e8e3 url("./assets/plate-a.svg") center/cover no-repeat}
+.oi-plate-word{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.1rem,2vw,1.5rem);line-height:1.1;letter-spacing:-.018em}
+.oi-plate-kind{font-size:.8rem;line-height:1.4;color:#51534d}
+.oi-cap{font-size:.78rem;line-height:1.5;color:var(--muted)}
+
+/* --- about --- */
+.about-body{display:grid;gap:1.05em;max-width:var(--measure)}
+.about-body p{font-size:var(--fs-0);line-height:1.78}
+.about-lede{font-size:clamp(1.08rem,1.5vw,1.28rem)!important;line-height:1.62!important;
+  max-width:54ch}
+.about-band{margin:0 0 clamp(20px,2.8vw,34px);display:grid;gap:9px}
+.about-band-plate{aspect-ratio:16/6.5;border:1px solid rgba(34,37,31,0.14);border-radius:var(--r3);overflow:hidden;
+  display:grid;align-content:end;gap:4px;padding:clamp(16px,2vw,24px);
+  background:#e9e8e3 url("./assets/plate-c.svg") center/cover no-repeat}
+.about-plate-kind{font-size:.8rem;line-height:1.4;color:#51534d}
+.about-hang{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.32fr);
+  gap:clamp(20px,3.2vw,48px);align-items:start}
+.about-fig{margin:0;display:grid;gap:9px;min-width:0}
+.about-plate{aspect-ratio:5/4;border:1px solid rgba(34,37,31,0.14);border-radius:var(--r3);overflow:hidden;
+  display:grid;align-content:end;padding:clamp(14px,1.6vw,20px);
+  background:#e9e8e3 url("./assets/plate-b.svg") center/cover no-repeat}
+.about-plate-word{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1rem,1.8vw,1.35rem);line-height:1.12;letter-spacing:-.018em}
+.about-cap{font-size:.78rem;line-height:1.5;color:var(--muted)}
+.about-spread{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+  gap:clamp(20px,3vw,44px)}
+.about-part{display:grid;gap:9px;align-content:start;min-width:0}
+.about-part p{font-size:var(--fs-0);line-height:1.76;max-width:46ch}
+.about-part:only-child p{max-width:var(--measure)}
+.about-part-no{font-family:var(--ff-accent);font-size:.8rem;line-height:1.2;color:var(--accent-read)}
+.about-part .about-lede{max-width:44ch}
+/* --measure is a pixel width set for body copy, and the lede is set larger, so
+   inheriting it put 97 characters on a line. A reading measure has to be
+   counted in characters when the type size changes. */
+.about-part:only-child .about-lede{max-width:54ch}
+
+/* --- what we do: the scope table --- */
+.scope{width:100%;border-collapse:collapse;text-align:left;margin-top:4px}
+.scope-cap{caption-side:top;text-align:left;font-size:.92rem;line-height:1.65;color:#51534d;
+  max-width:54ch;padding-bottom:clamp(16px,2vw,24px)}
+.scope thead th{font-size:.82rem;line-height:1.4;font-weight:600;color:#51534d;
+  padding-bottom:10px;border-bottom:1px solid rgba(34,37,31,0.26);vertical-align:bottom}
+.scope tbody th{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.02rem,1.6vw,1.22rem);line-height:1.25;letter-spacing:-.012em;
+  vertical-align:top;width:clamp(150px,24%,260px);
+  padding:clamp(16px,2vw,24px) clamp(18px,2.6vw,40px) clamp(16px,2vw,24px) 0;
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.scope tbody td{vertical-align:top;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid rgba(34,37,31,0.08)}
+.scope tbody td p{font-size:1rem;line-height:1.72;max-width:52ch}
+.scope-inc{width:clamp(130px,22%,240px);padding-left:clamp(18px,2.6vw,40px)!important;
+  font-size:.9rem;line-height:1.6;color:#51534d}
+.scope tbody tr:last-child th,.scope tbody tr:last-child td{border-bottom:0}
+
+/* --- what we do: the definition list --- */
+/* A ch is the width of a zero, and real prose in these faces runs narrower,
+   so 66ch laid out 97 characters on one line. The cap is set from the
+   measured line, not from the unit. */
+.scope-note{font-size:.92rem;line-height:1.65;color:#51534d;max-width:48ch;
+  padding-bottom:clamp(16px,2vw,26px)}
+.terms{display:grid;margin:0;border-top:1px solid rgba(34,37,31,0.26)}
+.term{display:grid;grid-template-columns:minmax(0,.72fr) minmax(0,1.28fr);
+  gap:6px clamp(20px,3.4vw,52px);padding-block:clamp(18px,2.3vw,28px);
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.term:last-child{border-bottom:0}
+.term dt{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.22;letter-spacing:-.012em}
+.term dd{margin:0;display:grid;gap:9px;min-width:0}
+.term dd p{font-size:1rem;line-height:1.74;max-width:54ch}
+.term-inc{font-size:.9rem!important;line-height:1.6!important;color:#51534d}
+
+/* --- what we do: the numbered index --- */
+.index{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid rgba(34,37,31,0.26)}
+.index-item{display:grid;grid-template-columns:clamp(34px,4.4vw,58px) minmax(0,1fr);
+  gap:6px clamp(12px,1.8vw,24px);align-items:start;
+  padding-block:clamp(18px,2.4vw,30px);border-bottom:1px solid rgba(34,37,31,0.08);max-width:none}
+.index-item:last-child{border-bottom:0}
+.index-no{font-family:var(--ff-accent);font-size:.92rem;line-height:1.6;color:var(--accent-read);
+  padding-top:.22em}
+.index-body{min-width:0;display:grid;gap:9px}
+.index-body h3{font-size:clamp(1.05rem,1.7vw,1.32rem);line-height:1.22;letter-spacing:-.012em}
+.index-body p{font-size:1rem;line-height:1.74;max-width:50ch}
+.index-inc{font-size:.9rem!important;line-height:1.6!important;color:#51534d}
+
+/* --- what happens --- */
+.steps{list-style:none;margin:0;padding:0;display:grid;max-width:none}
+.steps>li{max-width:none}
+.step-mark{display:flex;align-items:baseline;gap:clamp(10px,1.4vw,18px)}
+.step-no{font-family:var(--ff-accent);font-size:.92rem;line-height:1.5;color:var(--accent-read);
+  min-width:1.6em;flex:none}
+.step-h{font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.24;letter-spacing:-.012em;min-width:0}
+.step-body{font-size:1rem;line-height:1.76;color:#51534d;max-width:54ch}
+
+.steps--ruled{border-top:1px solid rgba(34,37,31,0.26)}
+.steps--ruled .step{display:grid;gap:9px;padding-block:clamp(18px,2.4vw,30px);
+  border-bottom:1px solid rgba(34,37,31,0.08)}
+.steps--ruled .step:last-child{border-bottom:0}
+.steps--ruled .step-body{margin-left:calc(1.6em + clamp(10px,1.4vw,18px))}
+
+.steps--split{gap:0;border-top:1px solid rgba(34,37,31,0.26)}
+.steps--split .step{display:grid;grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);
+  gap:8px clamp(20px,3.4vw,52px);align-items:start;
+  padding-block:clamp(18px,2.4vw,30px);border-bottom:1px solid rgba(34,37,31,0.08)}
+.steps--split .step:last-child{border-bottom:0}
+
+.steps--offset{gap:clamp(20px,2.8vw,36px)}
+.steps--offset .step{display:grid;gap:8px;padding-left:clamp(14px,2.2vw,30px);
+  border-left:2px solid rgba(34,37,31,0.14)}
+.steps--offset .step-no{color:var(--accent-read)}
+
+/* --- questions --- */
+.qs{display:grid}
+.q-h{font-size:clamp(1.04rem,1.6vw,1.26rem);line-height:1.28;letter-spacing:-.01em;max-width:44ch}
+.q-a{font-size:1rem;line-height:1.76;color:#51534d;max-width:54ch;margin-top:9px}
+.q-run{border-top:1px solid rgba(34,37,31,0.26)}
+.q-run .q{padding-block:clamp(18px,2.3vw,28px);border-bottom:1px solid rgba(34,37,31,0.08)}
+.q-run .q:last-child{border-bottom:0}
+.q-two{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+  gap:clamp(22px,3vw,44px)}
+.q-two .q{padding-top:14px;border-top:1px solid rgba(34,37,31,0.14)}
+.q-hang{gap:clamp(20px,2.6vw,34px)}
+.q-hang .q{padding-left:clamp(14px,2.2vw,30px);border-left:2px solid rgba(34,37,31,0.14)}
+
+/* --- on record --- */
+.record-list{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid rgba(34,37,31,0.26)}
+.record-row{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);
+  gap:4px clamp(18px,3vw,44px);align-items:baseline;max-width:none;
+  padding-block:clamp(13px,1.7vw,20px);border-bottom:1px solid rgba(34,37,31,0.08)}
+.record-row:last-child{border-bottom:0}
+.record-label{font-size:.92rem;line-height:1.5;color:#51534d}
+.record-value{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.35;letter-spacing:-.01em;overflow-wrap:anywhere}
+.record-src{grid-column:2;font-size:.82rem;line-height:1.5;color:var(--muted)}
+.record-src a{text-decoration:underline;text-underline-offset:3px}
+
+/* --- recent work --- */
+.work-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));
+  gap:clamp(22px,3vw,42px)}
+.work-item{margin:0;display:grid;gap:12px;align-content:start;min-width:0}
+.work-plate{aspect-ratio:4/3;border:1px solid rgba(34,37,31,0.14);border-radius:var(--r3);overflow:hidden;
+  display:grid;align-content:end;gap:5px;padding:clamp(14px,1.6vw,20px);
+  background:#e9e8e3 url("./assets/plate-a.svg") center/cover no-repeat}
+.work-plate[data-tone="1"]{background-image:url("./assets/plate-b.svg")}
+.work-plate[data-tone="2"]{background-image:url("./assets/plate-c.svg")}
+.work-plate-no{font-family:var(--ff-accent);font-size:.8rem;line-height:1.3;color:var(--accent-read)}
+.work-plate-t{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1rem,1.7vw,1.3rem);line-height:1.15;letter-spacing:-.015em}
+.work-cap{display:grid;gap:7px}
+.work-h{font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.28;letter-spacing:-.01em}
+.work-loc{font-size:.88rem;line-height:1.5;color:#51534d}
+.work-sum{font-size:.95rem;line-height:1.66;color:#51534d;max-width:44ch}
+.work-slot{display:flex;align-items:center;gap:7px;font-size:.78rem;line-height:1.5;color:var(--muted)}
+
+/* --- where we work --- */
+.area-list{list-style:none;margin:0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:0 clamp(18px,3vw,44px);border-top:1px solid rgba(34,37,31,0.26)}
+.area-list li{padding-block:12px;border-bottom:1px solid rgba(34,37,31,0.08);font-size:1rem;max-width:none}
+
+/* --- contact --- */
+.reach{background:#efeee9;border-top:1px solid rgba(34,37,31,0.08)}
+.contact-rows{display:grid;gap:clamp(26px,3.4vw,44px)}
+.contact-rows>.reach-facts{max-width:calc(var(--measure) + 6ch)}
+.contact-rows>.reach-form{max-width:640px;width:100%}
+.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  gap:clamp(26px,4vw,60px);align-items:start}
+.contact-spread{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:clamp(26px,4vw,60px);align-items:start}
+.contact-spread>.reach-form{grid-column:1;grid-row:1}
+.contact-spread>.reach-facts{grid-column:2;grid-row:1}
+.reach-facts{min-width:0}
+.reach-h{font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.2;letter-spacing:-.015em;max-width:22ch}
+.reach-dl{display:grid;margin:18px 0 0;border-top:1px solid rgba(34,37,31,0.08)}
+.reach-dl>div{display:grid;grid-template-columns:minmax(92px,auto) minmax(0,1fr);
+  gap:4px clamp(14px,2.4vw,30px);padding-block:13px;border-bottom:1px solid rgba(34,37,31,0.08);min-width:0}
+.reach-dl dt{font-size:.88rem;line-height:1.5;color:#51534d}
+.reach-dl dd{margin:0;font-size:1rem;line-height:1.6;min-width:0;overflow-wrap:anywhere}
+.reach-dl dd a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(34,37,31,0.64)}
+.reach-form{background:var(--paper);border:1px solid rgba(34,37,31,0.14);border-radius:var(--r3);
+  padding:clamp(20px,2.6vw,32px);display:grid;gap:15px;align-content:start;min-width:0}
+.form-h{font-size:1.06rem;line-height:1.3;letter-spacing:-.008em;
+  padding-bottom:12px;border-bottom:1px solid rgba(34,37,31,0.08)}
+.fld{display:grid;gap:6px}
+.fld label{font-size:.88rem;line-height:1.5;color:#51534d}
+.fld input,.fld textarea{background:#efeee9;border:1px solid rgba(34,37,31,0.14);border-radius:var(--r1);
+  padding:12px 13px;font-size:1rem;color:var(--ink);resize:vertical;min-height:48px}
+.fld input:focus-visible,.fld textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.reach-form .act{justify-self:start;margin-top:4px}
+
+/* --- footer --- */
+/* The page's one ground change. Everything above it is deliberately on paper
+   -- this family is for practices that sell restraint -- but a page that never
+   changes ground once in five thousand pixels has no close to it, and the
+   critique was right to say so. Setting the foot in ink gives the page an end
+   without touching the reading above it. */
+.foot{background:var(--deep);color:var(--deep-ink);border-top:1px solid rgba(242,244,237,0.18);
+  padding-block:clamp(34px,3.6vw,52px) 26px}
+.foot a{color:var(--deep-ink)}
+.foot a:hover{color:var(--accent-read)}
+.foot-in{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;
+  gap:12px clamp(20px,3vw,44px)}
+.foot-name{font-family:var(--ff-display);font-weight:var(--fw-display);
+  font-size:clamp(1.05rem,1.9vw,1.3rem);line-height:1.2;letter-spacing:-.012em;max-width:none}
+.foot-nav{display:flex;flex-wrap:wrap;gap:6px clamp(14px,2.2vw,26px)}
+.foot .foot-nav a{font-size:.9rem;text-decoration:none;color:var(--deep-ink);
+  border-bottom:1px solid transparent}
+.foot .foot-nav a:hover{color:var(--accent-read);border-bottom-color:var(--accent-read)}
+.foot-c{display:flex;flex-wrap:wrap;gap:6px clamp(12px,2vw,22px)}
+.foot .foot-c a{font-size:.9rem;color:var(--deep-ink);text-decoration:underline;text-underline-offset:3px;
+  text-decoration-color:rgba(242,244,237,0.52);overflow-wrap:anywhere}
+.foot-legal{display:grid;gap:6px;margin-top:clamp(20px,2.4vw,30px);padding-top:16px;
+  border-top:1px solid rgba(242,244,237,0.18)}
+.foot-legal p{font-size:.76rem;line-height:1.6;color:var(--muted);max-width:52ch}
+
+/* ---------------- responsive ---------------- */
+@media (max-width:1040px){
+  .open-panel{grid-template-columns:1fr}
+  .contact-grid,.contact-spread{grid-template-columns:1fr}
+  .contact-spread>.reach-form,.contact-spread>.reach-facts{grid-column:1;grid-row:auto}
+  .oi-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .oi-fig{grid-column:1/-1;max-width:420px}
+}
+@media (max-width:900px){
+  .masthead-line .ml-nav,.masthead-stack .ms-rank,.masthead-side .mz-nav,.mz-reach{display:none}
+  .ml-tel{display:none}
+  .menu-btn{display:grid}
+  .ml-in{flex-wrap:nowrap}
+  .mz-in{grid-template-columns:minmax(0,1fr) auto}
+  .about-hang{grid-template-columns:1fr}
+  .about-fig{max-width:400px}
+  .term,.steps--split .step,.record-row{grid-template-columns:1fr}
+  .record-src{grid-column:1}
+  .head-note{margin-left:0}
+  .steps--ruled .step-body{margin-left:0}
+  .lay-margin{grid-template-columns:1fr}
+  .lay-margin>.head{padding-bottom:clamp(20px,4vw,30px)}
+  .lay-flow>.sec-body{padding-left:0;max-width:none}
+}
+@media (max-width:640px){
+  /* a three-column scope table has nowhere to go on a phone, so the rows
+     become one labelled block each */
+  .scope,.scope tbody,.scope tr,.scope th,.scope td,.scope caption{display:block;width:auto}
+  .scope thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .scope tbody tr{padding-block:clamp(16px,4vw,22px);border-bottom:1px solid rgba(34,37,31,0.08)}
+  .scope tbody tr:last-child{border-bottom:0}
+  .scope tbody th{padding:0 0 8px;border-bottom:0;width:auto}
+  .scope tbody td{padding:0 0 8px;border-bottom:0}
+  .scope-inc{padding-left:0!important;width:auto}
+  .oi-in{grid-template-columns:1fr}
+  .work-list{grid-template-columns:1fr}
+  .work-plate,.oi-plate{aspect-ratio:3/2}
+}
+
+/* --- drawn plates ----------------------------------------------------- */
+/* The family keeps its frame, its labels and its wash; only the picture
+   inside the frame comes from here. !important is deliberate: this is a
+   build-time override of whatever surface the family had reached for, and
+   several families set the plate's background on a more specific selector
+   than an attribute. */
+[data-photo-slot="hero"]{background-image:url("./assets/plate-hero.svg")!important;background-size:cover!important;background-position:center!important;background-repeat:no-repeat!important}
+/* Every family lays a wash over its plate so the caption on it stays legible.
+   Those washes were written when there was nothing underneath them to see --
+   one of them reaches 86% opacity -- and over a real drawing they put the
+   drawing out. Damping the wash keeps the caption readable and lets the
+   picture through, and the contrast gate checks what results. */
+[data-photo-slot]::before{opacity:.62}
+/* A real photograph beats a drawing, every time. */
+[data-has-photo]{background-image:none!important}
+[data-has-photo]::before{opacity:1}
+
+
+/* --- auto-derived: readable tokens on inverted grounds (see deepGroundFix) --- */
+.foot{
+  --muted:var(--muted-deep);
+  --accent-read:var(--accent-read-deep);
+  --hairline:rgba(255,255,255,.18);
+  --hair-strong:rgba(255,255,255,.34);
+}
+.skip,
+.preview-note,
+.act{
+  --muted:var(--muted-ink);
+  --accent-read:var(--accent-read-ink);
+  --hairline:rgba(255,255,255,.18);
+  --hair-strong:rgba(255,255,255,.34);
+}
+body,
+.act:hover,
+.menu{
+  --muted:var(--muted-paper);
+  --accent-read:var(--accent-read-paper);
+  --hairline:var(--hairline-raw);
+  --hair-strong:var(--hair-strong-raw);
+}
+
+
+/* --- auto-derived: 2 sections, so the rhythm tightens (see sparseRhythm) --- */
+:root{--section-y:calc(var(--section-y-base) * 0.52)}
+
+.claim{background:#141414;color:#f2efe9;padding:clamp(30px,4vw,52px) 16px;
+  font-family:var(--ff-body,system-ui,-apple-system,"Segoe UI",sans-serif)}
+.claim-in{max-width:1080px;margin:0 auto;display:grid;gap:10px 40px;
+  grid-template-columns:minmax(0,1fr);align-items:start}
+.claim-k{margin:0;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:rgba(242,239,233,.55)}
+.claim-body{display:grid;gap:12px;max-width:34rem}
+.claim-lead{margin:0;font-size:1.02rem;line-height:1.5;font-weight:600}
+.claim-terms{margin:0;font-size:.93rem;line-height:1.6;color:rgba(242,239,233,.82)}
+.claim-out{margin:0;font-size:.85rem;line-height:1.5;color:rgba(242,239,233,.55)}
+.claim-acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px}
+.claim-act{display:grid;gap:2px;padding:11px 20px;min-height:44px;align-content:center;
+  text-decoration:none;color:inherit;border:1.5px solid currentColor;border-radius:2px;
+  transition:opacity .18s ease}
+.claim-act:hover{opacity:.72}
+.claim-act-k{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(242,239,233,.6)}
+.claim-act-v{font-size:.95rem;font-weight:600}
+/* A label column beside the text, so the band does not read as one more
+   centred stack under a page that may already end with one. */
+@media (min-width:860px){
+  .claim-in{grid-template-columns:minmax(0,13rem) minmax(0,1fr)}
+}
+@media (max-width:520px){.claim-acts{flex-direction:column;align-items:stretch}}
+/* The preview chat: only drawn when the operator's assistant is reachable. */
+button.claim-act{background:none;font:inherit;text-align:left;cursor:pointer}
+.claim-yes{background:#f2efe9 !important;color:#141414 !important;border-color:#f2efe9 !important}
+.claim-yes .claim-act-k{color:rgba(20,20,20,.6)}
+.claim-link{display:inline-flex;align-items:center;min-height:44px;min-width:44px;background:none;border:0;padding:0 2px;font:inherit;color:inherit;text-decoration:underline;cursor:pointer}
+.cc-panel{position:fixed;right:12px;bottom:12px;z-index:2147483000;width:min(400px,calc(100vw - 24px));height:min(580px,calc(100dvh - 24px));
+  display:flex;flex-direction:column;background:#141414;color:#f2efe9;border:1px solid rgba(242,239,233,.2);border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.35);font-family:var(--ff-body,system-ui,-apple-system,"Segoe UI",sans-serif);overflow:hidden}
+.cc-panel[hidden]{display:none}
+.cc-panel header{display:flex;align-items:center;gap:10px;padding:14px 14px 12px;border-bottom:1px solid rgba(242,239,233,.14)}
+.cc-panel header div{flex:1;display:grid;gap:2px}
+.cc-panel header b{font-size:15px}
+.cc-panel header small{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(242,239,233,.55)}
+.cc-x{width:38px;height:38px;border-radius:50%;border:1px solid rgba(242,239,233,.3);background:none;color:inherit;font-size:22px;cursor:pointer}
+.cc-log{list-style:none;margin:0;padding:14px;flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:9px;overscroll-behavior:contain}
+.cc-log li{max-width:88%;padding:10px 13px;border-radius:14px;font-size:15px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.cc-bot{align-self:flex-start;background:rgba(242,239,233,.08);border:1px solid rgba(242,239,233,.14)}
+.cc-me{align-self:flex-end;background:#f2efe9;color:#141414}
+.cc-bad{border-color:#e0795f}
+.cc-ok{border-color:#6fc3a0}
+.cc-log .cc-card{max-width:100%;align-self:stretch;background:rgba(242,239,233,.06);border:1px solid rgba(242,239,233,.24);white-space:normal}
+.cc-card form{display:grid;gap:8px;margin:0}
+.cc-card p{margin:0;font-size:13.5px;line-height:1.45;color:rgba(242,239,233,.75)}
+.cc-card label{display:grid;gap:3px;font-size:12px;font-weight:600;color:rgba(242,239,233,.75)}
+.cc-card input,.cc-card select,.cc-form input{min-height:40px;padding:7px 10px;font:inherit;font-size:15px;color:#141414;background:#f2efe9;border:1px solid transparent;border-radius:8px;width:100%;box-sizing:border-box}
+.cc-card input[aria-invalid="true"]{border-color:#e0795f}
+.cc-row{display:flex;gap:8px;flex-wrap:wrap}
+.cc-row button{min-height:42px;padding:0 16px;border-radius:999px;border:0;background:#f2efe9;color:#141414;font:inherit;font-weight:700;cursor:pointer}
+.cc-row .cc-ghost{background:none;color:inherit;border:1px solid rgba(242,239,233,.35)}
+.cc-row button:disabled{opacity:.6}
+.cc-err{color:#f0a48f !important;font-weight:600}
+.cc-card label.cc-check{display:flex;gap:8px;align-items:flex-start;font-weight:500;line-height:1.4}
+.cc-card label.cc-check input{width:20px;height:20px;min-height:0;margin:1px 0 0;flex:none}
+.cc-form{display:flex;gap:8px;padding:10px 12px 6px;border-top:1px solid rgba(242,239,233,.14);margin:0}
+.cc-form input{flex:1;border-radius:999px;padding:0 14px;min-height:44px}
+.cc-send{width:44px;height:44px;border-radius:50%;border:0;background:#f2efe9;color:#141414;font-size:18px;font-weight:800;cursor:pointer;flex:none}
+.cc-fine{margin:0;padding:4px 14px 12px;font-size:11.5px;line-height:1.4;color:rgba(242,239,233,.5)}
