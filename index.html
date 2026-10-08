@@ -502,7 +502,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
   <div class="shell">
     <a class="word" href="#top" id="top"><svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><defs><linearGradient id="orelvi-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".7" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#f2cf98" stop-opacity=".35"/></linearGradient></defs><g transform="skewY(-24)"><rect x="16" y="22" width="22" height="24" rx="3.5" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/><rect x="6" y="25" width="15" height="18" rx="3" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/></g></svg><span class="name">ORELVI</span></a>
     <nav aria-label="Main">
-      <a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#book" class="cta">Book a proof</a>
+      <a href="#work">Work</a><a href="rail/">On the rail</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#book" class="cta">Book a proof</a>
     </nav>
   </div>
 </header>
@@ -652,7 +652,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
   <div class="shell">
     <div class="head">
       <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>The work</p><h2>14 design families. Not 14 colour swaps.</h2></div>
-      <p>Each family has its own layout, type and way of telling a business&rsquo;s story, and holds three page structures inside it, so two businesses in the same town never get the same page.</p>
+      <p>Each family has its own layout, type and way of telling a business&rsquo;s story, and holds three page structures inside it, so two businesses in the same town never get the same page. <a href="rail/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Browse our Signature and Custom sites on the rail&nbsp;&rarr;</a></p>
     </div>
     <div class="filter">
       <label for="trade" style="display:flex;gap:10px;align-items:center;font:600 14px var(--display)">Show designs for
@@ -955,13 +955,43 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
       <p>There&rsquo;s no call to sit through first. We start on your proof as soon as the booking lands, and write back when it&rsquo;s ready or if we have a question.</p>
       
       
-      
+      <p>Rather talk first?</p><p class="lines"><a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></p>
     </div>
     
-      <div class="book-contact">
-        <p>Tell us your business name, your town and what you do, and we'll take it from there.</p>
-        <p class="lines"><a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></p>
-      </div>
+      <form id="book-form" class="book-form" action="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant/book" method="POST" data-endpoint="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant/book" novalidate>
+        <div class="row two">
+          <label>Business name<input id="f-business" name="business" required autocomplete="organization"></label>
+          <label>What you do<input id="f-trade" name="trade" required placeholder="Roofing, dental, detailing…" list="trade-list"></label>
+        </div>
+        <datalist id="trade-list"><option value="Accounting"><option value="Architecture"><option value="Auto Detailing"><option value="Barbershop"><option value="Concrete"><option value="Construction"><option value="Dental"><option value="Design Studio"><option value="Electrical"><option value="Fitness"><option value="HVAC"><option value="Hardscape"><option value="Landscaping"><option value="Lawn Care"><option value="Legal"><option value="Local Service"><option value="Performance Shop"><option value="Pest Control"><option value="Photography"><option value="Plumbing"><option value="Pressure Washing"><option value="Remodeling"><option value="Restaurant"><option value="Roofing"><option value="Salon"><option value="Spa"><option value="Tree Service"><option value="Vehicle Wraps"><option value="Window Tint"></datalist>
+        <div class="row two">
+          <label>Town or city<input id="f-town" name="town" required autocomplete="address-level2"></label>
+          <label>Current website <span class="opt">if you have one</span><input id="f-site" name="current_site" type="url" inputmode="url" placeholder="https://"></label>
+        </div>
+        <div class="row two">
+          <label>Your name<input id="f-name" name="name" required autocomplete="name"></label>
+          <label>Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <div class="row two">
+          <label>Phone <span class="opt">optional</span><input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+          <label>Best time to talk
+            <select id="f-when" name="best_time">
+              <option>Any time</option><option>Weekday mornings</option><option>Weekday afternoons</option><option>Evenings</option><option>Email only, please</option>
+            </select></label>
+        </div>
+        <label>Which tier are you leaning towards?
+          <select id="f-tier" name="tier">
+            <option>Not sure yet</option><option>Launch</option><option>Signature</option><option>Custom</option>
+          </select></label>
+        <label>Anything we should know <span class="opt">optional</span><textarea id="f-notes" name="notes" rows="4" placeholder="What you want people to do when they land on your site, what you hate about the current one, photos you already have…"></textarea></label>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+        <input type="hidden" name="_subject" value="New booking: ORELVI">
+        <div class="submit-row">
+          <button type="submit" class="btn primary" id="f-submit">Book my free proof</button>
+          <p class="fine">We read every booking ourselves. No card, no contract.</p>
+        </div>
+        <p class="status" id="f-status" role="status" aria-live="polite" hidden></p>
+      </form>
   </div>
 </section>
 
@@ -989,7 +1019,17 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
 </section>
 </main>
 
-
+<div class="chat" id="chat" data-mode="server" data-url="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant">
+  <button type="button" class="chat-fab" id="chat-open" aria-expanded="false" aria-controls="chat-panel"><span class="spark" aria-hidden="true"></span><span>Ask a question</span></button>
+  <section class="chat-panel" id="chat-panel" role="dialog" aria-label="Ask the ORELVI assistant" hidden>
+    <header><span class="spark" aria-hidden="true"></span><div><b>ORELVI assistant</b><small>AI &middot; answers about this studio</small></div><button type="button" class="x" id="chat-close" aria-label="Close the assistant">&times;</button></header>
+    <ol class="chat-log" id="chat-log" aria-live="polite"><li class="bot">Hi! Ask me how the free proof works, what each tier includes, or anything else about building your site.</li></ol>
+    <div class="chips" id="chat-chips"><button type="button">Which tier fits me?</button><button type="button">Is the proof really free?</button><button type="button">I&rsquo;d like a free proof</button></div>
+    <form id="chat-form" autocomplete="off"><input id="chat-input" maxlength="800" placeholder="Type your question" aria-label="Your question"><button type="submit" class="send" aria-label="Send"><span aria-hidden="true">&uarr;</span></button></form>
+    
+    <p class="chat-fine">AI can make mistakes. The prices on this page are the final word. Your details only leave the chat if you send the booking card.</p>
+  </section>
+</div>
 <div class="dock" id="dock" aria-hidden="true"><a class="btn primary" href="#book" tabindex="-1">Book my free proof</a><span>$399 only if you launch</span></div>
 
 <footer>
@@ -1003,7 +1043,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
 
 <script>
 
-
+var CHAT_TIERS = [{"name":"Launch","price":"$399"},{"name":"Signature","price":"$899"},{"name":"Custom","price":"from $1,899"}];
 (function(){
   var sel = document.getElementById('trade'), grid = document.getElementById('grid'), count = document.getElementById('count');
   var more = document.getElementById('more'), moreBtn = document.getElementById('more-btn');
