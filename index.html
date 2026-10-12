@@ -494,6 +494,57 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
 .dots button[aria-current="true"]{background:linear-gradient(90deg,#fff,var(--stamp))}
 .chat-fab{background:rgba(12,12,13,.82)!important;color:var(--ink)!important;border:1px solid rgba(255,255,255,.22);box-shadow:0 0 0 1px rgba(242,207,152,.18) inset,0 18px 50px -14px rgba(0,0,0,.9),0 0 34px -12px rgba(255,255,255,.3)}
 .spark{background:radial-gradient(circle at 35% 30%,#fff 0 12%,transparent 13%),conic-gradient(from 200deg,#ffffff,#8f8b84,#f2cf98,#2a2a2c,#ffffff)!important}
+
+/* ---------- three tiers, shown ---------- */
+.tier-chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.tier-chips a{padding:8px 13px;border-radius:999px;border:1px solid var(--glass-line);background:var(--glass);color:var(--ink);text-decoration:none;font-size:12px;letter-spacing:.04em}
+.tier-chips a:last-child{border-color:var(--stamp);color:var(--stamp)}
+.tshow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.tcard{display:grid;grid-template-rows:auto 1fr;border-radius:28px;overflow:hidden;border:1px solid var(--glass-line);background:var(--glass);box-shadow:var(--glass-shadow)}
+.tcard-custom{border:1.5px solid var(--stamp);box-shadow:var(--glass-shadow),0 30px 80px -30px rgba(242,207,152,.45)}
+.tclip{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:#000}
+.tclip video{width:100%;height:100%;object-fit:cover;object-position:center top;display:block;transition:transform .8s cubic-bezier(.16,1,.3,1)}
+.tclip:hover video{transform:scale(1.03)}
+.tbadge{position:absolute;left:14px;top:14px;padding:7px 11px;border-radius:999px;background:rgba(6,6,7,.72);border:1px solid rgba(255,255,255,.18);color:#f4f2ee;font-size:11px;letter-spacing:.08em;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.tcard-custom .tbadge{background:var(--stamp);color:var(--stamp-ink);border-color:var(--stamp)}
+.tbody{display:grid;gap:12px;align-content:start;padding:22px 24px 26px}
+.tnum{margin:0;color:var(--ink-3);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.tcard-custom .tnum{color:var(--stamp)}
+.tbody h3{margin:0;font-size:clamp(24px,2.4vw,30px);line-height:1.05;letter-spacing:-.02em}
+.tprice{margin:0;font:850 clamp(38px,4vw,50px)/1 var(--display);letter-spacing:-.035em}
+.tprice small{font:600 14px var(--display);letter-spacing:0;color:var(--ink-3);margin:0 4px}
+.tprice small.from{margin:0 6px 0 0}
+.tpitch{margin:0;color:var(--ink-2);font-size:16px}
+.tbody ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.tbody li{padding:8px 0 8px 22px;border-bottom:1px solid var(--rule);font-size:15px;color:var(--ink-2);position:relative}
+.tbody li::before{content:"";position:absolute;left:2px;top:14px;width:10px;height:6px;border-left:2px solid var(--ok);border-bottom:2px solid var(--ok);transform:rotate(-45deg)}
+.tact{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:6px}
+.tbook{color:var(--ink);font:700 14px var(--display);text-decoration:none}
+.tbook:hover{text-decoration:underline;text-underline-offset:3px}
+.tiershow .note{margin:18px 0 0;color:var(--ink-3);font-size:14px}
+.included{margin:34px 0 0}
+.included ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.included li{display:grid;gap:4px;padding:18px 20px;border-radius:20px;border:1px solid var(--glass-line);background:var(--glass)}
+.included b{font:700 16px var(--display);color:var(--ink)}
+.included span{color:var(--ink-2);font-size:15px;line-height:1.45}
+.reel-row{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:22px;justify-content:start}
+.reel{margin:0;display:grid;gap:10px}
+.reel video{width:100%;aspect-ratio:9/16;height:auto;border-radius:22px;border:1px solid var(--glass-line);background:#000;display:block}
+.reel figcaption{display:grid;gap:2px;font-size:14px;color:var(--ink-2)}
+.reel figcaption b{color:var(--ink);font:700 16px var(--display)}
+footer .postal{font-weight:500;color:var(--ink-3)}
+@media (max-width:900px){
+  .tshow{grid-template-columns:1fr;gap:22px}
+  .tclip{aspect-ratio:1/1}
+  .tclip video{object-position:center 18%}
+  .included ul{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .included ul{grid-template-columns:1fr}
+  .reel-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .tbody{padding:20px 18px 22px}
+  .tact .btn{width:100%}
+}
 </style>
 </head>
 <body>
@@ -502,7 +553,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
   <div class="shell">
     <a class="word" href="#top" id="top"><svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><defs><linearGradient id="orelvi-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".7" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#f2cf98" stop-opacity=".35"/></linearGradient></defs><g transform="skewY(-24)"><rect x="16" y="22" width="22" height="24" rx="3.5" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/><rect x="6" y="25" width="15" height="18" rx="3" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/></g></svg><span class="name">ORELVI</span></a>
     <nav aria-label="Main">
-      <a href="#work">Work</a><a href="rail/">On the rail</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#book" class="cta">Book a proof</a>
+      <a href="#tiers">Tiers</a><a href="#work">Work</a><a href="rail/">On the rail</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#book" class="cta">Book a proof</a>
     </nav>
   </div>
 </header>
@@ -518,6 +569,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
         <a class="btn" href="#work">See 14 designs</a>
       </div>
       <p class="terms mono"><span>No deposit</span><span>No contract</span><span>No templates</span></p>
+      <p class="tier-chips mono"><a href="#tiers">Launch $399</a><a href="#tiers">Signature $899</a><a href="#tiers">Custom 3D from $1,899</a></p>
   </div>
   <div class="slider" id="slider" aria-roledescription="carousel" aria-label="Example landing pages">
     <ul class="track" id="track" aria-live="polite">
@@ -648,11 +700,70 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
   <div class="run"><ul><li>Accounting</li><li>Architecture</li><li>Auto Detailing</li><li>Barbershop</li><li>Concrete</li><li>Construction</li><li>Dental</li><li>Design Studio</li><li>Electrical</li><li>Fitness</li><li>HVAC</li><li>Hardscape</li><li>Landscaping</li><li>Lawn Care</li><li>Legal</li><li>Local Service</li><li>Performance Shop</li><li>Pest Control</li><li>Photography</li><li>Plumbing</li><li>Pressure Washing</li><li>Remodeling</li><li>Restaurant</li><li>Roofing</li><li>Salon</li><li>Spa</li><li>Tree Service</li><li>Vehicle Wraps</li><li>Window Tint</li></ul><ul aria-hidden="true"><li>Accounting</li><li>Architecture</li><li>Auto Detailing</li><li>Barbershop</li><li>Concrete</li><li>Construction</li><li>Dental</li><li>Design Studio</li><li>Electrical</li><li>Fitness</li><li>HVAC</li><li>Hardscape</li><li>Landscaping</li><li>Lawn Care</li><li>Legal</li><li>Local Service</li><li>Performance Shop</li><li>Pest Control</li><li>Photography</li><li>Plumbing</li><li>Pressure Washing</li><li>Remodeling</li><li>Restaurant</li><li>Roofing</li><li>Salon</li><li>Spa</li><li>Tree Service</li><li>Vehicle Wraps</li><li>Window Tint</li></ul></div>
 </div>
 
+
+<section class="band tiershow" id="tiers">
+  <div class="shell">
+    <div class="head">
+      <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>Three tiers</p><h2>Pick how far your site goes.</h2></div>
+      <p>Every tier is a real website built for your business, for any kind of business except online stores. Each example below is live: tap it and scroll the real page.</p>
+    </div>
+    <div class="tshow">
+      <article class="tcard tcard-launch">
+        <a class="tclip" href="work/barber-grooming/index.html" aria-label="Open a Launch site">
+          <video src="media/tier-launch.mp4" poster="media/tier-launch.jpg" muted loop playsinline preload="metadata" width="540" height="960" aria-hidden="true"></video>
+          
+        </a>
+        <div class="tbody">
+          <p class="tnum mono">Tier 01 &middot; Launch</p>
+          <h3>Clean. Fast. Done right.</h3>
+          <p class="tprice">$399<small>once</small></p>
+          <p class="tpitch">A sharp, fast site on one of our 14 design families, filled with your real details.</p>
+          <ul><li>Designed for your trade</li><li>Your services, hours and area, checked</li><li>Contact form or a call button</li></ul>
+          <div class="tact"><a class="btn" href="work/barber-grooming/index.html">Open a Launch site <span aria-hidden="true">&nearr;</span></a><a class="tbook" href="#book" data-tier="Launch">Book Launch &rarr;</a></div>
+        </div>
+      </article>
+      <article class="tcard tcard-signature">
+        <a class="tclip" href="tiers/signature/" aria-label="Open the live Signature site">
+          <video src="media/tier-signature.mp4" poster="media/tier-signature.jpg" muted loop playsinline preload="metadata" width="540" height="960" aria-hidden="true"></video>
+          <span class="tbadge mono">Photos + 3D</span>
+        </a>
+        <div class="tbody">
+          <p class="tnum mono">Tier 02 &middot; Signature</p>
+          <h3>Real photos. Real depth.</h3>
+          <p class="tprice">$899<small>once</small></p>
+          <p class="tpitch">Your own photographs through the page, with 3D touches: photos with depth, cards that tilt and a living effect over your opening shot.</p>
+          <ul><li>Three designs to choose from</li><li>Your photos, with depth and motion</li><li>Three rounds of changes</li></ul>
+          <div class="tact"><a class="btn" href="tiers/signature/">Open the live Signature site <span aria-hidden="true">&nearr;</span></a><a class="tbook" href="#book" data-tier="Signature">Book Signature &rarr;</a></div>
+        </div>
+      </article>
+      <article class="tcard tcard-custom">
+        <a class="tclip" href="tiers/custom/" aria-label="Open the live Custom site">
+          <video src="media/tier-custom.mp4" poster="media/tier-custom.jpg" muted loop playsinline preload="metadata" width="540" height="960" aria-hidden="true"></video>
+          <span class="tbadge mono">Flagship · fully 3D</span>
+        </a>
+        <div class="tbody">
+          <p class="tnum mono">Tier 03 &middot; Custom</p>
+          <h3>Fully 3D. Fully yours.</h3>
+          <p class="tprice"><small class="from">from</small>$1,899<small>once</small></p>
+          <p class="tpitch">Our flagship. A site designed from nothing around your business, with a 3D scene that is animated end to end and moves as visitors scroll.</p>
+          <ul><li>A call with you before we design</li><li>Art direction and words made for you</li><li>A fully animated 3D scene</li></ul>
+          <div class="tact"><a class="btn primary" href="tiers/custom/">Open the live Custom site <span aria-hidden="true">&nearr;</span></a><a class="tbook" href="#book" data-tier="Custom">Book Custom &rarr;</a></div>
+        </div>
+      </article>
+    </div>
+    <div class="included">
+      <p class="kicker mono"><span class="reg" aria-hidden="true"></span>With every tier</p>
+      <ul><li><b>Free proof first</b><span>We design it before you pay. No deposit, no card.</span></li><li><b>Fast turnaround</b><span>We start the moment you book. No call to sit through first.</span></li><li><b>Changes by chat</b><span>Ask our AI assistant for an edit any time. We make it and send you the update.</span></li><li><b>Free hosting</b><span>Your site is hosted at no monthly cost, on your own domain.</span></li><li><b>Free launch kit</b><span>A listing checklist for Google, Apple, Bing, Facebook and Yelp, a QR code and business cards made from your site.</span></li><li><b>Yours to keep</b><span>Once you launch, the site, domain and content are yours.</span></li></ul>
+    </div>
+    <p class="note">The businesses in these examples are invented, and the Signature photos were made for the example. Your site uses your real name, details and photos.</p>
+  </div>
+</section>
+
 <section class="band" id="work">
   <div class="shell">
     <div class="head">
       <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>The work</p><h2>14 design families. Not 14 colour swaps.</h2></div>
-      <p>Each family has its own layout, type and way of telling a business&rsquo;s story, and holds three page structures inside it, so two businesses in the same town never get the same page. <a href="rail/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Browse our Signature and Custom sites on the rail&nbsp;&rarr;</a></p>
+      <p>Each family has its own layout, type and way of telling a business&rsquo;s story, and holds three page structures inside it, so two businesses in the same town never get the same page. <a href="rail/" style="color:inherit;text-decoration:underline;text-underline-offset:3px">Browse all 14 on the rail&nbsp;&rarr;</a></p>
     </div>
     <div class="filter">
       <label for="trade" style="display:flex;gap:10px;align-items:center;font:600 14px var(--display)">Show designs for
@@ -891,6 +1002,26 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
   </div>
 </section>
 
+
+<section class="band reels" id="watch">
+  <div class="shell">
+    <div class="head">
+      <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>Watch</p><h2>See it move.</h2></div>
+      <p>Short films of the work, made in code from the same pages you can open above.</p>
+    </div>
+    <div class="reel-row">
+      <figure class="reel">
+        <video src="media/tiers-reel.mp4" poster="media/tiers-reel.jpg" controls playsinline preload="none" width="720" height="1280"></video>
+        <figcaption><b>The three tiers</b><span>Launch, Signature and Custom in under a minute.</span></figcaption>
+      </figure>
+      <figure class="reel">
+        <video src="media/look-cool-reel.mp4" poster="media/look-cool-reel.jpg" controls playsinline preload="none" width="720" height="1280"></video>
+        <figcaption><b>Make it look cool</b><span>A website agency that looks the part.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="band">
   <div class="shell never">
     <div><p class="kicker mono"><span class="reg" aria-hidden="true"></span>House rules</p><h2>What never goes on your site.</h2>
@@ -1004,7 +1135,11 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
       <details><summary>Do I need photos?</summary><p>They help. We use photos you&rsquo;ve already posted of your own work. Where there aren&rsquo;t any, the page carries a designed placeholder until you send some.</p></details>
       <details><summary>Who owns the site?</summary><p>Once you&rsquo;ve paid to launch, it&rsquo;s yours: your domain, your content, your contact form going to your inbox.</p></details>
       <details><summary>Can I ask for changes?</summary><p>Yes. Tell us what to change and we&rsquo;ll send you a revised proof before anything goes live.</p></details>
-      <details><summary>Do you work with my trade?</summary><p>Probably. The families above cover 29 trades, from roofing and detailing to dental and law. If yours isn&rsquo;t listed, book anyway and tell us what you do.</p></details>
+      <details><summary>Do you work with my trade?</summary><p>Yes. We build for any kind of business, anywhere, except online stores. The families above cover 29 trades, from roofing and detailing to dental and law. If yours isn&rsquo;t listed, book anyway and tell us what you do.</p></details>
+      <details><summary>Do you build online stores?</summary><p>No. We build websites for any kind of business, anywhere, but not shops that sell products online: no carts, checkout or product catalogues.</p></details>
+      <details><summary>How fast is it?</summary><p>We start on your proof as soon as your booking lands and write back when it&rsquo;s ready. After launch, changes are quick because you just ask for them in the chat.</p></details>
+      <details><summary>Where does my site live?</summary><p>We host it for free and put it on your own domain. If you don&rsquo;t have a domain yet, we&rsquo;ll help you register one in your name.</p></details>
+      <details><summary>What does the 3D look like?</summary><p>Open the live Signature and Custom examples under Three tiers. Every effect switches off for visitors who prefer less motion, and the page still reads on older phones.</p></details>
     </div>
   </div>
 </section>
@@ -1037,6 +1172,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
     <a class="word" href="#top"><svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><g transform="skewY(-24)"><rect x="16" y="22" width="22" height="24" rx="3.5" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/><rect x="6" y="25" width="15" height="18" rx="3" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/></g></svg><span class="name">ORELVI</span></a>
     <nav aria-label="Footer"><a href="#work">Work</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">Questions</a><a href="#book">Book a proof</a></nav>
     <p class="lines"><a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></p>
+    <p class="lines postal">3037 E Pearl St, Mesa AZ 85213</p>
     <p class="small">&copy; 2026 ORELVI. Every business in the work above is fictional.</p>
   </div>
 </footer>
@@ -1421,6 +1557,18 @@ var CHAT_TIERS = [{"name":"Launch","price":"$399"},{"name":"Signature","price":"
     });
     b.addEventListener('pointerleave', function(){ b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
   });
+})();
+</script>
+<script>
+(function(){
+  var clips = document.querySelectorAll('.tclip video');
+  if (!clips.length) return;
+  var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (calm || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+    if (e.isIntersecting) { var p = e.target.play(); if (p && p.catch) p.catch(function(){}); } else e.target.pause();
+  }); }, { threshold: .35 });
+  clips.forEach(function(v){ io.observe(v); });
 })();
 </script>
 </body>

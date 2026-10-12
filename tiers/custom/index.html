@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurelia Residences — Live above it all</title>
+<style>
+@font-face{font-family:Serif;src:url(fonts/instrument-serif-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:Geist;src:url(fonts/geist-latin-wght-normal.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:Mono;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2')}
+:root{--gold:#e9c389;--ink:#04050a;--paper:#f3efe8}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--ink)}
+body{background:var(--ink);color:var(--paper);font-family:Geist,sans-serif;height:700vh;overflow-x:hidden}
+body.capture{height:100vh;overflow:hidden}
+canvas#gl{position:fixed;inset:0;width:100vw;height:100vh;display:block}
+nav{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:22px 26px;z-index:5;mix-blend-mode:difference}
+.brand{font-family:Serif;font-size:26px;letter-spacing:.32em}
+.navr{display:flex;gap:22px;align-items:center;font-family:Mono;font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.navr .cta{border:1px solid rgba(255,255,255,.5);border-radius:99px;padding:9px 16px}
+.hide-m{display:inline}
+@media(max-width:640px){.hide-m{display:none}}
+.ov{position:fixed;left:0;right:0;padding:0 28px;z-index:4;pointer-events:none;opacity:0}
+.kick{font-family:Mono;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.big{font-family:Serif;font-weight:400;line-height:.92;letter-spacing:-.01em;font-size:clamp(58px,11vw,150px)}
+.big i{color:var(--gold)}
+.sub{max-width:420px;font-size:16px;line-height:1.55;color:rgba(243,239,232,.72);margin-top:18px}
+.stats{display:flex;gap:30px;margin-top:26px}
+.stats b{display:block;font-family:Serif;font-size:54px;font-weight:400;line-height:1}
+.stats span{font-family:Mono;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(243,239,232,.6)}
+.btn{display:inline-block;margin-top:26px;padding:17px 28px;border-radius:99px;background:linear-gradient(#f7e6c8,#d9b073);color:#1a1206;font-weight:600;font-size:16px;pointer-events:auto;text-decoration:none;box-shadow:0 18px 60px rgba(233,195,137,.35)}
+.prog{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:10px}
+.prog i{display:block;width:2px;height:26px;background:rgba(255,255,255,.18)}
+.prog i.on{background:var(--gold)}
+.scrollhint{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);font-family:Mono;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);z-index:4}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:3;background:linear-gradient(180deg,rgba(2,3,7,.75),transparent 28%,transparent 52%,rgba(2,3,7,.85)),radial-gradient(ellipse at 50% 40%,transparent 50%,rgba(0,0,0,.5))}
+.ov{text-shadow:0 2px 30px rgba(0,0,0,.6)}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/jsm/"}}</script>
+</head><body>
+<canvas id="gl"></canvas>
+<div class="vignette"></div>
+<nav><div class="brand">AURELIA</div><div class="navr"><span class="hide-m">Residences</span><span class="hide-m">Penthouses</span><span class="cta">Private viewing</span></div></nav>
+<div class="prog" id="prog"><i></i><i></i><i></i><i></i><i></i></div>
+
+<section class="ov" id="o1" style="bottom:120px">
+  <div class="kick">Aurelia Residences · Harbour District</div>
+  <h1 class="big">Live above<br><i>it all.</i></h1>
+  <p class="sub">A forty-four storey glass tower, turning a quarter-degree with every floor toward the water.</p>
+</section>
+<section class="ov" id="o2" style="top:110px">
+  <div class="kick">The ascent</div>
+  <h2 class="big">Every floor<br>finds <i>the light.</i></h2>
+</section>
+<section class="ov" id="o3" style="bottom:110px">
+  <div class="kick">By the numbers</div>
+  <h2 class="big" style="font-size:clamp(50px,9vw,120px)">One address.</h2>
+  <div class="stats"><div><b id="n1">44</b><span>Floors</span></div><div><b id="n2">112</b><span>Residences</span></div><div><b id="n3">360°</b><span>Views</span></div></div>
+</section>
+<section class="ov" id="o4" style="top:110px">
+  <div class="kick">The crown</div>
+  <h2 class="big">The Penthouse<br><i>Collection.</i></h2>
+  <p class="sub">Four residences. Glass on every side. A private terrace above the skyline.</p>
+</section>
+<section class="ov" id="o5" style="bottom:110px">
+  <div class="kick">Now previewing</div>
+  <h2 class="big">Come<br>see it <i>first.</i></h2>
+  <a class="btn" href="#">Book a private viewing</a>
+</section>
+<div class="scrollhint" id="hint">Scroll to ascend</div>
+<script type="module" src="main.js"></script>
+<a href="../../index.html#tiers" data-concept-bar style="position:fixed;left:12px;bottom:12px;z-index:2147483647;display:flex;gap:10px;align-items:center;max-width:calc(100% - 24px);padding:9px 14px;border-radius:999px;background:#111418;color:#f4f5f2;font:500 12px/1.3 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.28)"><span aria-hidden="true">&larr;</span><span>ORELVI Custom tier concept &middot; the business is fictional</span></a></body></html>
