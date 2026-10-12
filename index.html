@@ -527,7 +527,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-3)}
 .included li{display:grid;gap:4px;padding:18px 20px;border-radius:20px;border:1px solid var(--glass-line);background:var(--glass)}
 .included b{font:700 16px var(--display);color:var(--ink)}
 .included span{color:var(--ink-2);font-size:15px;line-height:1.45}
-.reel-row{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:22px;justify-content:start}
+.reel-row{display:grid;grid-template-columns:repeat(3,minmax(0,300px));gap:22px;justify-content:start}
 .reel{margin:0;display:grid;gap:10px}
 .reel video{width:100%;aspect-ratio:9/16;height:auto;border-radius:22px;border:1px solid var(--glass-line);background:#000;display:block}
 .reel figcaption{display:grid;gap:2px;font-size:14px;color:var(--ink-2)}
@@ -542,6 +542,7 @@ footer .postal{font-weight:500;color:var(--ink-3)}
 @media (max-width:640px){
   .included ul{grid-template-columns:1fr}
   .reel-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .reel:first-child{grid-column:1/-1;justify-self:center;width:min(100%,320px)}
   .tbody{padding:20px 18px 22px}
   .tact .btn{width:100%}
 }
@@ -1010,6 +1011,10 @@ footer .postal{font-weight:500;color:var(--ink-3)}
       <p>Short films of the work, made in code from the same pages you can open above.</p>
     </div>
     <div class="reel-row">
+      <figure class="reel">
+        <video src="media/orelvi-ad.mp4" poster="media/orelvi-ad.jpg" controls playsinline preload="none" width="720" height="1280"><track kind="captions" src="media/orelvi-ad.vtt" srclang="en" label="English"></video>
+        <figcaption><b>Your first impression</b><span>Thirty seconds on why your website matters.</span></figcaption>
+      </figure>
       <figure class="reel">
         <video src="media/tiers-reel.mp4" poster="media/tiers-reel.jpg" controls playsinline preload="none" width="720" height="1280"></video>
         <figcaption><b>The three tiers</b><span>Launch, Signature and Custom in under a minute.</span></figcaption>
