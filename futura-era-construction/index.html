@@ -157,6 +157,23 @@
   var root = document.querySelector('.claim-chat'); if (!root) return;
   var url = root.getAttribute('data-url'), site = root.getAttribute('data-site'), who = root.getAttribute('data-who');
   var tiers = []; try { tiers = JSON.parse(root.getAttribute('data-tiers')) || []; } catch (e) {}
+  /* Tells the operator this preview was opened: once after a few seconds on screen,
+     once more if the visitor reads down to this band. Never from a scripted
+     browser, and never from one the operator marked as theirs by opening a
+     preview with ?operator on the end. */
+  function seen(){
+    var mine = false;
+    try { if (/[?&]operator(=|&|$)/.test(location.search)) localStorage.setItem('orelvi-operator', '1'); mine = !!localStorage.getItem('orelvi-operator'); } catch (e) {}
+    if (mine || navigator.webdriver || !window.fetch) return;
+    function ping(end){ try { fetch(url + '/seen', { method: 'POST', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify({ site: site, end: end }), keepalive: true, credentials: 'omit' }).catch(function(){}); } catch (e) {} }
+    setTimeout(function(){ if (document.visibilityState !== 'hidden') ping(false); }, 4000);
+    var band = document.querySelector('.claim');
+    if (band && window.IntersectionObserver) {
+      var io = new IntersectionObserver(function(es){ if (es.some(function(x){ return x.isIntersecting; })) { io.disconnect(); setTimeout(function(){ ping(true); }, 4500); } });
+      io.observe(band);
+    }
+  }
+  seen();
   var acts = document.querySelector('.claim-acts'); if (!acts) return;
   function el(tag, cls, text){ var x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; }
   var yesBtn = el('button', 'claim-act claim-yes'); yesBtn.type = 'button';
