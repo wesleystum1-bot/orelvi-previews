@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /orelvi-previews/clean-cut-lawn-care/
+Disallow: /clean-cut-lawn-care/
+Disallow: /orelvi-previews/duke-hicks/
+Disallow: /duke-hicks/
+Disallow: /orelvi-previews/futura-era-construction/
+Disallow: /futura-era-construction/
+Disallow: /orelvi-previews/northwest-heating/
+Disallow: /northwest-heating/
+Disallow: /orelvi-previews/pro-care-landscape-services/
+Disallow: /pro-care-landscape-services/
+Disallow: /orelvi-previews/restore-roofing-llc/
+Disallow: /restore-roofing-llc/
+Disallow: /orelvi-previews/blog/_src/
+Disallow: /blog/_src/
+
+Sitemap: https://wesleystum1-bot.github.io/orelvi-previews/sitemap.xml
