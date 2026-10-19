@@ -255,11 +255,18 @@ writeFileSync(join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 ${urls.map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}</url>`).join('\n')}
 </urlset>
 `);
+/* A preview folder holds a page at its root or one level down
+   (e2e-coffee-launch/live/index.html). */
+function hasPage(dir) {
+  if (existsSync(join(dir, 'index.html'))) return true;
+  return readdirSync(dir, { withFileTypes: true })
+    .some((d) => d.isDirectory() && existsSync(join(dir, d.name, 'index.html')));
+}
 /* Prospect previews are private-ish pitches to one business each: keep them
    out of search so a business never finds its own unpaid preview on Google. */
 const previews = readdirSync(ROOT, { withFileTypes: true })
   .filter((d) => d.isDirectory() && !d.name.startsWith('.') && !['blog', 'fonts', 'social', 'waitlist', 'rail', 'work'].includes(d.name)
-    && existsSync(join(ROOT, d.name, 'index.html')))
+    && hasPage(join(ROOT, d.name)))
   .map((d) => d.name).sort();
 writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *
 ${previews.map((p) => `Disallow: /orelvi-previews/${p}/\nDisallow: /${p}/`).join('\n')}

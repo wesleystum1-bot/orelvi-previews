@@ -3,6 +3,12 @@ Disallow: /orelvi-previews/clean-cut-lawn-care/
 Disallow: /clean-cut-lawn-care/
 Disallow: /orelvi-previews/duke-hicks/
 Disallow: /duke-hicks/
+Disallow: /orelvi-previews/e2e-coffee-custom/
+Disallow: /e2e-coffee-custom/
+Disallow: /orelvi-previews/e2e-coffee-launch/
+Disallow: /e2e-coffee-launch/
+Disallow: /orelvi-previews/e2e-coffee-signature/
+Disallow: /e2e-coffee-signature/
 Disallow: /orelvi-previews/futura-era-construction/
 Disallow: /futura-era-construction/
 Disallow: /orelvi-previews/northwest-heating/
@@ -13,11 +19,5 @@ Disallow: /orelvi-previews/restore-roofing-llc/
 Disallow: /restore-roofing-llc/
 Disallow: /orelvi-previews/blog/_src/
 Disallow: /blog/_src/
-Disallow: /orelvi-previews/e2e-coffee-launch/
-Disallow: /e2e-coffee-launch/
-Disallow: /orelvi-previews/e2e-coffee-signature/
-Disallow: /e2e-coffee-signature/
-Disallow: /orelvi-previews/e2e-coffee-custom/
-Disallow: /e2e-coffee-custom/
 
 Sitemap: https://wesleystum1-bot.github.io/orelvi-previews/sitemap.xml
