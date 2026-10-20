@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="p9t" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(90)">
+    <rect width="12" height="12" fill="#141413"/>
+    <rect width="4.08" height="12" fill="rgba(238,237,233,0.1)"/>
+    <rect x="4.08" width="0.96" height="12" fill="rgba(26,26,24,0.4)"/>
+  </pattern></defs><rect width="1200" height="700" fill="url(#p9t)"/></svg>
