@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ember &amp; Oak — Wood-fired kitchen &amp; bar</title>
+<style>
+@font-face{font-family:Fraunces;src:url(fonts/fraunces-latin-full-normal.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:Work;src:url(fonts/work-sans-latin-wght-normal.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:Mono;src:url(fonts/ibm-plex-mono-latin-500-normal.woff2) format('woff2')}
+:root{--ink:#120c08;--paper:#f5ece0;--ember:#ff8a3d;--gold:#e8b878;--mute:rgba(245,236,224,.66)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--ink)}
+body{background:var(--ink);color:var(--paper);font-family:Work,sans-serif;overflow-x:hidden}
+.mono{font-family:Mono;font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:rgba(18,12,8,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(245,236,224,.08)}
+.logo{font-family:Fraunces;font-size:22px;font-weight:600;letter-spacing:-.01em}
+.logo em{font-style:italic;color:var(--ember);font-weight:400}
+.book{background:var(--paper);color:#1a120c;border-radius:99px;padding:9px 16px;font-weight:600;font-size:13px}
+/* hero */
+.hero{position:relative;height:100vh;min-height:620px;overflow:hidden}
+.hero .ph{position:absolute;inset:-8% -8% -8% -8%;background:url(img/oven.jpg) 60% 30%/cover;will-change:transform}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,12,8,.25),rgba(18,12,8,.1) 35%,rgba(18,12,8,.92) 82%,var(--ink))}
+#embers{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .copy{position:absolute;left:22px;right:22px;bottom:48px}
+.hero h1{font-family:Fraunces;font-weight:500;font-size:clamp(50px,13vw,110px);line-height:.92;letter-spacing:-.03em}
+.hero h1 em{font-style:italic;font-weight:300;color:var(--gold)}
+.hero p{margin-top:14px;font-size:16px;line-height:1.5;color:var(--mute);max-width:420px}
+.row{display:flex;gap:10px;margin-top:20px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:50px;border-radius:99px;padding:0 22px;font-weight:600;font-size:15px;white-space:nowrap}
+.btn.pri{background:linear-gradient(#ffb070,#f07a2c);color:#1d0e04;box-shadow:0 14px 40px rgba(255,120,40,.35)}
+.btn.ghost{border:1px solid rgba(245,236,224,.35)}
+/* marquee */
+.mq{white-space:nowrap;overflow:hidden;border-top:1px solid rgba(245,236,224,.12);border-bottom:1px solid rgba(245,236,224,.12);padding:14px 0;font-family:Fraunces;font-style:italic;font-size:26px;color:var(--gold)}
+.mq span{display:inline-block;will-change:transform}
+/* 3d cards */
+.sec{padding:64px 22px 30px}
+.sec h2{font-family:Fraunces;font-weight:500;font-size:clamp(40px,10vw,76px);line-height:.95;letter-spacing:-.025em;margin-top:10px}
+.sec h2 em{font-style:italic;font-weight:300;color:var(--ember)}
+.stage{perspective:900px;margin-top:30px;height:430px;position:relative}
+.card{position:absolute;left:50%;top:0;width:260px;height:340px;margin-left:-130px;border-radius:18px;background-size:cover;background-position:center;box-shadow:0 40px 80px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.12);transform-style:preserve-3d;will-change:transform}
+.card .lbl{position:absolute;left:14px;bottom:14px;right:14px;padding:10px 12px;border-radius:12px;background:rgba(18,12,8,.55);backdrop-filter:blur(10px);font-size:13px}
+.card .lbl b{display:block;font-family:Fraunces;font-size:20px;font-weight:500}
+.card .gl{position:absolute;inset:0;border-radius:18px;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.25) 45%,transparent 60%);mix-blend-mode:screen}
+/* tilt photo */
+.tilt{margin:34px 0 0;perspective:800px}
+.tilt .in{height:300px;border-radius:20px;background:url(img/dining.jpg) 20% center/cover;transform-style:preserve-3d;box-shadow:0 30px 70px rgba(0,0,0,.6);position:relative;will-change:transform}
+.tilt .badge{position:absolute;right:-6px;top:-14px;transform:translateZ(60px);background:var(--paper);color:#1a120c;border-radius:14px;padding:10px 14px;font-family:Fraunces;font-size:18px;box-shadow:0 20px 40px rgba(0,0,0,.5)}
+.tilt .badge small{display:block;font-family:Mono;font-size:9px;letter-spacing:.2em}
+/* menu */
+.menu{margin-top:26px;border-top:1px solid rgba(245,236,224,.14)}
+.mi{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid rgba(245,236,224,.14)}
+.mi b{font-family:Fraunces;font-weight:500;font-size:20px}
+.mi p{font-size:13px;color:var(--mute);margin-top:3px}
+.mi span{font-family:Mono;font-size:13px;color:var(--gold)}
+/* reserve */
+.res{margin:40px 22px 60px;padding:26px 22px;border-radius:26px;background:linear-gradient(160deg,rgba(255,138,61,.16),rgba(255,255,255,.04));border:1px solid rgba(255,190,140,.25);box-shadow:inset 0 1px 0 rgba(255,255,255,.15)}
+.res h3{font-family:Fraunces;font-weight:500;font-size:38px;line-height:1}
+.res h3 em{font-style:italic;font-weight:300;color:var(--gold)}
+.slots{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.slots i{font-style:normal;border:1px solid rgba(245,236,224,.3);border-radius:99px;padding:9px 14px;font-size:14px}
+.slots i.on{background:var(--paper);color:#1a120c;border-color:var(--paper)}
+.hours{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;font-size:13px;color:var(--mute)}
+footer{padding:30px 22px 50px;color:var(--mute);font-size:12px}
+.reveal{will-change:transform,opacity}
+</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head><body>
+<header><div class="logo">Ember <em>&amp;</em> Oak</div><div class="book">Reserve</div></header>
+
+<section class="hero">
+  <div class="ph" id="heroPh"></div>
+  <div class="shade"></div>
+  <canvas id="embers"></canvas>
+  <div class="copy">
+    <div class="mono" style="color:var(--gold)">Wood-fired kitchen · Est. 2019</div>
+    <h1 class="reveal" data-d="0">Cooked over<br><em>open fire.</em></h1>
+    <p class="reveal" data-d="1">Seasonal plates from a hand-built oak oven, a candlelit bar, and a table that's already waiting for you.</p>
+    <div class="row reveal" data-d="2"><span class="btn pri">Book a table</span><span class="btn ghost">See the menu</span></div>
+  </div>
+</section>
+
+<div class="mq"><span id="mq">Flatbreads · Embers · Natural wine · Smoked cocktails · Oak-roasted · Flatbreads · Embers · Natural wine · Smoked cocktails · Oak-roasted ·</span></div>
+
+<section class="sec">
+  <div class="mono" style="color:var(--gold)">Tonight at the hearth</div>
+  <h2 class="reveal">Three rooms.<br><em>One fire.</em></h2>
+  <div class="stage" id="stage">
+    <div class="card" style="background-image:url(img/bar.jpg)"><div class="gl"></div><div class="lbl"><b>The Smoke Bar</b>Barrel-aged cocktails until late</div></div>
+    <div class="card" style="background-image:url(img/oven.jpg)"><div class="gl"></div><div class="lbl"><b>The Oven Counter</b>Front-row seats to the fire</div></div>
+    <div class="card" style="background-image:url(img/dining.jpg)"><div class="gl"></div><div class="lbl"><b>The Dining Room</b>Candlelit, forty seats</div></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:20px">
+  <div class="mono" style="color:var(--gold)">The menu</div>
+  <h2 class="reveal">Everything<br>touches <em>the flame.</em></h2>
+  <div class="tilt"><div class="in" id="tilt"><div class="badge"><small>Oven temp</small>480°C</div></div></div>
+  <div class="menu">
+    <div class="mi reveal"><div><b>Ember flatbread</b><p>Blistered dough, smoked tomato, burrata</p></div><span>18</span></div>
+    <div class="mi reveal"><div><b>Oak-roasted ribeye</b><p>Charred onion, bone-marrow butter</p></div><span>46</span></div>
+    <div class="mi reveal"><div><b>Hearth carrots</b><p>Hot honey, whipped feta, dukkah</p></div><span>14</span></div>
+    <div class="mi reveal"><div><b>The Smoked Old Fashioned</b><p>Rye, demerara, cherrywood smoke</p></div><span>16</span></div>
+  </div>
+</section>
+
+<section class="res reveal">
+  <div class="mono" style="color:var(--gold)">Reserve</div>
+  <h3>Your table,<br><em>by the fire.</em></h3>
+  <div class="slots"><i>5:30</i><i class="on">7:00</i><i>7:45</i><i>8:30</i></div>
+  <div class="row"><span class="btn pri" style="flex:1;text-align:center">Book for 2 · Fri 7:00</span></div>
+  <div class="hours"><div>Tue–Thu<br><b style="color:var(--paper)">5pm – 11pm</b></div><div>Fri–Sun<br><b style="color:var(--paper)">4pm – late</b></div></div>
+</section>
+<footer>Ember &amp; Oak · 214 Alder Street · (555) 010-4421</footer>
+<script type="module" src="main.js"></script>
+<a href="../../index.html#tiers" data-concept-bar style="position:fixed;left:12px;bottom:12px;z-index:2147483647;display:flex;gap:10px;align-items:center;max-width:calc(100% - 24px);padding:9px 14px;border-radius:999px;background:#111418;color:#f4f5f2;font:500 12px/1.3 ui-monospace,Menlo,Consolas,monospace;letter-spacing:.02em;text-decoration:none;box-shadow:0 6px 24px rgba(0,0,0,.28)"><span aria-hidden="true">&larr;</span><span>ORELVI Signature tier concept &middot; the business is fictional</span></a></body></html>
