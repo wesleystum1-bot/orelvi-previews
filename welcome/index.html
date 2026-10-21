@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Welcome · ORELVI</title>
+<meta name="description" content="What happens next with your new ORELVI website.">
+<style>
+@font-face{font-family:"Schibsted Grotesk";src:url(../fonts/schibsted.woff2) format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(../fonts/plex-mono.woff2) format("woff2");font-weight:500;font-display:swap}
+:root{--paper:#060607;--ink:#f4f2ee;--ink-2:#c3beb5;--ink-3:#97928a;--line:rgba(255,255,255,.14);--glass:rgba(255,255,255,.045);
+  --amber:#f2cf98;--ok:#9fd8b8;--bad:#f0a48f;--ff:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--ff);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60rem 30rem at 85% -10%,rgba(242,190,120,.12),transparent 60%),radial-gradient(50rem 30rem at -10% 10%,rgba(255,255,255,.06),transparent 60%)}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.shell{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:700px){.shell{padding:0 32px}}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.mark{font:800 20px/1 var(--ff);letter-spacing:.18em;text-decoration:none}
+.k{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0}
+h1{font:800 clamp(34px,6vw,60px)/1.02 var(--ff);letter-spacing:-.025em;margin:28px 0 14px;text-wrap:balance}
+h2{font:800 clamp(24px,3.4vw,34px)/1.1 var(--ff);letter-spacing:-.02em;margin:0 0 16px}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:36rem;margin:0 0 10px}
+.back{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2)}
+.tiers{display:grid;gap:16px;margin:28px 0 8px}
+@media (min-width:900px){.tiers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tier{display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--glass);
+  box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 28px 70px -30px rgba(0,0,0,.9)}
+.tier.pick{border-color:rgba(242,207,152,.6)}
+.tier h3{margin:0;font:800 22px/1.2 var(--ff)}
+.price{font:800 40px/1 var(--ff);letter-spacing:-.02em;margin:0}
+.price small{font-size:15px;font-weight:600;color:var(--ink-3);letter-spacing:0}
+.for{margin:0;color:var(--ink-2)}
+.tier ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.tier li{padding-left:22px;position:relative}
+.tier li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:6px;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg)}
+.tier li b{color:var(--ink);font-weight:700}
+.tier .go{margin-top:auto;display:grid;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:999px;font:700 16px/1.2 var(--ff);
+  text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-align:center}
+.btn.main{background:var(--ink);color:#0b0b0c}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.6;cursor:default}
+.fine{margin:0;font-size:13px;color:var(--ink-3);line-height:1.45}
+.band{margin:44px 0;padding:28px 24px;border:1px solid var(--line);border-radius:18px;background:var(--glass)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:s}
+@media (min-width:800px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.steps li{counter-increment:s;display:grid;gap:4px;align-content:start}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);font:700 15px/1 var(--ff);margin-bottom:6px}
+.steps li.done::before{content:"✓";background:var(--ok);border-color:var(--ok);color:#0b0b0c}
+.steps b{font-size:17px}
+.steps span{color:var(--ink-2);font-size:15px;line-height:1.5}
+form.card{display:grid;gap:14px;max-width:40rem}
+.row2{display:grid;gap:14px}
+@media (min-width:640px){.row2{grid-template-columns:1fr 1fr}}
+label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--ink-2)}
+label .opt{font-weight:500;color:var(--ink-3)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:96px;resize:vertical}
+input[aria-invalid="true"]{border-color:var(--bad)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+legend{font-size:14px;font-weight:600;color:var(--ink-2);margin-bottom:6px;padding:0}
+.choice{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:500;color:var(--ink)}
+.choice input{width:20px;height:20px;min-height:0;margin:0;flex:none}
+.msg{margin:0;padding:14px 16px;border-radius:12px;border:1px solid var(--line)}
+.msg.ok{border-color:var(--ok)}
+.msg.bad{border-color:var(--bad);color:var(--bad)}
+.hp{position:absolute;left:-9999px}
+details{border-top:1px solid var(--line);padding:14px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;min-height:28px}
+details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
+.foot{padding:30px 0 50px;color:var(--ink-3);font-size:14px;border-top:1px solid var(--line);margin-top:40px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top"><a class="mark" href="../">ORELVI</a><p class="k" id="tag">Next steps</p></header>
+  <main>
+    <h1 id="title">Tell us about your business.</h1>
+    <p class="lede" id="lede">A few details and we can finish your site. It takes about two minutes.</p>
+    <section class="band" aria-labelledby="next-h">
+      <h2 id="next-h">Where you are</h2>
+  <ol class="steps">
+    <li class="done" id="paid-step"><b>Pay securely</b><span>By card on Stripe's checkout. Your receipt comes by email.</span></li>
+    <li><b>Tell us the details</b><span>A short form right after paying: changes, hours, photos and your domain.</span></li>
+    <li><b>Approve your final proof</b><span>We make your changes and send it over for a last look.</span></li>
+    <li><b>Go live</b><span>On a domain you own. No domain yet? We help you get one.</span></li>
+  </ol>
+    </section>
+    <section aria-labelledby="form-h">
+      <h2 id="form-h">What we need from you</h2>
+      <form class="card" id="intake" novalidate>
+        <input class="hp" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="row2">
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <div class="row2">
+          <label><span>Phone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
+          <label>Business name<input name="business" autocomplete="organization" required></label>
+        </div>
+        <fieldset>
+          <legend>Do you have a domain (like yourbusiness.com)?</legend>
+          <label class="choice"><input type="radio" name="domain_status" value="have" checked> Yes, I own one</label>
+          <label class="choice"><input type="radio" name="domain_status" value="need"> No, help me get one</label>
+          <label class="choice"><input type="radio" name="domain_status" value="unsure"> Not sure</label>
+        </fieldset>
+        <label id="domain-l"><span>Your domain <span class="opt">(optional)</span></span><input name="domain" placeholder="yourbusiness.com" autocapitalize="off" spellcheck="false"></label>
+        <label><span>Anything to change on the preview? <span class="opt">(optional)</span></span><textarea name="changes" maxlength="1500" placeholder="Wording, colours, services to add or remove..."></textarea></label>
+        <div class="row2">
+          <label><span>Opening hours <span class="opt">(optional)</span></span><textarea name="hours" maxlength="500" placeholder="Mon to Fri 8 to 5, Sat 9 to 1"></textarea></label>
+          <label><span>Services and prices to show <span class="opt">(optional)</span></span><textarea name="services" maxlength="1000"></textarea></label>
+        </div>
+        <label><span>Link to your photos or logo <span class="opt">(optional)</span></span><input name="photos" type="url" placeholder="Google Drive, Dropbox or Instagram link"></label>
+        <p class="fine">Or email photos and your logo to <a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a>.</p>
+        <p class="msg bad" id="err" role="alert" hidden></p>
+        <button class="btn main" type="submit">Send my details</button>
+      </form>
+      <div id="done" hidden><p class="msg ok" id="ok"></p></div>
+    </section>
+  </main>
+  <footer class="foot">Questions? <a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></footer>
+</div>
+<script>
+(function(){
+  var api = "https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant", mail = "wesleystum1+orelvi@gmail.com";
+  var q = new URLSearchParams(location.search);
+  var session = /^cs_(live|test)_[A-Za-z0-9]{8,200}$/.test(q.get('session_id') || '') ? q.get('session_id') : '';
+  var claim = {}; try { claim = JSON.parse(localStorage.getItem('orelvi-claim') || '{}') || {}; } catch (e) {}
+  var site = /^[a-z0-9-]{1,80}$/.test(q.get('site') || '') ? q.get('site') : (/^[a-z0-9-]{1,80}$/.test(claim.site || '') ? claim.site : '');
+  var $ = function(s){ return document.querySelector(s); };
+  var f = $('#intake');
+  if (session) {
+    $('#tag').textContent = 'Payment received';
+    $('#title').textContent = 'Paid. Thank you' + (claim.name ? ', ' + String(claim.name).split(' ')[0] : '') + '.';
+    $('#lede').textContent = 'Your receipt is on its way by email. Now the fun part: tell us what to finish, and we take it from here.';
+  } else {
+    var s = $('#paid-step'); if (s) s.classList.remove('done');
+  }
+  if (claim.business) f.business.value = claim.business;
+  if (claim.name) f.name.value = claim.name;
+  if (claim.email) f.email.value = claim.email;
+  f.addEventListener('change', function(){ $('#domain-l').hidden = f.domain_status.value === 'need'; });
+  var err = $('#err');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = null;
+    f.querySelectorAll('[required]').forEach(function(i){ var ok = i.value.trim() && (i.type !== 'email' || /.+@.+\..+/.test(i.value)); i.setAttribute('aria-invalid', ok ? 'false' : 'true'); if (!ok && !bad) bad = i; });
+    if (bad) { err.hidden = false; err.textContent = 'Your name, email and business name are needed.'; bad.focus(); return; }
+    var d = Object.fromEntries(new FormData(f).entries());
+    d.site = site; d.session_id = session; d.tier = claim.tier || '';
+    var btn = f.querySelector('button[type=submit]'); btn.disabled = true; err.hidden = true;
+    var fallback = function(){
+      btn.disabled = false; err.hidden = false; err.textContent = 'That did not go through. ';
+      if (mail) {
+        var body = Object.keys(d).filter(function(k){ return d[k] && k !== '_gotcha'; }).map(function(k){ return k + ': ' + d[k]; }).join('\n');
+        var a = document.createElement('a'); a.href = 'mailto:' + mail + '?subject=' + encodeURIComponent('My site details: ' + d.business) + '&body=' + encodeURIComponent(body);
+        a.textContent = 'Send them by email instead'; err.appendChild(a);
+      }
+    };
+    if (!api) return fallback();
+    fetch(api + '/intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(d) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok || !j.ok) throw new Error(j.message); return j; }); })
+      .then(function(j){ f.hidden = true; $('#done').hidden = false; $('#ok').textContent = j.message; $('#done').scrollIntoView({ behavior: 'smooth', block: 'center' }); })
+      .catch(fallback);
+  });
+})();
+</script>
+</body>
+</html>
