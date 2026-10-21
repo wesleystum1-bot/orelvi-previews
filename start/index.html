@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Claim your site · ORELVI</title>
+<meta name="description" content="Pick a plan and put your new website live with ORELVI.">
+<style>
+@font-face{font-family:"Schibsted Grotesk";src:url(../fonts/schibsted.woff2) format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(../fonts/plex-mono.woff2) format("woff2");font-weight:500;font-display:swap}
+:root{--paper:#060607;--ink:#f4f2ee;--ink-2:#c3beb5;--ink-3:#97928a;--line:rgba(255,255,255,.14);--glass:rgba(255,255,255,.045);
+  --amber:#f2cf98;--ok:#9fd8b8;--bad:#f0a48f;--ff:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--ff);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60rem 30rem at 85% -10%,rgba(242,190,120,.12),transparent 60%),radial-gradient(50rem 30rem at -10% 10%,rgba(255,255,255,.06),transparent 60%)}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.shell{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:700px){.shell{padding:0 32px}}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.mark{font:800 20px/1 var(--ff);letter-spacing:.18em;text-decoration:none}
+.k{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0}
+h1{font:800 clamp(34px,6vw,60px)/1.02 var(--ff);letter-spacing:-.025em;margin:28px 0 14px;text-wrap:balance}
+h2{font:800 clamp(24px,3.4vw,34px)/1.1 var(--ff);letter-spacing:-.02em;margin:0 0 16px}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:36rem;margin:0 0 10px}
+.back{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2)}
+.tiers{display:grid;gap:16px;margin:28px 0 8px}
+@media (min-width:900px){.tiers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tier{display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--glass);
+  box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 28px 70px -30px rgba(0,0,0,.9)}
+.tier.pick{border-color:rgba(242,207,152,.6)}
+.tier h3{margin:0;font:800 22px/1.2 var(--ff)}
+.price{font:800 40px/1 var(--ff);letter-spacing:-.02em;margin:0}
+.price small{font-size:15px;font-weight:600;color:var(--ink-3);letter-spacing:0}
+.for{margin:0;color:var(--ink-2)}
+.tier ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.tier li{padding-left:22px;position:relative}
+.tier li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:6px;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg)}
+.tier li b{color:var(--ink);font-weight:700}
+.tier .go{margin-top:auto;display:grid;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:999px;font:700 16px/1.2 var(--ff);
+  text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-align:center}
+.btn.main{background:var(--ink);color:#0b0b0c}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.6;cursor:default}
+.fine{margin:0;font-size:13px;color:var(--ink-3);line-height:1.45}
+.band{margin:44px 0;padding:28px 24px;border:1px solid var(--line);border-radius:18px;background:var(--glass)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:s}
+@media (min-width:800px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.steps li{counter-increment:s;display:grid;gap:4px;align-content:start}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);font:700 15px/1 var(--ff);margin-bottom:6px}
+.steps li.done::before{content:"✓";background:var(--ok);border-color:var(--ok);color:#0b0b0c}
+.steps b{font-size:17px}
+.steps span{color:var(--ink-2);font-size:15px;line-height:1.5}
+form.card{display:grid;gap:14px;max-width:40rem}
+.row2{display:grid;gap:14px}
+@media (min-width:640px){.row2{grid-template-columns:1fr 1fr}}
+label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--ink-2)}
+label .opt{font-weight:500;color:var(--ink-3)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:96px;resize:vertical}
+input[aria-invalid="true"]{border-color:var(--bad)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+legend{font-size:14px;font-weight:600;color:var(--ink-2);margin-bottom:6px;padding:0}
+.choice{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:500;color:var(--ink)}
+.choice input{width:20px;height:20px;min-height:0;margin:0;flex:none}
+.msg{margin:0;padding:14px 16px;border-radius:12px;border:1px solid var(--line)}
+.msg.ok{border-color:var(--ok)}
+.msg.bad{border-color:var(--bad);color:var(--bad)}
+.hp{position:absolute;left:-9999px}
+details{border-top:1px solid var(--line);padding:14px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;min-height:28px}
+details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
+.foot{padding:30px 0 50px;color:var(--ink-3);font-size:14px;border-top:1px solid var(--line);margin-top:40px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="top"><a class="mark" href="../">ORELVI</a><p class="k">Secure checkout by Stripe</p></header>
+  <main>
+    <a class="back" id="back" href="../" hidden>← Back to your preview</a>
+    <h1 id="title">Pick your plan.</h1>
+    <p class="lede" id="lede">Choose a plan, pay securely, tell us your details. We do the rest.</p>
+    <p class="fine">$79 a month keeps it updated after launch. That part is optional.</p>
+    <section class="tiers" aria-label="Plans">
+    <article class="tier" data-tier="launch">
+      <p class="k">Launch</p>
+      <p class="price">$399<small> one time</small></p>
+      <p class="for">For a business that needs to be found and called.</p>
+      <ul><li><b>One finished design</b>: picked to fit your trade</li><li><b>Your real details</b>: services, hours, area and contact, checked against what you publish</li><li><b>Clean and fast</b>: on every phone and screen</li><li><b>One round of changes</b>: included before launch</li><li><b>Live on your domain</b>: with a contact form or call button</li></ul>
+      <div class="go">
+        <a class="btn main" data-pay href="https://buy.stripe.com/14A9AMdUS0M2baW8ns83C00" rel="noopener">Pay $399 and claim it</a>
+        <button class="btn" type="button" data-yes="launch">Or get an invoice</button>
+        <a class="btn main" data-book href="../#book" hidden>Get a free preview first</a>
+      </div>
+    </article>
+    <article class="tier" data-tier="signature">
+      <p class="k">Signature</p>
+      <p class="price">$899<small> one time</small></p>
+      <p class="for">For a business that wants to choose its look.</p>
+      <ul><li><b>Three finished designs</b>: in three different styles. You choose.</li><li><b>Your own photographs</b>: placed through the page, with colour and typeface options</li><li><b>3D touches</b>: photos that move as visitors scroll, and a living effect over your opening photo</li><li><b>Three rounds of changes</b>: included before launch</li></ul>
+      <div class="go">
+        <a class="btn main" data-pay href="https://buy.stripe.com/9B6aEQeYWeCSa6SgTY83C01" rel="noopener">Pay $899 and claim it</a>
+        <button class="btn" type="button" data-yes="signature">Or get an invoice</button>
+        <a class="btn main" data-book href="../#book" hidden>Get a free preview first</a>
+      </div>
+    </article>
+    <article class="tier" data-tier="custom">
+      <p class="k">Custom</p>
+      <p class="price"><small>from </small>$1,899<small> one time</small></p>
+      <p class="for">For a business that wants to stand apart.</p>
+      <ul><li><b>Art direction made for you</b>: your colours, type and layout, beyond our templates</li><li><b>Words written for you</b>: from a call with you, in your voice</li><li><b>3D scene</b>: a lit, scroll-driven scene built around what you do (falls back to a still on older phones)</li><li><b>Five rounds of changes</b>: plus extra pages quoted on the call</li></ul>
+      <div class="go">
+        
+        <button class="btn main" type="button" data-yes="custom">Talk about Custom</button>
+        <a class="btn main" data-book href="../#book" hidden>Get a free preview first</a>
+      </div>
+    </article>
+    </section>
+    <p class="fine">Card payments go through Stripe. ORELVI never sees your card number.</p>
+
+    <section class="band" id="yes" hidden aria-labelledby="yes-h">
+      <h2 id="yes-h">Say yes, and we'll take it from there.</h2>
+      <p class="lede" id="yes-lede">Leave your details. We'll email you to confirm and send an invoice you can pay by card.</p>
+      <form class="card" id="yes-form" novalidate>
+        <div class="row2">
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        </div>
+        <div class="row2">
+          <label><span>Phone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
+          <label>Plan<select name="tier"><option value="launch">Launch ($399)</option><option value="signature">Signature ($899)</option><option value="custom">Custom (from $1,899)</option></select></label>
+        </div>
+        <label><span>Anything to change first? <span class="opt">(optional)</span></span><textarea name="note" maxlength="1000"></textarea></label>
+        <p class="msg bad" id="yes-err" role="alert" hidden></p>
+        <button class="btn main" type="submit">Yes, I want it</button>
+      </form>
+      <div id="yes-done" hidden><p class="msg ok" id="yes-ok"></p></div>
+    </section>
+
+    <section class="band" aria-labelledby="next-h">
+      <h2 id="next-h">What happens next</h2>
+  <ol class="steps">
+    <li><b>Pay securely</b><span>By card on Stripe's checkout. Your receipt comes by email.</span></li>
+    <li><b>Tell us the details</b><span>A short form right after paying: changes, hours, photos and your domain.</span></li>
+    <li><b>Approve your final proof</b><span>We make your changes and send it over for a last look.</span></li>
+    <li><b>Go live</b><span>On a domain you own. No domain yet? We help you get one.</span></li>
+  </ol>
+    </section>
+
+    <section aria-label="Questions">
+      <details><summary>Do I need a domain already?</summary><p>No. If you own one, we connect the site to it. If not, we help you pick one and set it up in your name.</p></details>
+      <details><summary>Can I change things before it goes live?</summary><p>Yes. Every plan includes rounds of changes before launch: one on Launch, three on Signature, five on Custom.</p></details>
+      <details><summary>What if I'd rather pay by invoice?</summary><p>Use "Or get an invoice" on any plan. We email you a numbered invoice with the same secure card link.</p></details>
+    </section>
+  </main>
+  <footer class="foot">Questions? <a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></footer>
+</div>
+<script>
+(function(){
+  var api = "https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant";
+  var q = new URLSearchParams(location.search);
+  var site = /^[a-z0-9-]{1,80}$/.test(q.get('site') || '') ? q.get('site') : '';
+  var biz = (q.get('b') || '').slice(0, 120);
+  var want = q.get('tier') || '';
+  var $ = function(s){ return document.querySelector(s); };
+  if (site) {
+    $('#back').hidden = false; $('#back').href = '../' + site + '/';
+    $('#title').textContent = biz ? 'Your ' + biz + ' site is ready to go live.' : 'Your site is ready to go live.';
+    $('#lede').textContent = 'Choose a plan, pay securely, and tell us your details. We do the rest.';
+  }
+  document.querySelectorAll('.tier').forEach(function(card){
+    var id = card.getAttribute('data-tier');
+    if (want && want === id) card.classList.add('pick');
+    var pay = card.querySelector('[data-pay]'), yes = card.querySelector('[data-yes]'), book = card.querySelector('[data-book]');
+    if (!site) {
+      /* nothing is built for this visitor yet: the first step is a free preview, not a card */
+      if (pay) pay.hidden = true; if (yes) yes.hidden = true; book.hidden = false; return;
+    }
+    if (pay) {
+      var u = new URL(pay.href);
+      if (/(^|\.)stripe\.com$/.test(u.hostname)) u.searchParams.set('client_reference_id', site);
+      pay.href = u.toString();
+      pay.addEventListener('click', function(){
+        try { localStorage.setItem('orelvi-claim', JSON.stringify({ site: site, business: biz, tier: id, at: Date.now() })); } catch (e) {}
+      });
+    }
+    if (yes) yes.addEventListener('click', function(){
+      var band = $('#yes'); band.hidden = false;
+      band.querySelector('select[name=tier]').value = id;
+      if (id === 'custom') { $('#yes-h').textContent = 'Let\u2019s talk about Custom.'; $('#yes-lede').textContent = 'Custom is priced after a short call about what you want. Leave your details and we will set one up.'; }
+      band.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setTimeout(function(){ band.querySelector('input').focus({ preventScroll: true }); }, 400);
+    });
+  });
+  var f = $('#yes-form'), err = $('#yes-err');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var bad = null;
+    f.querySelectorAll('[required]').forEach(function(i){ var ok = i.value.trim() && (i.type !== 'email' || /.+@.+\..+/.test(i.value)); i.setAttribute('aria-invalid', ok ? 'false' : 'true'); if (!ok && !bad) bad = i; });
+    if (bad) { err.hidden = false; err.textContent = 'Your name and a working email are needed.'; bad.focus(); return; }
+    var d = Object.fromEntries(new FormData(f).entries());
+    var btn = f.querySelector('button[type=submit]'); btn.disabled = true; err.hidden = true;
+    var fallback = function(m){ btn.disabled = false; err.hidden = false; err.textContent = (m || 'That did not go through.') + ' You can also email us directly.'; };
+    if (!api) return fallback('The form is offline right now.');
+    fetch(api + '/claim', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ kind: 'yes', site: site, name: d.name, email: d.email, phone: d.phone, tier: d.tier, note: d.note }) })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok || !j.ok) throw new Error(j.message); return j; }); })
+      .then(function(j){
+        f.hidden = true; $('#yes-done').hidden = false; $('#yes-ok').textContent = j.message;
+        if (j.payUrl && /^https:\/\//.test(j.payUrl)) {
+          var a = document.createElement('a'); a.className = 'btn main'; a.href = j.payUrl; a.rel = 'noopener'; a.textContent = j.payLabel || 'Pay by card';
+          a.style.marginTop = '14px';
+          a.addEventListener('click', function(){ try { localStorage.setItem('orelvi-claim', JSON.stringify({ site: site, business: biz, tier: d.tier, name: d.name, email: d.email, at: Date.now() })); } catch (e) {} });
+          $('#yes-done').appendChild(a);
+        }
+      })
+      .catch(function(e){ fallback(e && e.message); });
+  });
+})();
+</script>
+</body>
+</html>

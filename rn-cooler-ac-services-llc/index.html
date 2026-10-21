@@ -122,6 +122,7 @@
       <p class="claim-lead">Wesley Stum built this sample for R&amp;N Cooler &amp; AC Services LLC. They did not ask for it and have not paid for it.</p>
       <p class="claim-terms">$399 to put it live on a domain you own. $79 a month to keep it updated, which is optional.</p>
       <div class="claim-acts">
+        <a class="claim-act claim-yes claim-go" href="https://wesleystum1-bot.github.io/orelvi-previews/start/?site=rn-cooler-ac-services-llc&amp;b=R%26N%20Cooler%20%26%20AC%20Services%20LLC"><span class="claim-act-k">Ready for it?</span><span class="claim-act-v">Claim this site</span></a>
         <a class="claim-act" href="mailto:wesleystum1+orelvi@gmail.com?subject=The%20R%26N%20Cooler%20%26%20AC%20Services%20LLC%20sample%20site"><span class="claim-act-k">Reply to Wesley Stum</span><span class="claim-act-v">wesleystum1+orelvi@gmail.com</span></a>
       </div>
       <p class="claim-out">Want it taken down? Say so and it goes the same day.</p>
@@ -155,7 +156,10 @@
   yesBtn.appendChild(el('span', 'claim-act-k', 'Like it?')); yesBtn.appendChild(el('span', 'claim-act-v', 'Say yes here'));
   var askBtn = el('button', 'claim-act'); askBtn.type = 'button';
   askBtn.appendChild(el('span', 'claim-act-k', 'Questions?')); askBtn.appendChild(el('span', 'claim-act-v', 'Ask the assistant'));
-  acts.insertBefore(askBtn, acts.firstChild); acts.insertBefore(yesBtn, acts.firstChild);
+  /* with a checkout the band already leads with "Claim this site": the chat sits beside it rather than adding a second yes */
+  var go = acts.querySelector('.claim-go');
+  if (go) acts.insertBefore(askBtn, go.nextSibling);
+  else { acts.insertBefore(askBtn, acts.firstChild); acts.insertBefore(yesBtn, acts.firstChild); }
   var out = document.querySelector('.claim-out');
   if (out) { var down = el('button', 'claim-link', 'Take it down'); down.type = 'button'; out.appendChild(document.createTextNode(' ')); out.appendChild(down); down.addEventListener('click', function(){ open(); takedownCard(); }); }
 
@@ -256,6 +260,16 @@
       .catch(function(){ done('The assistant is offline. Reply to the email instead.', true); });
   }
   form.addEventListener('submit', function(e){ e.preventDefault(); var t = input.value; input.value = ''; ask(t); });
+})();</script>
+
+  <a class="claim-bar" href="https://wesleystum1-bot.github.io/orelvi-previews/start/?site=rn-cooler-ac-services-llc&amp;b=R%26N%20Cooler%20%26%20AC%20Services%20LLC" hidden><span>Like this site?</span><b>Claim it from $399</b></a>
+  <script>(function(){
+  var bar = document.querySelector('.claim-bar'), band = document.querySelector('.claim'); if (!bar || !band) return;
+  var near = false;
+  function show(){ var panel = document.querySelector('.cc-panel'); bar.hidden = near || window.scrollY < window.innerHeight * 0.6 || (panel && !panel.hidden); }
+  if (window.IntersectionObserver) new IntersectionObserver(function(es){ near = es.some(function(x){ return x.isIntersecting; }); show(); }).observe(band);
+  window.addEventListener('scroll', show, { passive: true }); document.addEventListener('click', function(){ setTimeout(show, 0); });
+  show();
 })();</script>
 </aside>
 </body>
