@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1200" width="960" height="1200" preserveAspectRatio="xMidYMid slice" role="img">
-<defs><radialGradient id="bg0" cx="30%" cy="26%" r="86%"><stop offset="0%" stop-color="#fbf9f7"/><stop offset="54%" stop-color="#f7f2ee"/><stop offset="100%" stop-color="#d5c9c4"/></radialGradient><linearGradient id="fm1" x1="26.53%" y1="5.85%" x2="73.47%" y2="94.15%"><stop offset="0%" stop-color="#d435NaN"/><stop offset="36%" stop-color="#8d726c"/><stop offset="68%" stop-color="#251dNaN"/><stop offset="100%" stop-color="#1e18NaN"/></linearGradient><radialGradient id="sd2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2c2321" stop-opacity="0.4"/><stop offset="100%" stop-color="#2c2321" stop-opacity="0"/></radialGradient><filter id="bl4" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="31.2"/></filter><filter id="gr3" x="0" y="0" width="100%" height="100%">
+<defs><radialGradient id="bg0" cx="68%" cy="26%" r="86%"><stop offset="0%" stop-color="#fbf9f7"/><stop offset="54%" stop-color="#f7f2ee"/><stop offset="100%" stop-color="#d5c9c4"/></radialGradient><linearGradient id="fm1" x1="73.47%" y1="5.85%" x2="26.53%" y2="94.15%"><stop offset="0%" stop-color="#d435NaN"/><stop offset="36%" stop-color="#8d726c"/><stop offset="68%" stop-color="#251dNaN"/><stop offset="100%" stop-color="#1e18NaN"/></linearGradient><radialGradient id="sd2" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2c2321" stop-opacity="0.4"/><stop offset="100%" stop-color="#2c2321" stop-opacity="0"/></radialGradient><filter id="bl4" x="-25%" y="-25%" width="150%" height="150%"><feGaussianBlur stdDeviation="31.2"/></filter><filter id="gr3" x="0" y="0" width="100%" height="100%">
     <feTurbulence type="fractalNoise" baseFrequency="1" numOctaves="3" stitchTiles="stitch" seed="7"/>
     <feColorMatrix type="saturate" values="0"/>
     <feComponentTransfer><feFuncA type="linear" slope="0.24"/></feComponentTransfer>
@@ -7,10 +7,10 @@
 <rect width="960" height="1200" fill="url(#bg0)"/>
 <path d="M0 720.0H960" stroke="rgba(44,35,33,0.08)" stroke-width="1"/>
 <rect y="720.0" width="960" height="480.0" fill="rgba(44,35,33,0.05)"/>
-<ellipse cx="577.5" cy="880.0" rx="551.7" ry="33.6" fill="url(#sd2)" filter="url(#bl4)"/>
-<path d="M626.5 303.9 C 628.6 313.4, 635.7 313.4, 638.8 361.1 C 641.9 408.7, 643.9 513.6, 644.9 589.9 C 645.9 666.2, 647.0 771.1, 644.9 818.8 C 642.9 866.5, 634.7 866.5, 632.7 876.0 L154.6 876.0 C 152.5 866.5, 144.3 866.5, 142.3 818.8 C 140.3 771.1, 141.3 666.2, 142.3 589.9 C 143.3 513.6, 145.4 408.7, 148.4 361.1 C 151.5 313.4, 158.6 313.4, 160.7 303.9 Z" fill="url(#fm1)"/>
-<ellipse cx="393.6" cy="303.9" rx="232.9" ry="55.9" fill="#1612NaN" opacity="0.72"/>
-<path d="M160.7 303.9 A 232.9 55.9 0 0 1 626.5 303.9" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="1.6"/>
-<path d="M626.5 303.9 C 628.6 313.4, 635.7 313.4, 638.8 361.1 C 641.9 408.7, 643.9 513.6, 644.9 589.9 C 645.9 666.2, 647.0 771.1, 644.9 818.8 C 642.9 866.5, 634.7 866.5, 632.7 876.0" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round"/>
+<ellipse cx="364.5" cy="880.0" rx="588.2" ry="33.6" fill="url(#sd2)" filter="url(#bl4)"/>
+<path d="M671.7 315.0 C 672.8 330.0, 648.8 373.0, 678.2 404.8 C 707.6 436.6, 814.4 459.0, 848.2 505.8 C 881.9 552.5, 881.9 626.4, 880.8 685.3 C 879.7 744.2, 858.0 827.4, 841.6 859.2 C 825.3 891.0, 792.6 873.2, 782.8 876.0 L338.4 876.0 C 328.6 873.2, 295.9 891.0, 279.5 859.2 C 263.2 827.4, 241.4 744.2, 240.3 685.3 C 239.2 626.4, 239.2 552.5, 273.0 505.8 C 306.8 459.0, 413.5 436.6, 442.9 404.8 C 472.4 373.0, 448.4 330.0, 449.5 315.0 Z" fill="url(#fm1)"/>
+<ellipse cx="560.6" cy="315.0" rx="111.1" ry="26.7" fill="#1612NaN" opacity="0.72"/>
+<path d="M449.5 315.0 A 111.1 26.7 0 0 1 671.7 315.0" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="1.6"/>
+<path d="M449.5 315.0 C 448.4 330.0, 472.4 373.0, 442.9 404.8 C 413.5 436.6, 306.8 459.0, 273.0 505.8 C 239.2 552.5, 239.2 626.4, 240.3 685.3 C 241.4 744.2, 263.2 827.4, 279.5 859.2 C 295.9 891.0, 328.6 873.2, 338.4 876.0" fill="none" stroke="rgba(255,255,255,0.42)" stroke-width="2" stroke-linecap="round"/>
 <rect width="960" height="1200" filter="url(#gr3)" opacity=".4"/>
 </svg>

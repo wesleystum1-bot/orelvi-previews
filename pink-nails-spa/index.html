@@ -26,7 +26,7 @@
       <span class="rail-kind">Nail salon</span>
     </a>
     <div class="rail-mob">
-      <a class="rail-mob-book" href="#contact" aria-label="Book a treatment">Book</a>
+      <a class="rail-mob-book" href="#contact" aria-label="Book an appointment">Book</a>
       <button class="rail-burger" data-menu-toggle aria-expanded="false" aria-controls="menu" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
@@ -34,14 +34,14 @@
   </div>
   <div class="rail-open rail-open--empty"></div>
   <nav class="rail-nav rail-nav--num" aria-label="Primary">
-    <a href="#contact"><em aria-hidden="true">II</em><span>Book</span></a>
+    <a href="#services"><em aria-hidden="true">I</em><span>Services</span></a><a href="#contact"><em aria-hidden="true">II</em><span>Book</span></a>
   </nav>
   <div class="rail-foot">
-    <a class="rail-book" href="#contact">Book a treatment</a>
+    <a class="rail-book" href="#contact">Book an appointment</a>
   </div>
 </header>
 <div class="rmenu" id="menu" data-menu>
-  <nav aria-label="Menu"><a href="#contact">Book</a></nav>
+  <nav aria-label="Menu"><a href="#services">Services</a><a href="#contact">Book</a></nav>
   <div class="rmenu-foot">
     <a href="tel:4807551966" aria-label="Call (480) 755-1966">(480) 755-1966</a>
     <a href="mailto:htempe@gmail.com" aria-label="Email htempe@gmail.com">htempe@gmail.com</a>
@@ -55,22 +55,22 @@
     <p class="hero-eyebrow">Nail salon</p>
     <p class="sf-place">Chandler, AZ</p>
   </div>
-  <h1 class="hero-h hero-h--xl">Treatments, unhurried.</h1>
+  <h1 class="hero-h hero-h--xl">Color and cutting, considered.</h1>
   <div class="sf-band">
     
     
     <dl class="sf-glance">
-      <div><dt>Practice</dt><dd>4050 W Ray Rd #16, Chandler, AZ 85226</dd></div><div><dt>Phone</dt><dd>(480) 755-1966</dd></div>
+      <div><dt>Studio</dt><dd>4050 W Ray Rd #16, Chandler, AZ 85226</dd></div><div><dt>Phone</dt><dd>(480) 755-1966</dd></div>
     </dl>
     
     <div class="hero-cta">
-      <a class="btn" href="#contact">Book a treatment</a>
-      
+      <a class="btn" href="#contact">Book an appointment</a>
+      <a class="btn-quiet" href="#services"><span>See services</span><svg class="ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M12 3v17"/><path d="M6 14l6 6 6-6"/></svg></a>
     </div>
   </div>
   
   <figure class="hero-fig hero-fig--wide">
-    <div class="arch arch--hero arch--wide" data-photo-slot="hero" role="img" aria-label="Typographic plate drawn for this page. It is artwork, not a photograph of the practice.">
+    <div class="arch arch--hero arch--wide" data-photo-slot="hero" role="img" aria-label="Typographic plate drawn for this page. It is artwork, not a photograph of the studio.">
       <span class="arch-top">Chandler, AZ</span>
       <span class="arch-mono" aria-hidden="true">PN</span>
       <span class="arch-foot">Nail salon</span>
@@ -79,13 +79,55 @@
   </figure>
 </section>
 
+<section class="svc" id="services">
+  
+  <div class="shell svc-in svc-in--sched">
+    <header class="head head--tight">
+      <p class="eyebrow">Services</p>
+      <h2>What can be booked</h2>
+      <p class="head-note">2 service lines. Each is booked by appointment; timings are confirmed when you get in touch.</p>
+    </header>
+    <table class="svc-sched">
+      <thead>
+        <tr><th scope="col">Treatment</th><th scope="col">What it is</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr data-reveal data-reveal-delay="0">
+          <th scope="row">
+            <span class="svc-sched-ic" aria-hidden="true"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M7.7 16.2 19 4M16.3 16.2 5 4"/></svg></span>
+            <span class="svc-sched-n">nails</span>
+          </th>
+          <td></td>
+          
+        </tr>
+        <tr data-reveal data-reveal-delay="1">
+          <th scope="row">
+            <span class="svc-sched-ic" aria-hidden="true"><svg class="ic" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M8 21c-2.5 0-4-1.5-4-4 2.5 0 3-1 4-3l3 3c-2 1-2.5 4-3 4z"/><path d="M11 17 20 8a2.1 2.1 0 0 0-3-3l-9 9"/></svg></span>
+            <span class="svc-sched-n">pedicures</span>
+          </th>
+          <td></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="svc-ruled">
+      <p class="svc-ruled-label">Book an appointment</p>
+      <a class="svc-ruled-tel" href="tel:4807551966" aria-label="Call (480) 755-1966">(480) 755-1966</a>
+      
+      <a class="btn" href="#contact">Book an appointment</a>
+    </div>
+  </div>
+</section>
+
 <section class="bar" aria-label="Appointments">
   <div class="shell bar-in">
     <dl class="bar-facts">
-      <div><dt>Practice</dt><dd>4050 W Ray Rd #16, Chandler, AZ 85226</dd></div>
+      <div><dt>Studio</dt><dd>4050 W Ray Rd #16, Chandler, AZ 85226</dd></div>
       <div><dt>By phone</dt><dd><a href="tel:4807551966" aria-label="Call (480) 755-1966">(480) 755-1966</a></dd></div>
     </dl>
-    <a class="bar-cta" href="#contact">Book a treatment<svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3 12h17"/><path d="M14 6l6 6-6 6"/></svg></a>
+    <a class="bar-cta" href="#contact">Book an appointment<svg class="ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true"><path d="M3 12h17"/><path d="M14 6l6 6-6 6"/></svg></a>
   </div>
 </section>
 
@@ -93,12 +135,12 @@
   <div class="shell">
     <div class="bkp-panel">
       <div class="bkp-info">
-        <p class="bkp-eyebrow">Book a treatment</p>
+        <p class="bkp-eyebrow">Book an appointment</p>
         <h2 class="bkp-h">Tell us when suits you.</h2>
         <dl class="bkp-dl">
           <div><dt>Phone</dt><dd><a href="tel:4807551966" aria-label="Call (480) 755-1966">(480) 755-1966</a></dd></div>
           <div><dt>Email</dt><dd><a href="mailto:htempe@gmail.com" aria-label="Email htempe@gmail.com">htempe@gmail.com</a></dd></div>
-          <div><dt>Practice</dt><dd>4050 W Ray Rd #16, Chandler, AZ 85226</dd></div>
+          <div><dt>Studio</dt><dd>4050 W Ray Rd #16, Chandler, AZ 85226</dd></div>
         </dl>
         
       </div>
@@ -106,9 +148,12 @@
         <div class="bf"><label for="s-name">Name</label><input id="s-name" name="name" autocomplete="name" required></div>
         <div class="bf"><label for="s-con">Phone or email</label><input id="s-con" name="contact" autocomplete="tel" required></div>
         
+        <div class="bf bf--wide"><label for="s-svc">Service</label>
+          <select id="s-svc" name="service"><option>nails</option><option>pedicures</option></select>
+        </div>
         <div class="bf bf--wide"><label for="s-when">Preferred day or time</label><input id="s-when" name="when"></div>
         <div class="bf bf--wide"><label for="s-note">Anything we should know</label><textarea id="s-note" name="note" rows="3"></textarea></div>
-        <button class="btn btn--block" type="submit">Book a treatment</button>
+        <button class="btn btn--block" type="submit">Book an appointment</button>
         <output role="status"></output>
       </form>
     </div>
@@ -123,7 +168,7 @@
         <p class="ft-name">Pink Nails &amp; Spa</p>
         <p class="ft-kind">Nail salon · Chandler, AZ</p>
       </div>
-      <nav class="ft-nav" aria-label="Footer"><a href="#contact">Book</a></nav>
+      <nav class="ft-nav" aria-label="Footer"><a href="#services">Services</a><a href="#contact">Book</a></nav>
       <div class="ft-c">
         <a href="tel:4807551966" aria-label="Call (480) 755-1966">(480) 755-1966</a>
         <a href="mailto:htempe@gmail.com" aria-label="Email htempe@gmail.com">htempe@gmail.com</a>
@@ -284,7 +329,6 @@
   }
   form.addEventListener('submit', function(e){ e.preventDefault(); var t = input.value; input.value = ''; ask(t); });
 })();</script>
-
   <a class="claim-bar" href="https://wesleystum1-bot.github.io/orelvi-previews/start/?site=pink-nails-spa&amp;b=Pink%20Nails%20%26%20Spa" hidden><span>Like this site?</span><b>Claim it from $399</b></a>
   <script>(function(){
   var bar = document.querySelector('.claim-bar'), band = document.querySelector('.claim'); if (!bar || !band) return;

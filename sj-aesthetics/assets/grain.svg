@@ -6,4 +6,4 @@
 <feTurbulence type="fractalNoise" baseFrequency="0.35" numOctaves="4" stitchTiles="stitch" seed="11" result="n"/>
 <feColorMatrix in="n" type="saturate" values="0" result="g"/>
 <feComponentTransfer in="g" result="a"><feFuncA type="linear" slope="0.4" intercept="0"/></feComponentTransfer>
-</filter></defs><rect width="620" height="620" fill="#302725"/><rect width="620" height="620" fill="#f6efeb" filter="url(#g0)" opacity=".1"/><rect width="620" height="620" fill="#f6efeb" filter="url(#g1)" opacity=".05"/></svg>
+</filter></defs><rect width="620" height="620" fill="#2b3028"/><rect width="620" height="620" fill="#f2f4ed" filter="url(#g0)" opacity=".1"/><rect width="620" height="620" fill="#f2f4ed" filter="url(#g1)" opacity=".05"/></svg>

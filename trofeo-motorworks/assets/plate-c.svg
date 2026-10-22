@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="p3" width="18" height="18" patternUnits="userSpaceOnUse" patternTransform="rotate(-22)">
-    <rect width="18" height="18" fill="#f3f1ee"/>
-    <rect width="6.12" height="18" fill="rgba(31,28,25,0.1)"/>
-    <rect x="6.12" width="1.44" height="18" fill="rgba(168,98,47,0.4)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><pattern id="p3" width="19" height="19" patternUnits="userSpaceOnUse" patternTransform="rotate(-22)">
+    <rect width="19" height="19" fill="#f3f1ee"/>
+    <rect width="6.460000000000001" height="19" fill="rgba(31,28,25,0.1)"/>
+    <rect x="6.460000000000001" width="1.52" height="19" fill="rgba(168,98,47,0.4)"/>
   </pattern></defs><rect width="900" height="700" fill="url(#p3)"/></svg>
