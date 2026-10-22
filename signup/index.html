@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Create your account · ORELVI</title>
+<meta name="description" content="Make a free ORELVI account and see a finished website for your business on screen.">
+<style>
+@font-face{font-family:"Schibsted Grotesk";src:url(../fonts/schibsted.woff2) format("woff2");font-weight:400 900;font-display:swap}
+@font-face{font-family:"IBM Plex Mono";src:url(../fonts/plex-mono.woff2) format("woff2");font-weight:500;font-display:swap}
+:root{--paper:#060607;--ink:#f4f2ee;--ink-2:#c3beb5;--ink-3:#97928a;--line:rgba(255,255,255,.14);--glass:rgba(255,255,255,.045);
+  --amber:#f2cf98;--ok:#9fd8b8;--bad:#f0a48f;--ff:"Schibsted Grotesk",ui-sans-serif,system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--ff);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(60rem 30rem at 85% -10%,rgba(242,190,120,.12),transparent 60%),radial-gradient(50rem 30rem at -10% 10%,rgba(255,255,255,.06),transparent 60%)}
+a{color:inherit;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.shell{max-width:1120px;margin:0 auto;padding:0 16px}
+@media (min-width:700px){.shell{padding:0 32px}}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0;border-bottom:1px solid var(--line)}
+.mark{font:800 20px/1 var(--ff);letter-spacing:.18em;text-decoration:none}
+.k{font:500 12px/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0}
+h1{font:800 clamp(34px,6vw,60px)/1.02 var(--ff);letter-spacing:-.025em;margin:28px 0 14px;text-wrap:balance}
+h2{font:800 clamp(24px,3.4vw,34px)/1.1 var(--ff);letter-spacing:-.02em;margin:0 0 16px}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:36rem;margin:0 0 10px}
+.back{display:inline-flex;align-items:center;min-height:44px;color:var(--ink-2)}
+.tiers{display:grid;gap:16px;margin:28px 0 8px}
+@media (min-width:900px){.tiers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.tier{display:flex;flex-direction:column;gap:12px;padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--glass);
+  box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 28px 70px -30px rgba(0,0,0,.9)}
+.tier.pick{border-color:rgba(242,207,152,.6)}
+.tier h3{margin:0;font:800 22px/1.2 var(--ff)}
+.price{font:800 40px/1 var(--ff);letter-spacing:-.02em;margin:0}
+.price small{font-size:15px;font-weight:600;color:var(--ink-3);letter-spacing:0}
+.for{margin:0;color:var(--ink-2)}
+.tier ul{margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:15px;line-height:1.5;color:var(--ink-2)}
+.tier li{padding-left:22px;position:relative}
+.tier li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:6px;border-left:2px solid var(--amber);border-bottom:2px solid var(--amber);transform:rotate(-45deg)}
+.tier li b{color:var(--ink);font-weight:700}
+.tier .go{margin-top:auto;display:grid;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 22px;border-radius:999px;font:700 16px/1.2 var(--ff);
+  text-decoration:none;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-align:center}
+.btn.main{background:var(--ink);color:#0b0b0c}
+.btn:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.6;cursor:default}
+.fine{margin:0;font-size:13px;color:var(--ink-3);line-height:1.45}
+.band{margin:44px 0;padding:28px 24px;border:1px solid var(--line);border-radius:18px;background:var(--glass)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:18px;counter-reset:s}
+@media (min-width:800px){.steps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.steps li{counter-increment:s;display:grid;gap:4px;align-content:start}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1.5px solid var(--line);font:700 15px/1 var(--ff);margin-bottom:6px}
+.steps li.done::before{content:"✓";background:var(--ok);border-color:var(--ok);color:#0b0b0c}
+.steps b{font-size:17px}
+.steps span{color:var(--ink-2);font-size:15px;line-height:1.5}
+form.card{display:grid;gap:14px;max-width:40rem}
+.row2{display:grid;gap:14px}
+@media (min-width:640px){.row2{grid-template-columns:1fr 1fr}}
+label{display:grid;gap:6px;font-size:14px;font-weight:600;color:var(--ink-2)}
+label .opt{font-weight:500;color:var(--ink-3)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:96px;resize:vertical}
+input[aria-invalid="true"]{border-color:var(--bad)}
+fieldset{border:0;margin:0;padding:0;display:grid;gap:8px}
+legend{font-size:14px;font-weight:600;color:var(--ink-2);margin-bottom:6px;padding:0}
+.choice{display:flex;align-items:center;gap:10px;min-height:44px;font-weight:500;color:var(--ink)}
+.choice input{width:20px;height:20px;min-height:0;margin:0;flex:none}
+.msg{margin:0;padding:14px 16px;border-radius:12px;border:1px solid var(--line)}
+.msg.ok{border-color:var(--ok)}
+.msg.bad{border-color:var(--bad);color:var(--bad)}
+.hp{position:absolute;left:-9999px}
+details{border-top:1px solid var(--line);padding:14px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;min-height:28px}
+details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
+.foot{padding:30px 0 50px;color:var(--ink-3);font-size:14px;border-top:1px solid var(--line);margin-top:40px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<style>
+.top nav{display:flex;align-items:center;gap:18px;font-size:15px}
+.top nav a{color:var(--ink-2);text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.top nav a:hover{color:var(--ink)}
+.auth{display:grid;gap:36px;padding:28px 0 10px}
+@media (min-width:900px){.auth{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:start;gap:56px;padding-top:40px}}
+.auth h1{margin-top:8px}
+.panel{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--glass);box-shadow:0 1px 0 rgba(255,255,255,.1) inset,0 28px 70px -30px rgba(0,0,0,.9)}
+.panel h2{font-size:20px;margin:0 0 14px}
+.pw{position:relative}
+.pw input{padding-right:72px}
+.pw button{position:absolute;right:6px;bottom:6px;min-height:36px;padding:0 12px;border-radius:8px;border:0;background:rgba(255,255,255,.08);color:var(--ink-2);font:600 13px/1 var(--ff);cursor:pointer}
+.chip{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:14px 16px;border:1px solid rgba(242,207,152,.45);border-radius:14px;background:rgba(242,207,152,.07);margin:0 0 18px}
+.chip b{font-size:18px}
+.chip span{color:var(--ink-2);font-size:15px}
+.switch{margin:18px 0 0;color:var(--ink-2)}
+.steps.mini{grid-template-columns:none!important;gap:16px}
+.lock{display:flex;gap:8px;align-items:center;color:var(--ink-3);font-size:13px;margin:4px 0 0}
+.wait{display:none;align-items:center;gap:10px;color:var(--ink-2)}
+.wait.on{display:flex}
+.spin{width:18px;height:18px;border-radius:50%;border:2px solid var(--line);border-top-color:var(--amber);animation:sp 0.8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+.hello{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 24px;margin:8px 0 6px}
+.hello h1{margin:20px 0 6px}
+.avatar{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--amber);color:#0b0b0c;font:800 17px/1 var(--ff)}
+.me{display:flex;align-items:center;gap:10px}
+.proofs{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:20px}
+@media (min-width:860px){.proofs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.proof{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);border-radius:18px;background:var(--glass);overflow:hidden}
+.proof.new{border-color:rgba(242,207,152,.7);box-shadow:0 0 0 4px rgba(242,207,152,.12)}
+.thumb{position:relative;display:block;aspect-ratio:16/10;overflow:hidden;background:#111;border-bottom:1px solid var(--line)}
+.thumb iframe{position:absolute;top:0;left:0;width:1280px;height:800px;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
+.thumb .tag{position:absolute;left:12px;top:12px;padding:4px 10px;border-radius:99px;background:rgba(6,6,7,.8);font:600 12px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.proof .body{display:grid;gap:12px;padding:20px;align-content:start}
+.proof h3{margin:0;font:800 22px/1.2 var(--ff)}
+.proof .acts{display:flex;flex-wrap:wrap;gap:10px}
+.proof .acts .btn{min-height:46px;padding:0 18px;font-size:15px}
+.change{display:grid;gap:10px}
+.track{display:grid;gap:10px;margin:22px 0 0;padding:0;list-style:none;counter-reset:t}
+@media (min-width:760px){.track{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.track li{counter-increment:t;display:flex;gap:10px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:14px;color:var(--ink-2);font-size:15px;line-height:1.4}
+.track li::before{content:counter(t);flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);font:700 14px/1 var(--ff);color:var(--ink)}
+.track li.done::before{content:"✓";background:var(--ok);border-color:var(--ok);color:#0b0b0c}
+.track li.now{border-color:rgba(242,207,152,.6);color:var(--ink)}
+.track li.now::before{border-color:var(--amber);color:var(--amber)}
+.track b{display:block;color:var(--ink)}
+.linkbtn{background:none;border:0;color:var(--ink-2);font:inherit;text-decoration:underline;cursor:pointer;min-height:44px;padding:0}
+.cols{display:grid;gap:20px}
+@media (min-width:900px){.cols{grid-template-columns:minmax(0,1.4fr) minmax(0,.6fr)}}
+</style>
+<div class="shell">
+  <header class="top"><a class="mark" href="../">ORELVI</a><nav aria-label="Account"><a href="../login/">Log in</a></nav></header>
+  <main class="auth">
+    <section>
+      <p class="k" id="kick">Free · No card</p>
+      <h1 id="title">Create your account and see your new website.</h1>
+      <p class="lede" id="lede">It is built the moment you sign up and opens right here. Nothing to wait for, nothing to pay unless you put it live.</p>
+      <div class="chip" id="chip" hidden><span>Your free proof</span><b id="chip-b"></b><span id="chip-s"></span><button class="linkbtn" type="button" id="chip-edit">Change</button></div>
+      <form class="card" id="f" novalidate>
+        <div id="biz">
+        <div class="row2">
+          <label>Business name<input name="business" autocomplete="organization" required></label>
+          <label>What you do<input name="trade" placeholder="Donut shop, roofing, dental..." required></label>
+        </div>
+        <div class="row2">
+          <label>Town or city<input name="town" autocomplete="address-level2" placeholder="Gilbert, AZ" required></label>
+          <label><span>Business phone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        
+        <details>
+          <summary>Add your menu or services and hours <span class="opt">(optional, makes it look like yours)</span></summary>
+          <div style="display:grid;gap:14px;margin-top:12px">
+            <label><span>Services or menu, one per line</span><textarea name="services" maxlength="1000" placeholder="Glazed donuts&#10;Apple fritters&#10;Coffee"></textarea></label>
+            <label><span>Hours</span><input name="hours" maxlength="300" placeholder="Mon-Fri 5am-1pm; Sat-Sun 6am-12pm"></label>
+            <label><span>Street address</span><input name="address" maxlength="200" autocomplete="street-address"></label>
+          </div>
+        </details>
+        </div>
+        <div class="row2">
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Email<input name="email" type="email" autocomplete="email" inputmode="email" required></label>
+        </div>
+        <label class="pw">Password<input name="password" type="password" autocomplete="new-password" minlength="8" required aria-describedby="pw-hint"><button type="button" class="eye" aria-pressed="false">Show</button></label>
+        <p class="fine" id="pw-hint">At least 8 characters.</p>
+        <p class="msg bad" id="e" role="alert" hidden></p>
+        <button class="btn main" type="submit" id="go">Create account and build my site</button>
+        <p class="wait" id="wait" role="status"><span class="spin" aria-hidden="true"></span><span>Building your site. This takes a few seconds.</span></p>
+        <p class="lock"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Your password is stored encrypted. We never sell your details or put you on a mailing list.</span></p>
+      </form>
+      <p class="switch">Already have an account? <a href="../login/" id="to-login">Log in</a></p>
+    </section>
+    <aside class="panel" aria-labelledby="how">
+      <h2 id="how">What happens next</h2>
+      <ol class="steps mini">
+        <li><b>Create your account</b><span>About ten seconds.</span></li>
+        <li><b>Your website opens</b><span>A finished page for your business, built from what you type here.</span></li>
+        <li><b>Like it? Claim it</b><span>From $399, paid once. Ask for changes first if you want any.</span></li>
+        <li><b>Go live</b><span>On your own domain. It belongs to you.</span></li>
+      </ol>
+    </aside>
+  </main>
+  <footer class="foot">Questions? <a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></footer>
+</div>
+<script>
+(function(){
+  var API = "https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant", TOKEN = 'orelvi-session', DRAFT = 'orelvi-proof-draft', USER = 'orelvi-user';
+  function get(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function put(k, v){ try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} }
+  function draft(){ try { return JSON.parse(get(DRAFT) || 'null'); } catch (e) { return null; } }
+  function call(path, body){
+    var h = { 'Content-Type': 'application/json' }, t = get(TOKEN); if (t) h.Authorization = 'Bearer ' + t;
+    return fetch(API + path, { method: 'POST', headers: h, body: JSON.stringify(body || {}) })
+      .catch(function(){ var e = new Error('We could not reach the server. Check your connection and try again.'); e.j = {}; throw e; })
+      .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){
+        if (!r.ok || !j.ok) { var e = new Error(j.message || 'That did not go through. Please try again.'); e.j = j; e.status = r.status; throw e; }
+        return j; }); });
+  }
+  function signedIn(j){ put(TOKEN, j.token); if (j.account) put(USER, JSON.stringify({ first: j.account.first, name: j.account.name })); }
+  function $(s){ return document.querySelector(s); }
+  function err(el, m){ el.hidden = !m; el.textContent = m || ''; }
+  function valid(f){
+    var bad = null;
+    f.querySelectorAll('[required]').forEach(function(i){
+      var ok = i.value.trim() && (i.type !== 'email' || /.+@.+\..+/.test(i.value)) && (!i.minLength || i.minLength < 0 || i.value.length >= i.minLength);
+      i.setAttribute('aria-invalid', ok ? 'false' : 'true'); if (!ok && !bad) bad = i; });
+    if (bad) bad.focus(); return !bad;
+  }
+  function eye(btn){ btn.addEventListener('click', function(){ var i = btn.parentNode.querySelector('input'); var show = i.type === 'password'; i.type = show ? 'text' : 'password'; btn.textContent = show ? 'Hide' : 'Show'; btn.setAttribute('aria-pressed', show ? 'true' : 'false'); }); }
+  /* only a page on this site may be a next stop */
+  function next(fallback){ var n = new URLSearchParams(location.search).get('next') || ''; return /^[a-z]+\/?$/.test(n) ? '../' + n.replace(/\/?$/, '/') : fallback; }
+  var f = $('#f'), d = draft();
+  if (get(TOKEN)) { location.replace('../account/'); return; }
+  /* details typed on the main page arrive in the link (from the server) or in this browser */
+  var q = new URLSearchParams(location.search);
+  ['business','trade','town','phone','name','email','services','hours','address'].forEach(function(k){ if (q.get(k)) { d = d || {}; d[k] = q.get(k); } });
+  if (q.toString()) history.replaceState(null, '', location.pathname);
+  function fill(o){ Object.keys(o || {}).forEach(function(k){ var el = f.elements[k]; if (el && o[k] && !el.value) el.value = o[k]; }); }
+  if (d && d.business) {
+    fill(d);
+    $('#kick').textContent = 'Last step · Free';
+    $('#title').textContent = 'Create your account to see your website for ' + d.business + '.';
+    $('#lede').textContent = 'It is built the moment you sign up and opens right here. No email to wait for.';
+    $('#chip').hidden = false; $('#chip-b').textContent = d.business;
+    $('#chip-s').textContent = [d.trade, d.town].filter(Boolean).join(' · ');
+    $('#biz').hidden = true;
+    $('#to-login').href = '../login/';
+  }
+  $('#chip-edit').addEventListener('click', function(){ $('#biz').hidden = false; $('#chip').hidden = true; f.business.focus(); });
+  eye(f.querySelector('.eye'));
+  f.addEventListener('submit', function(e){
+    e.preventDefault(); err($('#e'));
+    if (!valid(f)) { if (!$('#biz').hidden || !f.business.value) $('#biz').hidden = false; return err($('#e'), f.password.value && f.password.value.length < 8 ? 'Use at least 8 characters for your password.' : 'A few details are missing.'); }
+    var o = {}; new FormData(f).forEach(function(v, k){ o[k] = String(v); });
+    var booking = { business: o.business, trade: o.trade, town: o.town, phone: o.phone, services: o.services, hours: o.hours, address: o.address, name: o.name, tier: d && d.tier, notes: d && d.notes };
+    $('#go').disabled = true; $('#wait').classList.add('on');
+    call('/auth/signup', { name: o.name, email: o.email, password: o.password, booking: booking }).then(function(j){
+      signedIn(j); put(DRAFT, null);
+      location.href = '../account/' + (j.proof ? '?new=' + encodeURIComponent(j.proof.slug) : '');
+    }).catch(function(x){
+      $('#go').disabled = false; $('#wait').classList.remove('on');
+      if (x.j && x.j.exists) { put(DRAFT, JSON.stringify(booking)); err($('#e'), x.message); $('#to-login').focus(); return; }
+      err($('#e'), x.message);
+      var el = x.j && x.j.field && f.elements[x.j.field]; if (el) { el.setAttribute('aria-invalid', 'true'); el.focus(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>

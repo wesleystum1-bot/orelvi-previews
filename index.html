@@ -564,7 +564,7 @@ footer .postal{font-weight:500;color:var(--ink-3)}
   <div class="shell">
     <a class="word" href="#top" id="top"><svg class="mark" viewBox="0 0 44 44" fill="none" aria-hidden="true"><defs><linearGradient id="orelvi-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset=".7" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#f2cf98" stop-opacity=".35"/></linearGradient></defs><g transform="skewY(-24)"><rect x="16" y="22" width="22" height="24" rx="3.5" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/><rect x="6" y="25" width="15" height="18" rx="3" fill="url(#orelvi-glass)" stroke="currentColor" stroke-width="2.2"/></g></svg><span class="name">ORELVI</span></a>
     <nav aria-label="Main">
-      <a href="#tiers">Tiers</a><a href="#work">Work</a><a href="rail/">On the rail</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="blog/">Blog</a><a href="waitlist/">Founding list</a><a href="#book" class="cta">Book a proof</a>
+      <a href="#tiers">Tiers</a><a href="#work">Work</a><a href="rail/">On the rail</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="blog/">Blog</a><a href="waitlist/">Founding list</a><a href="login/" id="nav-acct">Log in</a><a href="#book" class="cta">Book a proof</a>
     </nav>
   </div>
 </header>
@@ -1113,13 +1113,13 @@ footer .postal{font-weight:500;color:var(--ink-3)}
     <div class="side">
       <p class="kicker mono"><span class="reg" aria-hidden="true"></span>Book a proof</p>
       <h2>Tell us who you are. We&rsquo;ll show you what we&rsquo;d build.</h2>
-      <p>There&rsquo;s no call to sit through first. Fill this in, confirm your email with a 6-digit code, and your proof starts building. Your account page shows it the moment it&rsquo;s live.</p>
+      <p>There&rsquo;s no call to sit through first. Fill this in, make a free account, and your website is built and opens right there on your screen.</p>
       
       
       <p>Rather talk first?</p><p class="lines"><a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></p>
     </div>
     
-      <form id="book-form" class="book-form" action="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant/book" method="POST" data-endpoint="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant/book" data-account="account/" novalidate>
+      <form id="book-form" class="book-form" action="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant/book" method="POST" data-endpoint="https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant/book" data-account="signup/" novalidate>
         <div class="row two">
           <label>Business name<input id="f-business" name="business" required autocomplete="organization"></label>
           <label>What you do<input id="f-trade" name="trade" required placeholder="Roofing, dental, detailing…" list="trade-list"></label>
@@ -1149,7 +1149,7 @@ footer .postal{font-weight:500;color:var(--ink-3)}
         <input type="hidden" name="_subject" value="New booking: ORELVI">
         <div class="submit-row">
           <button type="submit" class="btn primary" id="f-submit">Get my free proof</button>
-          <p class="fine">Next you confirm your email with a 6-digit code and your proof starts building. No card, no contract.</p>
+          <p class="fine">Next you make a free account and your website opens on screen. No card, no contract, no email to wait for.</p>
         </div>
         <p class="status" id="f-status" role="status" aria-live="polite" hidden></p>
       </form>
@@ -1433,6 +1433,8 @@ var CHAT_TIERS = [{"name":"Launch","price":"$399"},{"name":"Signature","price":"
   var form = document.getElementById('book-form');
   if (!form) return;
   window.orelviToAccount = toAccount;
+  /* signed in on this browser: the header says whose account it is */
+  (function(){ var a = document.getElementById('nav-acct'), u = null; try { u = localStorage.getItem('orelvi-session') && JSON.parse(localStorage.getItem('orelvi-user') || '{}'); } catch (e) {} if (a && u) { a.href = 'account/'; a.textContent = u.first ? u.first + '\u2019s account' : 'My account'; } })();
   /* With the hosted assistant behind the page, a proof is asked for from the
      visitor's account: the details wait in this browser while they confirm
      their email with a code, then the build starts and the account page shows
@@ -1440,8 +1442,10 @@ var CHAT_TIERS = [{"name":"Launch","price":"$399"},{"name":"Signature","price":"
   function toAccount(d){
     var to = form.getAttribute('data-account');
     if (!to) return false;
-    try { localStorage.setItem('orelvi-proof-draft', JSON.stringify(Object.assign({ fresh: 1 }, d))); } catch (e) { return false; }
-    location.href = to;
+    var signed = false;
+    try { localStorage.setItem('orelvi-proof-draft', JSON.stringify(Object.assign({ fresh: 1 }, d))); signed = !!localStorage.getItem('orelvi-session'); } catch (e) { return false; }
+    /* already signed in: the account page builds it straight away */
+    location.href = signed ? 'account/' : to;
     return true;
   }
   var status = document.getElementById('f-status'), btn = document.getElementById('f-submit');
