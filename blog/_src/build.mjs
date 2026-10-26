@@ -265,7 +265,7 @@ function hasPage(dir) {
 /* Prospect previews are private-ish pitches to one business each: keep them
    out of search so a business never finds its own unpaid preview on Google. */
 const previews = readdirSync(ROOT, { withFileTypes: true })
-  .filter((d) => d.isDirectory() && !d.name.startsWith('.') && !['blog', 'fonts', 'social', 'waitlist', 'rail', 'work'].includes(d.name)
+  .filter((d) => d.isDirectory() && !d.name.startsWith('.') && !['blog', 'fonts', 'social', 'waitlist', 'rail', 'work', 'tiers', 'call'].includes(d.name)
     && hasPage(join(ROOT, d.name)))
   .map((d) => d.name).sort();
 writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *
