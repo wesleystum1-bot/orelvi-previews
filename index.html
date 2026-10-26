@@ -2030,7 +2030,7 @@ var CHAT_TIERS = [{"name":"Launch","price":"$399"},{"name":"Signature","price":"
             '<ul class="pl-why">' + reasons(a, t).map(function(r){ return '<li>' + esc(r) + '</li>'; }).join('') + '</ul>' +
             '<p class="pl-gets-h mono">What you get</p>' +
             '<ul class="pl-gets">' + T.gets.map(function(g){ return '<li>' + esc(g) + '</li>'; }).join('') + '</ul>' +
-            '<div class="pl-act">' + primary + second + '</div>' +
+            '<div class="pl-act">' + primary + second + '<a class="btn" href="call/' + (res.name ? '?b=' + encodeURIComponent(res.name) : '') + '">Book a sales call</a></div>' +
             '<p class="pl-fine">' + esc(payNote) + (siteNote ? ' ' + esc(siteNote) : '') + '</p>' +
             (a.when === 'exploring' ? '<p class="pl-fine"><a href="waitlist/?src=survey">Save my spot on the founding list &rarr;</a></p>' : '') +
             '<p class="pl-up">' + esc(upLine) + ' <button type="button" class="pl-link" data-sv-tier="' + up + '">Show me ' + TIERS[up].name + '</button></p>' +
