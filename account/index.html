@@ -216,7 +216,7 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
   function eye(btn){ btn.addEventListener('click', function(){ var i = btn.parentNode.querySelector('input'); var show = i.type === 'password'; i.type = show ? 'text' : 'password'; btn.textContent = show ? 'Hide' : 'Show'; btn.setAttribute('aria-pressed', show ? 'true' : 'false'); }); }
   /* only a page on this site may be a next stop */
   function next(fallback){ var n = new URLSearchParams(location.search).get('next') || ''; return /^[a-z]+\/?$/.test(n) ? '../' + n.replace(/\/?$/, '/') : fallback; }
-  var PRICES = {"launch":"$399","signature":"$899","custom":"from $1,899"};
+  var PRICES = {"launch":"$299/mo","signature":"$599/mo","custom":"from $1,499/mo"};
   if (!get(TOKEN)) { location.replace('../login/?next=account'); return; }
   var q = new URLSearchParams(location.search), fresh = q.get('new');
   if (fresh) history.replaceState(null, '', location.pathname);
@@ -272,7 +272,7 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
     $('#hi').textContent = justMade ? 'Welcome, ' + first + '. Your website is ready.' : 'Welcome back, ' + first + '.';
     $('#sub').textContent = justMade ? 'Here is ' + newest.business + ', built just now. Open it on your phone, then claim it or ask for changes.'
       : proofs.length ? 'You have ' + proofs.length + ' website' + (proofs.length === 1 ? '' : 's') + ' here. Pick up where you left off.' : 'Make your first free website below.';
-    var steps = [['Account made', 'You are signed in.'], ['Free website', newest ? newest.business + ' is built.' : 'Takes a few seconds.'], ['Claim it', 'From ' + PRICES.launch + ', paid once.'], ['Go live', 'On your own domain.']];
+    var steps = [['Account made', 'You are signed in.'], ['Free website', newest ? newest.business + ' is built.' : 'Takes a few seconds.'], ['Claim it', 'From ' + PRICES.launch + ', hosting and changes included.'], ['Go live', 'On your own domain.']];
     var at = newest ? 2 : 1, t = $('#track'); t.innerHTML = '';
     steps.forEach(function(s, i){ var li = el('li', i < at ? 'done' : i === at ? 'now' : ''); var w = el('span'); w.appendChild(el('b', null, s[0])); w.appendChild(document.createTextNode(s[1])); li.appendChild(w); t.appendChild(li); });
     var list = $('#list'); list.innerHTML = '';

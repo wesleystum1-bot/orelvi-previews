@@ -83,34 +83,34 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
   <main>
     <a class="back" id="back" href="../" hidden>← Back to your preview</a>
     <h1 id="title">Pick your plan.</h1>
-    <p class="lede" id="lede">Choose a plan, pay securely, tell us your details. We do the rest.</p>
-    <p class="fine">$79 a month keeps it updated after launch. That part is optional.</p>
+    <p class="lede" id="lede">Choose a plan, start it securely, tell us your details. We do the rest.</p>
+    <p class="fine">One monthly price covers the build, hosting, changes by chat and keeping your details current. No build fee. Cancel anytime.</p>
     <section class="tiers" aria-label="Plans">
     <article class="tier" data-tier="launch">
       <p class="k">Launch</p>
-      <p class="price">$399<small> one time</small></p>
+      <p class="price">$299<small> /month</small></p>
       <p class="for">For a business that needs to be found and called.</p>
       <ul><li><b>One finished design</b>: picked to fit your trade</li><li><b>Your real details</b>: services, hours, area and contact, checked against what you publish</li><li><b>Clean and fast</b>: on every phone and screen</li><li><b>One round of changes</b>: included before launch</li><li><b>Live on your domain</b>: with a contact form or call button</li></ul>
       <div class="go">
-        <a class="btn main" data-pay href="https://buy.stripe.com/14A9AMdUS0M2baW8ns83C00" rel="noopener">Pay $399 and claim it</a>
+        <a class="btn main" data-pay href="https://buy.stripe.com/5kQ7sE9ECdyO4My33883C05" rel="noopener">Start for $299/mo</a>
         <button class="btn" type="button" data-yes="launch">Or get an invoice</button>
         <a class="btn main" data-book href="../#book" hidden>Get a free preview first</a>
       </div>
     </article>
     <article class="tier" data-tier="signature">
       <p class="k">Signature</p>
-      <p class="price">$899<small> one time</small></p>
+      <p class="price">$599<small> /month</small></p>
       <p class="for">For a business that wants to choose its look.</p>
       <ul><li><b>Three finished designs</b>: in three different styles. You choose.</li><li><b>Your own photographs</b>: placed through the page, with colour and typeface options</li><li><b>3D touches</b>: photos that move as visitors scroll, and a living effect over your opening photo</li><li><b>Three rounds of changes</b>: included before launch</li></ul>
       <div class="go">
-        <a class="btn main" data-pay href="https://buy.stripe.com/9B6aEQeYWeCSa6SgTY83C01" rel="noopener">Pay $899 and claim it</a>
+        <a class="btn main" data-pay href="https://buy.stripe.com/3cI00c8AybqGa6S8ns83C06" rel="noopener">Start for $599/mo</a>
         <button class="btn" type="button" data-yes="signature">Or get an invoice</button>
         <a class="btn main" data-book href="../#book" hidden>Get a free preview first</a>
       </div>
     </article>
     <article class="tier" data-tier="custom">
       <p class="k">Custom</p>
-      <p class="price"><small>from </small>$1,899<small> one time</small></p>
+      <p class="price"><small>from </small>$1,499<small> /month</small></p>
       <p class="for">For a business that wants to stand apart.</p>
       <ul><li><b>Art direction made for you</b>: your colours, type and layout, beyond our templates</li><li><b>Words written for you</b>: from a call with you, in your voice</li><li><b>3D scene</b>: a lit, scroll-driven scene built around what you do (falls back to a still on older phones)</li><li><b>Five rounds of changes</b>: plus extra pages quoted on the call</li></ul>
       <div class="go">
@@ -124,7 +124,7 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
 
     <section class="band" id="yes" hidden aria-labelledby="yes-h">
       <h2 id="yes-h">Say yes, and we'll take it from there.</h2>
-      <p class="lede" id="yes-lede">Leave your details. We'll email you to confirm and send an invoice you can pay by card.</p>
+      <p class="lede" id="yes-lede">Leave your details. We'll email you to confirm and send a link to start your monthly plan by card.</p>
       <form class="card" id="yes-form" novalidate>
         <div class="row2">
           <label>Your name<input name="name" autocomplete="name" required></label>
@@ -132,7 +132,7 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
         </div>
         <div class="row2">
           <label><span>Phone <span class="opt">(optional)</span></span><input name="phone" type="tel" autocomplete="tel"></label>
-          <label>Plan<select name="tier"><option value="launch">Launch ($399)</option><option value="signature">Signature ($899)</option><option value="custom">Custom (from $1,899)</option></select></label>
+          <label>Plan<select name="tier"><option value="launch">Launch ($299/mo)</option><option value="signature">Signature ($599/mo)</option><option value="custom">Custom (from $1,499/mo)</option></select></label>
         </div>
         <label><span>Anything to change first? <span class="opt">(optional)</span></span><textarea name="note" maxlength="1000"></textarea></label>
         <p class="msg bad" id="yes-err" role="alert" hidden></p>
@@ -144,7 +144,7 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
     <section class="band" aria-labelledby="next-h">
       <h2 id="next-h">What happens next</h2>
   <ol class="steps">
-    <li><b>Pay securely</b><span>By card on Stripe's checkout. Your receipt comes by email.</span></li>
+    <li><b>Start your plan</b><span>By card on Stripe's checkout. It renews monthly and your receipt comes by email each month.</span></li>
     <li><b>Tell us the details</b><span>A short form right after paying: changes, hours, photos and your domain.</span></li>
     <li><b>Approve your final proof</b><span>We make your changes and send it over for a last look.</span></li>
     <li><b>Go live</b><span>On a domain you own. No domain yet? We help you get one.</span></li>
@@ -170,7 +170,7 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
   if (site) {
     $('#back').hidden = false; $('#back').href = '../' + site + '/';
     $('#title').textContent = biz ? 'Your ' + biz + ' site is ready to go live.' : 'Your site is ready to go live.';
-    $('#lede').textContent = 'Choose a plan, pay securely, and tell us your details. We do the rest.';
+    $('#lede').textContent = 'Choose a plan, start it securely by card, and tell us your details. We do the rest.';
   }
   document.querySelectorAll('.tier').forEach(function(card){
     var id = card.getAttribute('data-tier');
