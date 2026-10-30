@@ -117,18 +117,18 @@ details p{color:var(--ink-2);margin:8px 0 0;max-width:42rem}
           <label><span>Services and prices to show <span class="opt">(optional)</span></span><textarea name="services" maxlength="1000"></textarea></label>
         </div>
         <label><span>Link to your photos or logo <span class="opt">(optional)</span></span><input name="photos" type="url" placeholder="Google Drive, Dropbox or Instagram link"></label>
-        <p class="fine">Or email photos and your logo to <a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a>.</p>
+        <p class="fine">Or email photos and your logo to <a href="mailto:hello@getorelvi.com">hello@getorelvi.com</a>.</p>
         <p class="msg bad" id="err" role="alert" hidden></p>
         <button class="btn main" type="submit">Send my details</button>
       </form>
       <div id="done" hidden><p class="msg ok" id="ok"></p></div>
     </section>
   </main>
-  <footer class="foot">Questions? <a href="mailto:wesleystum1+orelvi@gmail.com">wesleystum1+orelvi@gmail.com</a></footer>
+  <footer class="foot">Questions? <a href="mailto:hello@getorelvi.com">hello@getorelvi.com</a></footer>
 </div>
 <script>
 (function(){
-  var api = "https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant", mail = "wesleystum1+orelvi@gmail.com";
+  var api = "https://kupitpaodqqwjjuhawvv.supabase.co/functions/v1/orelvi-assistant", mail = "hello@getorelvi.com";
   var q = new URLSearchParams(location.search);
   var session = /^cs_(live|test)_[A-Za-z0-9]{8,200}$/.test(q.get('session_id') || '') ? q.get('session_id') : '';
   var claim = {}; try { claim = JSON.parse(localStorage.getItem('orelvi-claim') || '{}') || {}; } catch (e) {}

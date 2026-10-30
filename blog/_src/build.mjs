@@ -20,8 +20,8 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
 const BLOG = join(ROOT, 'blog');
-const SITE = 'https://wesleystum1-bot.github.io/orelvi-previews/';
-const EMAIL = 'wesleystum1+orelvi@gmail.com';
+const SITE = 'https://getorelvi.com/';
+const EMAIL = 'hello@getorelvi.com';
 const TODAY = process.env.BLOG_TODAY ?? new Date().toISOString().slice(0, 10);
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
