@@ -1,0 +1,16 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.getorelvi.com" }],
+      "destination": "https://getorelvi.com/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "orelvi-two.vercel.app" }],
+      "destination": "https://getorelvi.com/$1",
+      "permanent": true
+    }
+  ]
+}
