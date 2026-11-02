@@ -53,4 +53,4 @@ Someone with water on the floor will not wait for a slow page. Skip the autoplay
 
 ## See yours before you pay
 
-We build plumbing sites like this, and we build yours first. Book a free proof and you will get a link to a finished site for your company that you can check on your own phone. If you want it, launching starts at $399.
+We build plumbing sites like this, and we build yours first. Book a free proof and you will get a link to a finished site for your company that you can check on your own phone. If you want it, plans start at $299 a month with hosting and changes included.

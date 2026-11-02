@@ -20,8 +20,8 @@ import { fileURLToPath } from 'node:url';
 const HERE = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(HERE, '..', '..');
 const BLOG = join(ROOT, 'blog');
-const SITE = 'https://wesleystum1-bot.github.io/orelvi-previews/';
-const EMAIL = 'wesleystum1+orelvi@gmail.com';
+const SITE = 'https://getorelvi.com/';
+const EMAIL = 'hello@getorelvi.com';
 const TODAY = process.env.BLOG_TODAY ?? new Date().toISOString().slice(0, 10);
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -176,7 +176,7 @@ ${main}
 
 const CTA = (up) => `<aside class="cta">
   <h2>See your new site before you pay for it.</h2>
-  <p>Book a free proof and we build a real website for your business first. If you like it, launching starts at $399. If you don’t, you owe nothing.</p>
+  <p>Book a free proof and we build a real website for your business first. If you like it, plans start at $299 a month with hosting and changes included. If you don’t, you owe nothing.</p>
   <div class="btns"><a class="btn" href="${up}#book">Book a free proof</a><a class="btn ghost" href="${up}#pricing">See pricing</a></div>
 </aside>`;
 

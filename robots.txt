@@ -140,4 +140,4 @@ Disallow: /zenphoria/
 Disallow: /orelvi-previews/blog/_src/
 Disallow: /blog/_src/
 
-Sitemap: https://wesleystum1-bot.github.io/orelvi-previews/sitemap.xml
+Sitemap: https://getorelvi.com/sitemap.xml
