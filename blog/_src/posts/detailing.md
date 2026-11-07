@@ -39,4 +39,4 @@ A detailer with a dated, slow website is selling against their own product. A cl
 
 ## See your site first
 
-We build detailing sites with a design made for automotive work, and we build yours before you pay anything. Book a free proof, check it on your phone, and launch it if you like it. Launch starts at $399.
+We build detailing sites with a design made for automotive work, and we build yours before you pay anything. Book a free proof, check it on your phone, and launch it if you like it. Plans start at $299 a month with hosting and changes included.

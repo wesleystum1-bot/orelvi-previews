@@ -176,7 +176,7 @@ ${main}
 
 const CTA = (up) => `<aside class="cta">
   <h2>See your new site before you pay for it.</h2>
-  <p>Book a free proof and we build a real website for your business first. If you like it, launching starts at $399. If you don’t, you owe nothing.</p>
+  <p>Book a free proof and we build a real website for your business first. If you like it, plans start at $299 a month with hosting and changes included. If you don’t, you owe nothing.</p>
   <div class="btns"><a class="btn" href="${up}#book">Book a free proof</a><a class="btn ghost" href="${up}#pricing">See pricing</a></div>
 </aside>`;
 
@@ -265,7 +265,7 @@ function hasPage(dir) {
 /* Prospect previews are private-ish pitches to one business each: keep them
    out of search so a business never finds its own unpaid preview on Google. */
 const previews = readdirSync(ROOT, { withFileTypes: true })
-  .filter((d) => d.isDirectory() && !d.name.startsWith('.') && !['blog', 'fonts', 'social', 'waitlist', 'rail', 'work'].includes(d.name)
+  .filter((d) => d.isDirectory() && !d.name.startsWith('.') && !['blog', 'fonts', 'social', 'waitlist', 'rail', 'work', 'tiers', 'call'].includes(d.name)
     && hasPage(join(ROOT, d.name)))
   .map((d) => d.name).sort();
 writeFileSync(join(ROOT, 'robots.txt'), `User-agent: *

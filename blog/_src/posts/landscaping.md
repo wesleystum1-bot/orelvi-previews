@@ -42,4 +42,4 @@ Many customers look you up standing in their own yard, looking at the problem. A
 
 ## Try it before paying
 
-We build landscaping and lawn care sites, and we build yours before you spend anything. Book a free proof, open your new site on your phone, and decide. Launching starts at $399.
+We build landscaping and lawn care sites, and we build yours before you spend anything. Book a free proof, open your new site on your phone, and decide. Plans start at $299 a month with hosting and changes included.
