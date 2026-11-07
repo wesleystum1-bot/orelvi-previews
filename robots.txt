@@ -137,6 +137,16 @@ Disallow: /orelvi-previews/wesleys-donuts-k7m2/
 Disallow: /wesleys-donuts-k7m2/
 Disallow: /orelvi-previews/zenphoria/
 Disallow: /zenphoria/
+Disallow: /orelvi-previews/artistic-land-management/
+Disallow: /artistic-land-management/
+Disallow: /orelvi-previews/cgl-landscaping/
+Disallow: /cgl-landscaping/
+Disallow: /orelvi-previews/air-fit-air-conditioning/
+Disallow: /air-fit-air-conditioning/
+Disallow: /orelvi-previews/gilbert-ac-repair/
+Disallow: /gilbert-ac-repair/
+Disallow: /orelvi-previews/mark-daniels-air-conditioning-heating/
+Disallow: /mark-daniels-air-conditioning-heating/
 Disallow: /orelvi-previews/blog/_src/
 Disallow: /blog/_src/
 

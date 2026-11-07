@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 241" width="1200" height="241" preserveAspectRatio="xMidYMid slice" role="img">
+<defs><pattern id="ht1" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="5" stroke="rgba(31,33,36,0.34)" stroke-width="0.8"/></pattern><linearGradient id="gz2" x1="78.68%" y1="9.04%" x2="21.32%" y2="90.96%"><stop offset="0%" stop-color="#a3421f" stop-opacity="0.5"/><stop offset="60%" stop-color="#585c62" stop-opacity="0.26"/><stop offset="100%" stop-color="#585c62" stop-opacity="0.1"/></linearGradient><filter id="gr0" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="1.1" numOctaves="3" stitchTiles="stitch" seed="7"/>
+    <feColorMatrix type="saturate" values="0"/>
+    <feComponentTransfer><feFuncA type="linear" slope="0.16"/></feComponentTransfer>
+  </filter></defs>
+<rect width="1200" height="241" fill="#f4f2f0"/>
+<path d="M0 11.3H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 22.7H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 34.0H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 45.3H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 56.6H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 68.0H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 79.3H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 90.6H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 101.9H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 113.3H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 124.6H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 135.9H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 147.3H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 158.6H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 169.9H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 181.2H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 192.6H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 203.9H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 215.2H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 226.5H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M0 237.9H1200" stroke="rgba(31,33,36,0.2)" stroke-width="0.6"/>
+<path d="M1008 200.03V144.6L768 125.32V200.03Z" fill="rgba(88,92,98,0.1)" stroke="rgba(31,33,36,0.95)" stroke-width="1.4"/>
+<path d="M1041.6 146.528L768 123.874" stroke="rgba(31,33,36,0.95)" stroke-width="1.7" fill="none"/>
+<rect x="883.2" y="174.5" width="72.0" height="25.5" fill="rgba(31,33,36,0.12)" stroke="rgba(31,33,36,0.6)" stroke-width="1"/>
+<path d="M168.00000000000003 200.03V103.94670507566072L468 43.157440864846585L768 103.94670507566072V200.03Z" fill="rgba(88,92,98,0.07)" stroke="rgba(31,33,36,0.95)" stroke-width="1.6"/>
+<path d="M134.40000000000003 106.83870507566071L468 41.22944086484659L801.6 106.83870507566071" fill="none" stroke="rgba(31,33,36,0.95)" stroke-width="1.8"/>
+<path d="M468 43.157440864846585V103.94670507566072" stroke="rgba(31,33,36,0.6)" stroke-width="0.8" stroke-dasharray="4 3"/>
+<path d="M168.00000000000003 111.9H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 119.8H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 127.7H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 135.7H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 143.6H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 151.5H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 159.4H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 167.4H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 175.3H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 183.2H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<path d="M168.00000000000003 191.2H768" stroke="rgba(31,33,36,0.11)" stroke-width="0.7"/>
+<rect x="234.7" y="123.2" width="66.7" height="44.2" fill="url(#gz2)" stroke="rgba(31,33,36,0.95)" stroke-width="1.2"/>
+<path d="M268.0 123.2v44.2" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M234.7 141.7h66.7" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M229.3 167.4h77.3" stroke="rgba(31,33,36,0.95)" stroke-width="1.6"/>
+<rect x="368.0" y="123.2" width="66.7" height="44.2" fill="url(#gz2)" stroke="rgba(31,33,36,0.95)" stroke-width="1.2"/>
+<path d="M401.3 123.2v44.2" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M368.0 141.7h66.7" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M362.7 167.4h77.3" stroke="rgba(31,33,36,0.95)" stroke-width="1.6"/>
+<rect x="501.3" y="123.2" width="66.7" height="44.2" fill="url(#gz2)" stroke="rgba(31,33,36,0.95)" stroke-width="1.2"/>
+<path d="M534.7 123.2v44.2" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M501.3 141.7h66.7" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M496.0 167.4h77.3" stroke="rgba(31,33,36,0.95)" stroke-width="1.6"/>
+<rect x="634.7" y="123.2" width="66.7" height="44.2" fill="url(#gz2)" stroke="rgba(31,33,36,0.95)" stroke-width="1.2"/>
+<path d="M668.0 123.2v44.2" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M634.7 141.7h66.7" stroke="rgba(31,33,36,0.6)" stroke-width="0.8"/>
+<path d="M629.3 167.4h77.3" stroke="rgba(31,33,36,0.95)" stroke-width="1.6"/>
+<rect x="441.3" y="171.2" width="53.3" height="28.8" fill="rgba(31,33,36,0.14)" stroke="rgba(31,33,36,0.95)" stroke-width="1.2"/>
+<rect x="600.0" y="34.7" width="50.4" height="37.6" fill="rgba(88,92,98,0.14)" stroke="rgba(31,33,36,0.95)" stroke-width="1.4"/>
+<rect x="592.9" y="31.8" width="64.5" height="3.4" fill="#f4f2f0" stroke="rgba(31,33,36,0.95)" stroke-width="1.4"/>
+<rect x="0" y="200.03" width="1200" height="40.97" fill="url(#ht1)"/>
+<path d="M0 200.03H1200" stroke="rgba(31,33,36,0.95)" stroke-width="2"/>
+<path d="M168.00000000000003 226.54H768" stroke="rgba(31,33,36,0.6)" stroke-width="0.9"/>
+<path d="M168.0 220.5l6 12" stroke="rgba(31,33,36,0.6)" stroke-width="1.1"/>
+<path d="M468.0 220.5l6 12" stroke="rgba(31,33,36,0.6)" stroke-width="1.1"/>
+<path d="M768.0 220.5l6 12" stroke="rgba(31,33,36,0.6)" stroke-width="1.1"/>
+<path d="M84.0 43.157440864846585V200.03" stroke="rgba(31,33,36,0.6)" stroke-width="0.9" stroke-dasharray="3 3"/>
+<rect width="1200" height="241" filter="url(#gr0)" opacity=".3"/>
+</svg>
