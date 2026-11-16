@@ -27,7 +27,7 @@ Agencies bring a team, a process and a portfolio, and price accordingly. Expect 
 
 ### 4. A productized studio
 
-A newer option sits in between: a studio that has standardised how it designs and builds, so it can charge a fixed price and deliver fast. That is what we do at ORELVI. Our tiers are **Launch at $399**, **Signature at $899** and **Custom from $1,899**, each a one-time price, and we build your site before you pay anything.
+A newer option sits in between: a studio that has standardised how it designs and builds, so it can charge a fixed price and deliver fast. That is what we do at ORELVI. Our plans are **Launch at $299 a month**, **Signature at $599 a month** and **Custom from $1,499 a month**, with hosting and changes included, no contract, and the site files yours to keep after 12 paid months. We build your site before you pay anything.
 
 ## What you are really paying for
 
@@ -43,12 +43,12 @@ When two quotes differ by thousands of dollars, the difference is almost always 
 
 ## The costs that repeat every year
 
-The build is a one-time cost. These are not:
+With most builders the build is a one-time cost. These are not:
 
 - **Domain name.** Usually around $10 to $20 a year for a .com.
 - **Hosting.** Anywhere from free (for a fast static site) to $30 a month or more on some platforms.
 - **Builder subscription.** If your site lives on a builder, you pay the plan for as long as the site exists.
-- **Care or maintenance.** Optional, but someone has to update hours, prices and services when they change. Ours is $79 a month and you can skip it.
+- **Care or maintenance.** Optional with most builders, but someone has to update hours, prices and services when they change. In our plans, hosting and changes are included in the monthly price.
 
 Ask every quote: *after launch, what do I pay each year, and what happens if I stop paying?*
 

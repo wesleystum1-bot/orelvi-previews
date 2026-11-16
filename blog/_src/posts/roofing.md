@@ -56,4 +56,4 @@ Storm traffic comes in bursts, often on mobile data. Skip the autoplaying video 
 
 ## See yours before you pay
 
-We build roofing sites like this regularly, and we build yours first. Book a free proof and you will get a link to a finished site for your company to check on your own phone. If you want it, launching starts at $399.
+We build roofing sites like this regularly, and we build yours first. Book a free proof and you will get a link to a finished site for your company to check on your own phone. If you want it, plans start at $299 a month with hosting and changes included.

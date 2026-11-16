@@ -23,8 +23,6 @@ Disallow: /orelvi-previews/bella-luce-spa/
 Disallow: /bella-luce-spa/
 Disallow: /orelvi-previews/botanical-beauty-hair-studio/
 Disallow: /botanical-beauty-hair-studio/
-Disallow: /orelvi-previews/call/
-Disallow: /call/
 Disallow: /orelvi-previews/chatti-chix-hair-salon/
 Disallow: /chatti-chix-hair-salon/
 Disallow: /orelvi-previews/chopies-auto/
@@ -131,8 +129,6 @@ Disallow: /orelvi-previews/the-three-cs-cuts-colors-and-curls/
 Disallow: /the-three-cs-cuts-colors-and-curls/
 Disallow: /orelvi-previews/thrive-skin-bar/
 Disallow: /thrive-skin-bar/
-Disallow: /orelvi-previews/tiers/
-Disallow: /tiers/
 Disallow: /orelvi-previews/trofeo-motorworks/
 Disallow: /trofeo-motorworks/
 Disallow: /orelvi-previews/welcome/

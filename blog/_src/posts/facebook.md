@@ -40,4 +40,4 @@ You are probably ready for a website if any of these are true:
 
 ## The setup we recommend
 
-Keep your Google profile and your Facebook page. Add a simple, fast website and link all three together, with the website as the place that explains what you do and how to book. A one-page site is enough for most local businesses, and it does not need to cost much. Ours starts at $399, and you see it finished before you pay.
+Keep your Google profile and your Facebook page. Add a simple, fast website and link all three together, with the website as the place that explains what you do and how to book. A one-page site is enough for most local businesses, and it does not need to cost much. Ours start at $299 a month with hosting and changes included, and you see it finished before you pay.
